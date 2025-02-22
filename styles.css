@@ -300,6 +300,7 @@ margin: 0 auto;
 border: none;
 border-top: 1px solid var(--color-primary-light);
 margin: 1rem 0;
+width: 800px;
 }
 
 /* Experience Section */
@@ -307,7 +308,7 @@ margin: 1rem 0;
 display: flex;
 flex-direction: column;
 justify-content: center;
-min-height: 80vh;
+min-height: 50vh;
 text-align: center;
 }
 .experience h2 {
@@ -541,7 +542,7 @@ object-fit: contain;
 }
 
 /* Default: show the dark-mode icon (moon) for a "dark" initial theme,
-    or if your site starts in light mode, invert these. */
+or if your site starts in light mode, invert these. */
 .dark-mode-icon {
 display: block;
 }
@@ -564,4 +565,165 @@ color: var(--color-text);
 /* Also ensure the hover state doesn't re-add underline */
 .project-wrapper:hover {
 text-decoration: none;
+}
+
+
+/* Blogs Section */
+.blogs {
+padding: 5rem 0;
+text-align: center;
+}
+
+.blogs h2 {
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 3rem;
+color: var(--color-text);
+}
+
+.blogs-grid {
+display: grid;
+/* Use auto-fit to create responsive columns that fill available space */
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+/* Entire blog card is clickable */
+.blog-card {
+display: flex;
+flex-direction: column;       /* image on top, text below */
+background: var(--color-card-bg);
+border-radius: 1rem;
+overflow: hidden;
+box-shadow: var(--shadow-sm);
+text-decoration: none;        /* remove underlines */
+transition: transform 0.3s, box-shadow 0.3s;
+color: var(--color-text);     /* ensures text color adapts to theme */
+}
+
+.blog-card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-lg);
+}
+
+/* Image on top: set a fixed height if you want consistent sizing */
+.blog-image {
+width: 100%;
+height: 300px; /* or any consistent height you like */
+object-fit: cover;
+display: block;  /* remove default inline spacing */
+}
+
+/* Text content below the image */
+.blog-content {
+padding: 1.5rem;
+text-align: left;
+}
+
+.blog-content h3 {
+font-size: 1.25rem;
+font-weight: 600;
+margin-bottom: 0.5rem;
+color: var(--color-text);
+}
+
+.blog-content p {
+color: var(--color-text-light);
+margin-bottom: 0;
+}
+
+
+/* Projects Section */
+.projects {
+padding: 4rem 0;
+text-align: center;
+}
+
+.projects h2 {
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 3rem;
+color: var(--color-text);
+}
+
+/* Grid: 4 columns on desktop, single column on mobile */
+.projects-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2rem;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+/* Each tile is an anchor, fully clickable */
+.project-wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-decoration: none;         /* remove underlines */
+color: var(--color-text);
+background: var(--color-card-bg);
+border-radius: 1rem;
+overflow: hidden;
+box-shadow: var(--shadow-sm);
+transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-wrapper:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-lg);
+}
+
+/* The "card" portion with the background image */
+.project-card {
+width: 100%;
+height: 200px;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+/* Title and description below the image */
+.project-wrapper h3 {
+font-size: 1.25rem;
+margin: 1rem 0 0.5rem;
+color: var(--color-text);
+}
+
+.project-wrapper p {
+color: var(--color-text-light);
+margin: 0 1rem 1rem;
+}
+
+/* Responsive: 1 column on smaller screens */
+@media (max-width: 768px) {
+.projects-grid {
+grid-template-columns: 1fr;
+}
+.project-card {
+height: 180px; /* slightly smaller if desired */
+}
+}
+
+
+/* Contact form button styled like the resume button */
+.contact-form button {
+display: inline-block;
+background: #fff;
+color: #000;
+padding: 0.75rem 2rem;
+border-radius: 9999px; /* pill shape */
+border: none;          /* remove default button border */
+text-decoration: none;
+font-weight: 600;
+box-shadow: var(--shadow-sm);
+cursor: pointer;
+transition: background 0.2s, opacity 0.2s;
+margin-top: 2rem;
+}
+
+.contact-form button:hover {
+opacity: 0.9;
 }

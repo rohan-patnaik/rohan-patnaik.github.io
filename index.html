@@ -1,236 +1,262 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio</title>
+<link rel="stylesheet" href="styles.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <nav class="nav container">
-      <div class="nav-links">
-        <!-- your existing nav links -->
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
-  
-      <!-- Theme toggle button with images -->
-      <div class="social-links">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-          <!-- Light Mode Icon -->
-          <img
-            src="public\icons\light-mode.png"
-            alt="Light Mode Icon"
-            class="light-mode-icon"
-          />
-          <!-- Dark Mode Icon -->
-          <img
-            src="public\icons\night-mode.png"
-            alt="Dark Mode Icon"
-            class="dark-mode-icon"
-          />
-        </button>
-      </div>
-    </nav>
-  </header>
-  
+<!-- Header -->
+<header class="header">
+<nav class="nav container">
+<div class="nav-links">
+<!-- your existing nav links -->
+<a href="#home">Home</a>
+<a href="#projects">Projects</a>
+<a href="#blogs">Blogs</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</div>
 
-  <!-- Intro Section -->
-  <section id="home" class="intro">
-    <div class="container">
-      <div class="intro-content">
-        <div class="intro-left">
-          <h1>ROHAN PATNAIK</h1>
-          <h2>DATA SCIENTIST</h2>
-          <div class="intro-icons">
-            <a href="https://github.com/YourGitHubUsername" target="_blank" class="icon-link" title="GitHub">
-              <img class="light-icon" src="public\icons\github_light.svg" alt="GitHub Light" />
-              <img class="dark-icon" src="public\icons\github_dark.png" alt="GitHub Dark" />
-            </a>
-            <a href="https://www.linkedin.com/in/YourLinkedInProfile" target="_blank" class="icon-link" title="LinkedIn">
-              <img class="light-icon" src="public\icons\linkedin_light.svg" alt="LinkedIn Light" />
-              <img class="dark-icon" src="public\icons\linkedin_dark.png" alt="LinkedIn Dark" />
-            </a>
-            <a href="https://medium.com/@YourMediumHandle" target="_blank" class="icon-link" title="Medium">
-              <img class="light-icon" src="public\icons\medium_light.svg" alt="Medium Light" />
-              <img class="dark-icon" src="public\icons\medium_dark.png" alt="Medium Dark" />
-            </a>
-          </div>
-          <p class="intro-summary">
-            I am a data scientist specializing in machine learning, data analysis, and building AI-powered solutions.
-          </p>
-          <a href="public/resume_v1.pdf" target="_blank" class="resume-button">Resume</a>
-        </div>
-        <div class="intro-right">
-          <img src="public\profile_pic1.png" alt="Profile picture" />
-        </div>
-      </div>
-    </div>
-  </section>
+
+<div class="social-links">
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+<img
+src="public\icons\light-mode.png"
+alt="Light Mode Icon"
+class="light-mode-icon"
+/>
+<img
+src="public\icons\night-mode.png"
+alt="Dark Mode Icon"
+class="dark-mode-icon"
+/>
+</button>
+</div>
+</nav>
+</header>
+
+
+<!-- Intro Section -->
+<section id="home" class="intro">
+<div class="container">
+<div class="intro-content">
+<div class="intro-left">
+<h1>ROHAN PATNAIK</h1>
+<h2>DATA SCIENTIST</h2>
+<div class="intro-icons">
+<a href="https://github.com/rohan-patnaik" target="_blank" class="icon-link" title="GitHub">
+<img class="light-icon" src="public\icons\github_light.svg" alt="GitHub Light" />
+<img class="dark-icon" src="public\icons\github_dark.png" alt="GitHub Dark" />
+</a>
+<a href="https://www.linkedin.com/in/rohan-patnaik-88929b159" target="_blank" class="icon-link" title="LinkedIn">
+<img class="light-icon" src="public\icons\linkedin_light.svg" alt="LinkedIn Light" />
+<img class="dark-icon" src="public\icons\linkedin_dark.png" alt="LinkedIn Dark" />
+</a>
+<a href="https://medium.com/@rohanpatnaik1997" target="_blank" class="icon-link" title="Medium">
+<img class="light-icon" src="public\icons\medium_light.svg" alt="Medium Light" />
+<img class="dark-icon" src="public\icons\medium_dark.png" alt="Medium Dark" />
+</a>
+</div>
+<p class="intro-summary">
+I am a data scientist specializing in machine learning, data analysis, and building AI-powered solutions.
+</p>
+<a href="public/resume_v1.pdf" target="_blank" class="resume-button">Resume</a>
+</div>
+<div class="intro-right">
+<img src="public\profile_pic1.png" alt="Profile picture" />
+</div>
+</div>
+</div>
+</section>
 
 <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <h2>PROJECTS</h2>
-      <div class="projects-grid">
-        <!-- 1) Fake news identifier -->
-        <a
-          href="https://github.com/rohan-patnaik/Fake-News-Classifier-using-bidirectional-LSTM"
-          class="project-wrapper"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div 
-            class="project-card"
-            style="background-image: url('public/project_images/fake_news_logo.jpg');">
-          </div>
-          <h3>Fake news identifer</h3>
-          <p>An approach on classifying news as true or untrue using bidirectional LSTM model architecture.</p>
-        </a>
-  
-        <!-- 2) AI article writer -->
-        <a
-          href="https://github.com/rohan-patnaik/article-writer-LLM-using-Llama2"
-          class="project-wrapper"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div 
-            class="project-card"
-            style="background-image: url('public/project_images/article_writer_logo.jpg');">
-          </div>
-          <h3>AI article writer</h3>
-          <p>An article writer that uses a LLM based on Llama2 that lets you generate tailored articles by simply specifying a topic & word count.</p>
-        </a>
-  
-        <!-- 3) Decensored deepseekR1 -->
-        <a
-          href="https://github.com/rohan-patnaik/decensored-deepseekR1-for-vscode"
-          class="project-wrapper"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div 
-            class="project-card"
-            style="background-image: url('public/project_images/deepseek_logo.jpg');">
-          </div>
-          <h3>Decensored DeepseekR1</h3>
-          <p>Decensored DeepseekR1 for VSCode is an open-source extension that transforms VS Code into a personal AI-powered chat assistant.</p>
-        </a>
-  
-        <!-- 4) Is This Food -->
-        <a
-          href="https://github.com/rohan-patnaik/Is-This-Food"
-          class="project-wrapper"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div 
-            class="project-card"
-            style="background-image: url('public/project_images/is_this_food_logo.jpg');">
-          </div>
-          <h3>Is This Food</h3>
-          <p>This is a ML web app that uses a TensorFlow Lite EfficientNet based model to detect food in images.</p>
-        </a>
-      </div>
-    </div>
-  </section>
-  
+<section id="projects" class="projects">
+<div class="container">
+<h2>PROJECTS</h2>
+<div class="projects-grid">
+<!-- 1) Fake news identifier -->
+<a
+href="https://github.com/rohan-patnaik/Fake-News-Classifier-using-bidirectional-LSTM"
+class="project-wrapper"
+target="_blank"
+rel="noopener noreferrer"
+>
+<div
+class="project-card"
+style="background-image: url('public/project_images/fake_news_logo.jpg');"
+></div>
+<h3>Fake news identifer</h3>
+<p>An approach on classifying news as true or untrue using bidirectional LSTM model architecture.</p>
+</a>
 
-  <!-- Blogs Section -->
-  <section id="blogs" class="blogs">
-    <div class="container">
-      <h2> ARTICLES</h2>
-      <div class="blogs-grid">
-        <div class="blog-card">
-          <img src="public/dp.png" alt="Machine Learning Blog" />
-          <div class="blog-content">
-            <h3>The Future of Machine Learning</h3>
-            <p>Exploring the latest trends and innovations in machine learning and their impact.</p>
-            <a href="#" class="blog-link">Read More →</a>
-          </div>
-        </div>
-        <div class="blog-card">
-          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=300" alt="Machine Learning Blog" />
-          <div class="blog-content">
-            <h3>The Future of Machine Learning</h3>
-            <p>Exploring the latest trends and innovations in machine learning and their impact.</p>
-            <a href="#" class="blog-link">Read More →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- 2) AI article writer -->
+<a
+href="https://github.com/rohan-patnaik/article-writer-LLM-using-Llama2"
+class="project-wrapper"
+target="_blank"
+rel="noopener noreferrer"
+>
+<div
+class="project-card"
+style="background-image: url('public/project_images/article_writer_logo.jpg');"
+></div>
+<h3>AI article writer</h3>
+<p>An article writer that uses a LLM based on Llama2 that lets you generate tailored articles by simply specifying a topic & word count.</p>
+</a>
 
-  <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <div class="container">
-      <h2>SKILLS</h2>
-      <div class="skills-list">
-        <p>✓ HTML &nbsp; ✓ CSS &nbsp; ✓ JavaScript &nbsp; ✓ TypeScript &nbsp; ✓ Node</p>
-        <hr/>
-        <p>✓ React &nbsp; ✓ Angular &nbsp; ✓ Vue &nbsp; ✓ Tailwind CSS</p>
-        <hr/>
-        <p>✓ Redux &nbsp; ✓ Webpack &nbsp; ✓ Git &nbsp; ✓ Jest &nbsp; ✓ Bootstrap</p>
-      </div>
-    </div>
-  </section>
+<!-- 3) Decensored deepseekR1 -->
+<a
+href="https://github.com/rohan-patnaik/decensored-deepseekR1-for-vscode"
+class="project-wrapper"
+target="_blank"
+rel="noopener noreferrer"
+>
+<div
+class="project-card"
+style="background-image: url('public/project_images/deepseek_logo.jpg');"
+></div>
+<h3>Decensored DeepseekR1</h3>
+<p>Decensored DeepseekR1 for VSCode is an open-source extension that transforms VS Code into a personal AI-powered chat assistant.</p>
+</a>
 
-  <!-- Experience Section -->
-  <section id="experience" class="experience">
-    <div class="container">
-      <h2>WORK EXPERIENCE</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3>Senior Data Scientist</h3>
-            <div class="company">Tech Corp</div>
-            <div class="period">2023 - Present</div>
-            <p>Led machine learning initiatives and developed predictive models for customer behavior analysis.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- 4) Is This Food -->
+<a
+href="https://github.com/rohan-patnaik/Is-This-Food"
+class="project-wrapper"
+target="_blank"
+rel="noopener noreferrer"
+>
+<div
+class="project-card"
+style="background-image: url('public/project_images/is_this_food_logo.jpg');"
+></div>
+<h3>Is This Food</h3>
+<p>This is a ML web app that uses a TensorFlow Lite EfficientNet based model to detect food in images.</p>
+</a>
+</div>
+</div>
+</section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>CONTACT</h2>
-      <form id="contact-form" class="contact-form">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="user_name" required/>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="user_email" required/>
-        <label for="message">Message</label>
-        <textarea id="message" name="user_message" rows="5" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div>© 2025 Rohan Patnaik. All rights reserved.</div>
-        <div class="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Contact</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
-  <script src="script.js"></script>
+<!-- Blogs Section -->
+<section id="blogs" class="blogs">
+<div class="container">
+<h2>ARTICLES</h2>
+<div class="blogs-grid">
+<!-- Blog 1 -->
+<a
+href="https://medium.com/@rohanpatnaik1997/your-comprehensive-time-series-analysis-roadmap-911d7549011e"
+class="blog-card"
+target="_blank"
+rel="noopener noreferrer"
+>
+<!-- Image on top -->
+<img
+src="public/project_images/article_timeseries.jpg"
+alt="Time Series Analysis Article"
+class="blog-image"
+/>
+<!-- Text below -->
+<div class="blog-content">
+<h3>A comprehensive Time Series Analysis roadmap</h3>
+<p>
+A one-stop resource for learning and practicing time series analysis (TSA) from start to finish.
+</p>
+</div>
+</a>
+
+<!-- Blog 2 -->
+<a
+href="https://medium.com/@rohanpatnaik1997/how-to-run-a-hugging-face-gguf-model-locally-ollama-on-our-windows-machine-1c79b45e483a"
+class="blog-card"
+target="_blank"
+rel="noopener noreferrer"
+>
+<img
+src="public/project_images/ollama_gguf.jpg"
+alt="Hugging Face GGUF Model Article"
+class="blog-image"
+/>
+<div class="blog-content">
+<h3>How to run any huggingface GGUF model locally on a windows machine</h3>
+<p>
+In this post I’ll walk you through the process of downloading a GGUF model from Hugging Face
+and running it locally with Ollama.
+</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+✓
+
+<!-- Skills Section -->
+<section id="skills" class="skills">
+<div class="container">
+<h2>SKILLS</h2>
+<div class="skills-list">
+<p> Pytorch, Keras, Scikit-Learn, TensorFlow, A/B testing, Excel, Tableau, NLP, Kubeflow Pipelines, Timeseries</p>
+<hr/>
+<p>MySQL, PostgreSQL, Trino, Redis, MinIO</p>
+<hr/>
+<p>Python, Flask, Jenkins, TypeScript, Docker, Kubernetes, Git, GitHub Actions</p>
+</div>
+</div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience">
+<div class="container">
+<h2>WORK EXPERIENCE</h2>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>Senior Data Scientist</h3>
+<div class="company">Tech Corp</div>
+<div class="period">2023 - Present</div>
+<p>Led machine learning initiatives and developed predictive models for customer behavior analysis.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+<div class="container">
+<h2>CONTACT</h2>
+<form id="contact-form" class="contact-form">
+<label for="name">Name</label>
+<input type="text" id="name" name="user_name" required />
+
+<label for="email">Email</label>
+<input type="email" id="email" name="user_email" required />
+
+<label for="message">Message</label>
+<textarea id="message" name="user_message" rows="5" required></textarea>
+
+<!-- The button you want to style like the resume button -->
+<button type="submit">Submit</button>
+</form>
+</div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div>© 2025 Rohan Patnaik. All rights reserved.</div>
+</div>
+</div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
