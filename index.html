@@ -3,112 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rohan Patnaik | Data Scientist</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Rohan - Data Scientist Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <!-- Header / Navigation -->
+  <!-- HEADER -->
   <header>
-    <div class="logo">Rohan Patnaik</div>
-    <nav>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#articles">Articles</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="mailto:rohpatnaik@example.com">Email</a></li>
-        <li><a href="https://linkedin.com/in/rohpatnaik" target="_blank">LinkedIn</a></li>
-        <li><a href="https://github.com/rohpatnaik" target="_blank">GitHub</a></li>
-        <li><a href="resume.pdf" target="_blank">Resume</a></li>
-      </ul>
-      <button class="hamburger" id="hamburgerBtn">&#9776;</button>
-    </nav>
+    <div class="container header-container">
+      <h1 class="logo">Rohan</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#intro">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#experience">Experience</a></li>
+        </ul>
+      </nav>
+      <div class="header-extra">
+        <a href="#" class="resume-btn">Resume</a>
+        <div class="social-links">
+          <a href="#" title="LinkedIn">LinkedIn</a>
+          <a href="#" title="GitHub">GitHub</a>
+          <a href="#" title="Twitter">Twitter</a>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- Intro Section -->
-  <section class="intro" id="intro">
-    <div class="intro-text">
-      <h1>Hello, I'm Rohan Patnaik</h1>
-      <p>I'm a Data Scientist specializing in machine learning, deep learning, and data analytics. 
-      I love building solutions that drive meaningful insights and real-world impact.</p>
-      <p>Welcome to my portfolio!</p>
-    </div>
-    <div class="intro-image">
-      <img src="profile.jpg" alt="Rohan Patnaik Photo" />
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section class="projects" id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Project 1</h3>
-        <p>Short description about Project 1.</p>
-        <a href="#">View More</a>
+  <!-- INTRO SECTION -->
+  <section id="intro">
+    <div class="container intro-container">
+      <div class="intro-text">
+        <h2>Hello, I'm Rohan</h2>
+        <p>
+          I am a passionate data scientist with expertise in machine learning,
+          data analytics, and visualization. I love transforming data into actionable insights.
+        </p>
       </div>
-      <div class="project-card">
-        <h3>Project 2</h3>
-        <p>Short description about Project 2.</p>
-        <a href="#">View More</a>
-      </div>
-      <div class="project-card">
-        <h3>Project 3</h3>
-        <p>Short description about Project 3.</p>
-        <a href="#">View More</a>
-      </div>
-      <div class="project-card">
-        <h3>Project 4</h3>
-        <p>Short description about Project 4.</p>
-        <a href="#">View More</a>
+      <div class="intro-photo">
+        <img src="https://via.placeholder.com/200" alt="Rohan's Photo" />
       </div>
     </div>
   </section>
 
-  <!-- Medium Articles Section -->
-  <section class="articles" id="articles">
-    <h2>Medium Articles</h2>
-    <div class="article-grid">
-      <div class="article-card">
-        <h3>A Comprehensive Time Series Analysis Roadmap</h3>
-        <p>Explore the fundamentals of time series analysis, from data preprocessing to forecasting.</p>
-        <a href="#" target="_blank">Read Article</a>
-      </div>
-      <div class="article-card">
-        <h3>How to Run any Hugging Face GGUF Model Locally on Windows</h3>
-        <p>Set up and run advanced Hugging Face models on your Windows machine.</p>
-        <a href="#" target="_blank">Read Article</a>
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="card-grid">
+        <!-- Project Card 1 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="Project 1" />
+          <h3>Project One</h3>
+          <p>A brief description of Project One.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+        <!-- Project Card 2 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="Project 2" />
+          <h3>Project Two</h3>
+          <p>A brief description of Project Two.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+        <!-- Project Card 3 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="Project 3" />
+          <h3>Project Three</h3>
+          <p>A brief description of Project Three.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
+        <!-- Project Card 4 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="Project 4" />
+          <h3>Project Four</h3>
+          <p>A brief description of Project Four.</p>
+          <a href="#" class="btn">View Details</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Work Experience Section -->
-  <section class="experience" id="experience">
-    <h2>Work Experience</h2>
-    <div class="experience-item">
-      <h3>Data Scientist at XYZ Company</h3>
-      <span>Jan 2022 - Present</span>
-      <ul>
-        <li>Developed predictive models to forecast customer churn with 90% accuracy.</li>
-        <li>Implemented data pipelines, reducing data processing time by 40%.</li>
-      </ul>
-    </div>
-    <div class="experience-item">
-      <h3>Machine Learning Intern at ABC Corp</h3>
-      <span>Jun 2021 - Dec 2021</span>
-      <ul>
-        <li>Assisted in building a recommendation engine using collaborative filtering.</li>
-        <li>Performed data cleaning and feature engineering for large-scale datasets.</li>
-      </ul>
+  <!-- MEDIUM ARTICLES SECTION -->
+  <section id="articles">
+    <div class="container">
+      <h2>Latest Medium Articles</h2>
+      <div class="card-grid articles-grid">
+        <!-- Article Card 1 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="Article 1" />
+          <h3>Article One</h3>
+          <p>A short excerpt from Article One.</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+        <!-- Article Card 2 -->
+        <div class="card">
+          <img src="https://via.placeholder.com/300x200" alt="Article 2" />
+          <h3>Article Two</h3>
+          <p>A short excerpt from Article Two.</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- WORK EXPERIENCE SECTION -->
+  <section id="experience">
+    <div class="container">
+      <h2>Work Experience</h2>
+      <div class="experience-timeline">
+        <!-- Experience 1 -->
+        <div class="experience-item">
+          <h3>Data Scientist at ABC Corp</h3>
+          <span class="duration">Jan 2020 - Present</span>
+          <ul>
+            <li>Developed predictive models to optimize business outcomes.</li>
+            <li>Performed data analysis and visualization for decision support.</li>
+          </ul>
+        </div>
+        <!-- Experience 2 -->
+        <div class="experience-item">
+          <h3>Data Analyst at XYZ Inc</h3>
+          <span class="duration">Jun 2018 - Dec 2019</span>
+          <ul>
+            <li>Analyzed complex data sets to improve operational efficiency.</li>
+            <li>Created dashboards and reports for stakeholders.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Rohan Patnaik. All Rights Reserved.</p>
+    <div class="container footer-container">
+      <p>&copy; 2025 Rohan. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- JS for Mobile Nav -->
   <script src="script.js"></script>
 </body>
 </html>
