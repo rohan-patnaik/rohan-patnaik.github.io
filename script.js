@@ -12,9 +12,28 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedTheme === 'light') {
     htmlElement.classList.remove('dark');
   }
+  
+  // Initialize EmailJS with your public key
+  emailjs.init('ATlJunWlfoUMFBJJy');
+
+  // Set up contact form submission with EmailJS
+  const contactForm = document.getElementById('contact-form');
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    emailjs.sendForm('service_7et6vtg', 'template_8u2onnm', this)
+      .then(() => {
+        alert('Message sent successfully!');
+        this.reset();
+      })
+      .catch((err) => {
+        console.error('EmailJS Error:', err);
+        alert('An error occurred while sending the message. Please try again later.');
+      });
+  });
 });
 
-// Smooth scrolling
+// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -25,7 +44,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Optional sticky header behavior
+// Sticky header behavior
 const header = document.querySelector('.header');
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
@@ -42,23 +61,4 @@ window.addEventListener('scroll', () => {
     header.classList.add('scroll-up');
   }
   lastScroll = currentScroll;
-});
-
-// === EmailJS (if you use it) ===
-document.addEventListener('DOMContentLoaded', () => {
-  // emailjs.init('YOUR_PUBLIC_KEY'); // Insert your EmailJS public key if needed.
-
-  const contactForm = document.getElementById('contact-form');
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-    //   .then(() => {
-    //     alert('Message sent successfully!');
-    //     this.reset();
-    //   }, (err) => {
-    //     alert('An error occurred: ' + JSON.stringify(err));
-    //   });
-    alert('Form submitted (placeholder). Integrate EmailJS or a backend to send emails.');
-    this.reset();
-  });
 });
