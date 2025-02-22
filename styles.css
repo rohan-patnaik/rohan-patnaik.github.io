@@ -167,18 +167,22 @@
     transition: transform 0.2s;
     text-decoration: none;
   }
+  
   .icon-link:hover {
     transform: scale(1.05);
   }
+  
   .icon-link img {
     width: 24px;
     height: 24px;
     object-fit: contain;
   }
+  
   .light-icon { display: inline-block; }
   .dark-icon { display: none; }
   .dark .light-icon { display: none; }
   .dark .dark-icon { display: inline-block; }
+
   .intro-summary {
     max-width: 600px;
     font-size: 1.15rem;
@@ -219,7 +223,7 @@
   }
   .projects h2 {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 3rem;
     color: var(--color-text);
   }
@@ -270,7 +274,7 @@
   }
   .blogs h2 {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 3rem;
     color: var(--color-text);
   }
@@ -324,7 +328,7 @@
   }
   .skills h2 {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 3rem;
     color: var(--color-text);
   }
@@ -353,6 +357,7 @@
   .experience h2 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
+    font-weight: 800;
   }
   .timeline {
     position: relative;
@@ -416,7 +421,7 @@
   }
   .contact h2 {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 2rem;
   }
   .contact-form {
@@ -441,21 +446,24 @@
     color: var(--color-text);
   }
   .contact-form button {
-    width: 120px;
-    margin: 2rem auto 0;
+    display: inline-block;
+    background: #fff;
+    color: #000;
     padding: 0.75rem 2rem;
     border: none;
     border-radius: 9999px;
-    background: #fff;
-    color: #000;
+    text-decoration: none;
+    font-weight: 600;   /* Same thickness as resume button */
     font-size: 1rem;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
     transition: background 0.2s, opacity 0.2s;
+    margin: 2rem auto 0;
   }
+  
   .contact-form button:hover {
     opacity: 0.9;
-  }
+  }  
   
   /* Footer */
   .footer {
@@ -517,6 +525,6 @@
   html:not(.dark) .resume-button,
   html:not(.dark) .contact-form button,
   html:not(.dark) .intro-right img {
-    border: 10px solid #000;
+    border: 2.5px solid #000;
   }
   
