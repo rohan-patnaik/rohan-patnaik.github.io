@@ -1,13 +1,13 @@
-// script.js
-// Simple toggle for the mobile hamburger menu
-
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const navLinks = document.getElementById('navLinks');
-
-hamburgerBtn.addEventListener('click', () => {
-  if (navLinks.style.display === 'flex') {
-    navLinks.style.display = 'none';
-  } else {
-    navLinks.style.display = 'flex';
-  }
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetElement = document.querySelector(this.getAttribute("href"));
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 70, // Offset for fixed header
+        behavior: "smooth",
+      });
+    }
+  });
 });
