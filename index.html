@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
-<link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </head>
 <body>
 <!-- Header -->
 <header class="header">
   <nav class="nav container">
+    <!-- Hamburger (hidden on desktop, shown on mobile) -->
+    <button id="hamburger" class="hamburger" aria-label="Open sidebar">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Desktop Nav Links (hidden on mobile) -->
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#projects">Projects</a>
@@ -20,53 +28,66 @@
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
-    <div class="social-links">
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-        <img src="public/icons/light-mode.png" alt="Light Mode Icon" class="light-mode-icon">
-        <img src="public/icons/night-mode.png" alt="Dark Mode Icon" class="dark-mode-icon">
-      </button>
-    </div>
+
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <img src="public/icons/light-mode.png" alt="Light Mode Icon" class="light-mode-icon">
+      <img src="public/icons/night-mode.png" alt="Dark Mode Icon" class="dark-mode-icon">
+    </button>
   </nav>
 </header>
 
+<!-- Side Navbar (mobile) -->
+<div id="sidebar" class="sidebar">
+  <button class="close-btn" id="close-sidebar" aria-label="Close sidebar">×</button>
+  <ul class="sidebar-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#blogs">Blogs</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
 <!-- Intro Section -->
+<!-- Notice the top padding added to ensure content isn't hidden behind the fixed header -->
 <section id="home" class="intro">
-<div class="container">
-  <div class="intro-content">
-    <div class="intro-left">
-      <h1>ROHAN PATNAIK</h1>
-      <h2>DATA SCIENTIST</h2>
-      <div class="intro-icons">
-        <a href="https://github.com/rohan-patnaik" target="_blank" class="icon-link" title="GitHub">
-          <img class="light-icon" src="public/icons/github_light.svg" alt="GitHub Light">
-          <img class="dark-icon" src="public/icons/github_dark.png" alt="GitHub Dark">
-        </a>
-        <a href="https://www.linkedin.com/in/rohan-patnaik-88929b159" target="_blank" class="icon-link" title="LinkedIn">
-          <img class="light-icon" src="public/icons/linkedin_light.svg" alt="LinkedIn Light">
-          <img class="dark-icon" src="public/icons/linkedin_dark.png" alt="LinkedIn Dark">
-        </a>
-        <a href="https://medium.com/@rohanpatnaik1997" target="_blank" class="icon-link" title="Medium">
-          <img class="light-icon" src="public/icons/medium_light.svg" alt="Medium Light">
-          <img class="dark-icon" src="public/icons/medium_dark.png" alt="Medium Dark">
-        </a>
-        <a href="https://www.kaggle.com/rohanpatnaik" target="_blank" class="icon-link" title="Kaggle">
-          <img class="light-icon" src="public/icons/kaggle_light.svg" alt="Kaggle Light">
-          <img class="dark-icon" src="public/icons/kaggle_light.svg" alt="Kaggle Dark">
-        </a>
+  <div class="container">
+    <div class="intro-content">
+      <div class="intro-left">
+        <h1>ROHAN PATNAIK</h1>
+        <h2>DATA SCIENTIST</h2>
+        <div class="intro-icons">
+          <a href="https://github.com/rohan-patnaik" target="_blank" class="icon-link" title="GitHub">
+            <img class="light-icon" src="public/icons/github_light.svg" alt="GitHub Light">
+            <img class="dark-icon" src="public/icons/github_dark.png" alt="GitHub Dark">
+          </a>
+          <a href="https://www.linkedin.com/in/rohan-patnaik-88929b159" target="_blank" class="icon-link" title="LinkedIn">
+            <img class="light-icon" src="public/icons/linkedin_light.svg" alt="LinkedIn Light">
+            <img class="dark-icon" src="public/icons/linkedin_dark.png" alt="LinkedIn Dark">
+          </a>
+          <a href="https://medium.com/@rohanpatnaik1997" target="_blank" class="icon-link" title="Medium">
+            <img class="light-icon" src="public/icons/medium_light.svg" alt="Medium Light">
+            <img class="dark-icon" src="public/icons/medium_dark.png" alt="Medium Dark">
+          </a>
+          <a href="https://www.kaggle.com/rohanpatnaik" target="_blank" class="icon-link" title="Kaggle">
+            <img class="light-icon" src="public/icons/kaggle_light.svg" alt="Kaggle Light">
+            <img class="dark-icon" src="public/icons/kaggle_light.svg" alt="Kaggle Dark">
+          </a>
+        </div>
+        <p class="intro-summary">
+          I'm a data scientist with hands-on experience in machine learning and predictive modeling using Python, SQL, and statistics.
+          I've honed my skills in financial data classification and fraud prediction.
+        </p>
+        <a href="public/Rohan Patnaik resume v1.pdf" target="_blank" class="resume-button">Resume</a>
       </div>
-      <p class="intro-summary">
-        I'm a data scientist with hands-on experience in machine learning and predictive modeling using Python, SQL, and statistics. 
-       I've honed my skills in financial data classification and fraud prediction.
-      </p>
-      <a href="public/Rohan Patnaik resume v1.pdf" target="_blank" class="resume-button">Resume</a>
-    </div>
-    <div class="intro-right">
-      <img src="public/dp.png" alt="Profile picture">
+      <div class="intro-right">
+        <img src="public/dp.png" alt="Profile picture">
+      </div>
     </div>
   </div>
-</div>
 </section>
-
 
 <!-- Projects Section -->
 <section id="projects" class="projects">
