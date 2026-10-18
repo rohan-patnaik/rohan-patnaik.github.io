@@ -1,0 +1,305 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IPO tracker · 18–28 October</title>
+<meta name="description" content="Which IPOs to apply for, when, and with how much, for listing gains.">
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#f0eee6;--paper:#faf9f5;--paper2:#f4f2ec;--ink:#141413;--muted:#6b6a65;--accent:#b5532f;--accent-ink:#faf9f5;
+--sel:#141413;--sel-ink:#faf9f5;--tint:#e9e5d9;--line:#e1ddd1;--warn:#9a4a12;--orange:#e0700b;--track:#e4e0d4;
+--good:#2f6b3a;--good-bg:#e3ecd9;--bad:#a3341f;--bad-bg:#f3ddd3;--mid:#8a5a00;--mid-bg:#f3e6c8;color-scheme:light}
+@media(prefers-color-scheme:light){:root:has(#tt:checked){--bg:#1f1e1d;--paper:#272624;--paper2:#2c2b28;--ink:#f0eee6;--muted:#a8a49a;--accent:#e08a66;--accent-ink:#1f1e1d;--sel:#f0eee6;--sel-ink:#1f1e1d;--tint:#2f2d29;--line:#3b3a36;--warn:#f2b27a;--orange:#f59e42;--track:#3b3a36;--good:#9fd18f;--good-bg:#26351f;--bad:#f0a08a;--bad-bg:#3d241d;--mid:#f2c46b;--mid-bg:#3a3020;color-scheme:dark}}
+@media(prefers-color-scheme:dark){:root:not(:has(#tt:checked)){--bg:#1f1e1d;--paper:#272624;--paper2:#2c2b28;--ink:#f0eee6;--muted:#a8a49a;--accent:#e08a66;--accent-ink:#1f1e1d;--sel:#f0eee6;--sel-ink:#1f1e1d;--tint:#2f2d29;--line:#3b3a36;--warn:#f2b27a;--orange:#f59e42;--track:#3b3a36;--good:#9fd18f;--good-bg:#26351f;--bad:#f0a08a;--bad-bg:#3d241d;--mid:#f2c46b;--mid-bg:#3a3020;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45;background:var(--bg);color:var(--ink);font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px 48px}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0 0}
+.bar1{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h1{font-size:20px;margin:0;flex:1;letter-spacing:-.01em}
+.pill{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--muted)}
+.pill b{color:var(--ink)}
+#tt{position:absolute;opacity:0;width:1px;height:1px}
+.tt{cursor:pointer;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14px}
+#tt:focus-visible+.wrap .tt{outline:2px solid var(--accent);outline-offset:2px}
+.days{display:flex;gap:6px;overflow-x:auto;padding:10px 2px 10px;scrollbar-width:thin}
+.chip{flex:0 0 56px;font:inherit;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:6px 2px 5px;
+display:flex;flex-direction:column;align-items:center;cursor:pointer;min-height:58px}
+.chip .dw{font-size:12px;color:var(--muted)}.chip .dn{font-size:19px;font-weight:700;line-height:1.1}
+.chip .dt{font-size:11px;font-weight:600;color:var(--orange);min-height:13px}
+.chip.hol .dt{color:var(--muted)}.chip.act{border-color:var(--orange)}
+.chip.today{background:var(--sel);color:var(--sel-ink);border-color:var(--sel)}.chip.today .dw{color:inherit;opacity:.8}
+.chip[aria-pressed=true]{outline:2px solid var(--orange);outline-offset:2px}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.say{min-height:22px;font-size:14px;color:var(--muted);padding:0 2px 10px}
+.todo{margin:14px 0;border:1.5px solid var(--orange);border-radius:10px;background:var(--paper);padding:10px 14px;display:flex;gap:12px}
+.todo>span{color:var(--orange);font-weight:700;white-space:nowrap}
+.todo ul{margin:0;padding:0;list-style:none}.todo li+li{margin-top:4px}
+.money{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:6px}
+.money .nums{display:flex;gap:18px;flex-wrap:wrap;align-items:baseline}
+.money .nums b{font-size:18px}
+.track{height:5px;background:var(--track);border-radius:3px;margin-top:8px;max-width:420px}
+.track i{display:block;height:100%;border-radius:3px;background:var(--orange)}
+.lede{font-size:13px;color:var(--muted);margin:8px 0 18px;max-width:80ch}
+h2{font-size:18px;margin:26px 0 10px}
+.tbl{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+table.main{width:100%;border-collapse:collapse}
+.main th{text-align:left;font-size:12px;font-weight:600;color:var(--muted);background:var(--paper2);padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.main td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+.main tr:last-child td{border-bottom:0}
+.main tr.dim{opacity:.35}.main tr.hit{background:var(--tint)}
+.c-name a{color:var(--ink);font-weight:700;text-decoration:none}.c-name a:hover{text-decoration:underline}
+.c-verdict{min-width:200px}
+.sub2{font-size:12px;color:var(--muted)}.muted{color:var(--muted)}
+.ok{color:var(--good)}.bad{color:var(--bad)}
+.cat{color:var(--ink)}
+.subgrid{display:grid;grid-template-columns:auto auto;gap:0 10px;font-size:13px}.subgrid span{color:var(--muted)}
+.verdict{display:inline-block;font-weight:700;font-size:13px;border-radius:6px;padding:2px 8px}
+.v-apply{background:var(--good-bg);color:var(--good)}.v-cond{background:var(--mid-bg);color:var(--mid)}
+.v-skip{background:var(--track);color:var(--muted)}.v-wait{background:var(--tint);color:var(--ink)}
+.risk{font-weight:600;font-size:13px;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.r-low{background:var(--good-bg);color:var(--good)}.r-med{background:var(--mid-bg);color:var(--mid)}.r-high{background:var(--bad-bg);color:var(--bad)}
+.amt{font-weight:700;margin-top:6px}
+.cond{font-size:13px;margin-top:4px;max-width:46ch}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden;scroll-margin-top:190px}
+.card header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper2);border-bottom:1px solid var(--line);padding:10px 14px}
+.card h3{margin:0;font-size:16px}.card .when{color:var(--muted);font-size:13px;margin-left:auto}
+.vid{font-size:13px;font-weight:600;border:1px solid var(--accent);border-radius:999px;padding:3px 10px;text-decoration:none}
+.split{display:grid;grid-template-columns:1fr 1fr}
+.split>div{padding:12px 14px}.split>div+div{border-left:1px solid var(--line)}
+.split h4{margin:0 0 6px;font-size:13px;color:var(--muted);font-weight:600}
+.split ul{margin:0;padding-left:18px}.split li+li{margin-top:5px}.split p{margin:8px 0 0}
+.note{font-size:13px;background:var(--tint);border-radius:8px;padding:8px 10px}
+.spark{position:relative;display:flex;align-items:flex-end;gap:4px;height:56px;border-bottom:1px solid var(--line);padding-right:34px}
+.spark .gate{position:absolute;left:0;right:0;border-top:1px dashed var(--muted);height:0}
+.spark .gate em{position:absolute;right:0;top:-8px;font-style:normal;font-size:11px;color:var(--muted);background:var(--paper);padding-left:4px}
+.spark .bar.lo{background:var(--muted);opacity:.5}
+.spark .bar{width:14px;height:var(--h);background:var(--orange);border-radius:2px 2px 0 0;opacity:.85}
+.fin{border-collapse:collapse;font-size:12px;margin-top:10px}.fin td{padding:2px 8px 2px 0;white-space:nowrap}
+.fin tr:first-child td{color:var(--muted)}
+.small td,.small th{font-size:13px}
+.how{font-size:14px;max-width:80ch}.how li+li{margin-top:6px}
+.err{border:1px solid var(--bad);color:var(--bad);border-radius:8px;padding:8px 12px;margin-top:12px;font-size:13px}
+footer{margin-top:30px;font-size:12px;color:var(--muted);max-width:80ch}
+@media(max-width:900px){
+ .main thead{display:none}
+ .main,.main tbody,.main tr,.main td{display:block;width:100%}
+ .top{position:static}
+ .main tr{border-bottom:1px solid var(--line);padding:8px 0 12px;display:flex;flex-direction:column}
+ .main td{border:0;padding:4px 14px;display:grid;grid-template-columns:104px 1fr;gap:8px;order:2}
+ .main td.c-name{order:0}.main td.c-verdict{order:1;padding-bottom:10px}
+ .main td.c-verdict .v{background:var(--paper2);border-radius:8px;padding:8px 10px}
+ .main td::before{content:attr(data-l);font-size:12px;color:var(--muted);padding-top:2px}
+ .main td.c-name{display:block;padding-top:8px}.main td.c-name::before{content:none}
+ .c-name a{font-size:17px}
+ .split{grid-template-columns:1fr}.split>div+div{border-left:0;border-top:1px solid var(--line)}
+ .card .when{margin-left:0}
+ .small thead{display:none}.small tr{display:block;padding:8px 0}.small td{display:block;border:0;padding:2px 14px}
+}
+@media(prefers-reduced-motion:no-preference){.main tr{transition:opacity .15s}}
+</style></head><body>
+<input type="checkbox" id="tt" aria-label="Dark mode">
+<div class="wrap">
+<div class="top">
+ <div class="bar1"><h1>IPO plan, 18–28 October</h1>
+  <span class="pill">GMP gate <b>15%</b></span><span class="pill">Capital <b>₹3,00,000</b></span>
+  <label class="tt" for="tt">Dark mode</label></div>
+ <nav class="days" aria-label="Choose a day"><button type="button" class="chip today" data-day="2026-10-18" data-say="Sunday 18 October: nothing scheduled"><span class="dw">Sun</span><span class="dn">18</span><span class="dt"></span></button><button type="button" class="chip act" data-day="2026-10-19" data-say="Monday 19 October: Tonbo Imaging India: last day; Sahajanand Medical Technologies: last day; Zetwerk: last day; Fusion CX: allotment; Bonfiglioli Transmissions: last day"><span class="dw">Mon</span><span class="dn">19</span><span class="dt">Apply</span></button><button type="button" class="chip hol" data-day="2026-10-20" data-say="Tuesday 20 October: Market holiday (Dussehra)"><span class="dw">Tue</span><span class="dn">20</span><span class="dt">Holiday</span></button><button type="button" class="chip" data-day="2026-10-21" data-say="Wednesday 21 October: Paras Healthcare: opens; Jio Platforms: opens; Tonbo Imaging India: allotment; Sahajanand Medical Technologies: allotment; Zetwerk: allotment; Bonfiglioli Transmissions: allotment; HD Fire Protect: lists"><span class="dw">Wed</span><span class="dn">21</span><span class="dt">Opens</span></button><button type="button" class="chip" data-day="2026-10-22" data-say="Thursday 22 October: Fusion CX: lists"><span class="dw">Thu</span><span class="dn">22</span><span class="dt">Listing</span></button><button type="button" class="chip act" data-day="2026-10-23" data-say="Friday 23 October: Paras Healthcare: last day; Jio Platforms: last day; Tonbo Imaging India: lists; Sahajanand Medical Technologies: lists; Zetwerk: lists; Bonfiglioli Transmissions: lists"><span class="dw">Fri</span><span class="dn">23</span><span class="dt">Apply</span></button><button type="button" class="chip" data-day="2026-10-24" data-say="Saturday 24 October: nothing scheduled"><span class="dw">Sat</span><span class="dn">24</span><span class="dt"></span></button><button type="button" class="chip" data-day="2026-10-25" data-say="Sunday 25 October: nothing scheduled"><span class="dw">Sun</span><span class="dn">25</span><span class="dt"></span></button><button type="button" class="chip" data-day="2026-10-26" data-say="Monday 26 October: Paras Healthcare: allotment; Jio Platforms: allotment"><span class="dw">Mon</span><span class="dn">26</span><span class="dt">Allot</span></button><button type="button" class="chip" data-day="2026-10-27" data-say="Tuesday 27 October: nothing scheduled"><span class="dw">Tue</span><span class="dn">27</span><span class="dt"></span></button><button type="button" class="chip" data-day="2026-10-28" data-say="Wednesday 28 October: Paras Healthcare: lists; Jio Platforms: lists"><span class="dw">Wed</span><span class="dn">28</span><span class="dt">Listing</span></button></nav>
+ <div class="say" id="say" aria-live="polite">Tap a day to see what happens and highlight its IPOs.</div>
+</div>
+
+<div class="todo"><span>To do</span><ul><li><b>Mon 19 Oct, by 5 pm:</b> apply Tonbo Imaging India, 1 lot (₹14,700).</li><li><b>Mon 19 Oct, about 2 pm:</b> Bonfiglioli Transmissions. Apply 1 lot only if QIB is at least 1× and total at least 2× by about 2 pm Mon. Institutions usually bid on the last day; if they don&#x27;t show up, skip.</li><li><b>Fri 23 Oct, by 5 pm:</b> apply Jio Platforms, 1 lot (₹13,428).</li><li><b>Wed 21 Oct:</b> HD Fire Protect lists. If you hold it, sell using the Rule of 15.</li></ul></div>
+
+<div class="money"><div class="nums"><span>Most money blocked at once <b>₹29,350</b> of ₹3,00,000</span>
+ <span class="sub2">on Mon 19 Oct · UPI blocks the amount until allotment, then releases what isn't allotted</span></div>
+ <div class="track" role="img" aria-label="10% of capital"><i style="width:9.8%"></i></div></div>
+<p class="lede">Monday 19 Oct is the last day for Tonbo, Bonfiglioli, Zetwerk and Sahajanand. Jio and Paras open Wed 21 Oct (Tue 20 is a market holiday). Updated 2026-10-18 14:19+05:30 IST from Chittorgarh, InvestorGain GMP, and Anant Ladha's videos and Telegram. Anant never states a fixed GMP cut-off. In his ranking videos, A-category calls have carried about 15% GMP or more (German Green Steel was A at 15–17%), B sat around 6–15%, and C around 5%. Your 15% gate matches his pattern.</p>
+
+
+<h2>Open and upcoming</h2>
+<div class="tbl"><table class="main"><thead><tr><th>IPO</th><th>Apply window</th><th>Allotment</th><th>Listing</th><th>Price and lot</th>
+<th>GMP</th><th>Subscription</th><th>Allotment odds</th><th>Risk</th><th>Verdict</th></tr></thead>
+<tbody><tr data-days="2026-10-15 2026-10-19 2026-10-21 2026-10-23" id="row-tonbo-imaging-india-ipo">
+<td class="c-name" data-l="IPO"><a href="#why-tonbo-imaging-india-ipo">Tonbo Imaging India</a>
+  <div class="sub2">Mainboard · Anant: <b class="cat">A</b></div></td>
+<td data-l="Apply window"><div class="v"><b>Thu 15 Oct → Mon 19 Oct</b><div class="sub2">Last day, UPI mandate by 5 pm</div></div></td>
+<td data-l="Allotment"><div class="v">Wed 21 Oct</div></td>
+<td data-l="Listing"><div class="v">Fri 23 Oct</div></td>
+<td data-l="Price and lot"><div class="v"><b>₹700</b><div class="sub2">21 shares = ₹14,700</div></div></td>
+<td data-l="GMP"><div class="v"><b class="ok">72.1%</b> <span class="muted">₹505</span><div class="sub2">Volatile  · clears 15%</div></div></td>
+<td data-l="Subscription"><div class="v"><div class="subgrid"><span>Retail</span><b>7.14×</b><span>NII</span><b>14.3×</b><span>QIB</span><b>3.95×</b><span>Total</span><b>7.78×</b></div><div class="sub2">as of Oct 16, 2026</div></div></td>
+<td data-l="Allotment odds"><div class="v"><b>1 in 7 so far</b><div class="sub2">Odds fall as more people bid on the last day</div></div></td>
+<td data-l="Risk"><div class="v"><span class="risk r-med">Medium</span></div></td>
+<td class="c-verdict" data-l="Verdict"><div class="v"><span class="verdict v-apply">Apply</span><div class="amt">₹14,700</div><div class="sub2">1 lot × ₹14,700</div>
+  <div class="cond">Apply 1 lot at cut-off before 5 pm Mon. Sell on listing day using his Rule of 15 (exit if it breaks the first-15-minute low).</div></div></td>
+</tr><tr data-days="2026-10-15 2026-10-19 2026-10-21 2026-10-23" id="row-bonfiglioli-transmissions-ipo">
+<td class="c-name" data-l="IPO"><a href="#why-bonfiglioli-transmissions-ipo">Bonfiglioli Transmissions</a>
+  <div class="sub2">Mainboard · Anant: <b class="cat">A</b></div></td>
+<td data-l="Apply window"><div class="v"><b>Thu 15 Oct → Mon 19 Oct</b><div class="sub2">Last day, UPI mandate by 5 pm</div></div></td>
+<td data-l="Allotment"><div class="v">Wed 21 Oct</div></td>
+<td data-l="Listing"><div class="v">Fri 23 Oct</div></td>
+<td data-l="Price and lot"><div class="v"><b>₹586</b><div class="sub2">25 shares = ₹14,650</div></div></td>
+<td data-l="GMP"><div class="v"><b class="ok">22.5%</b> <span class="muted">₹132</span><div class="sub2">Volatile  · clears 15%</div></div></td>
+<td data-l="Subscription"><div class="v"><div class="subgrid"><span>Retail</span><b>1.16×</b><span>NII</span><b>1.71×</b><span>QIB</span><b>0.16×</b><span>Total</span><b>0.99×</b></div><div class="sub2">as of Oct 16, 2026</div></div></td>
+<td data-l="Allotment odds"><div class="v"><b>1 in 1–2 so far</b><div class="sub2">Odds fall as more people bid on the last day</div></div></td>
+<td data-l="Risk"><div class="v"><span class="risk r-med">Medium</span></div></td>
+<td class="c-verdict" data-l="Verdict"><div class="v"><span class="verdict v-cond">Apply if…</span><div class="amt">₹14,650</div><div class="sub2">1 lot × ₹14,650</div>
+  <div class="cond">Apply 1 lot only if QIB is at least 1× and total at least 2× by about 2 pm Mon. Institutions usually bid on the last day; if they don&#x27;t show up, skip.</div></div></td>
+</tr><tr data-days="2026-10-15 2026-10-19 2026-10-21 2026-10-23" id="row-zetwerk-ipo">
+<td class="c-name" data-l="IPO"><a href="#why-zetwerk-ipo">Zetwerk</a>
+  <div class="sub2">Mainboard · Anant: <b class="cat">B</b></div></td>
+<td data-l="Apply window"><div class="v"><b>Thu 15 Oct → Mon 19 Oct</b><div class="sub2">Last day, UPI mandate by 5 pm</div></div></td>
+<td data-l="Allotment"><div class="v">Wed 21 Oct</div></td>
+<td data-l="Listing"><div class="v">Fri 23 Oct</div></td>
+<td data-l="Price and lot"><div class="v"><b>₹151</b><div class="sub2">99 shares = ₹14,949</div></div></td>
+<td data-l="GMP"><div class="v"><b class="bad">9.3%</b> <span class="muted">₹14</span><div class="sub2">Stable  · below 15%</div></div></td>
+<td data-l="Subscription"><div class="v"><div class="subgrid"><span>Retail</span><b>0.37×</b><span>NII</span><b>0.17×</b><span>QIB</span><b>0.37×</b><span>Total</span><b>0.31×</b></div><div class="sub2">as of Oct 16, 2026</div></div></td>
+<td data-l="Allotment odds"><div class="v"><b>Full allotment</b><div class="sub2">Retail is undersubscribed, so every valid bid gets its shares.</div></div></td>
+<td data-l="Risk"><div class="v"><span class="risk r-high">High</span></div></td>
+<td class="c-verdict" data-l="Verdict"><div class="v"><span class="verdict v-skip">Skip</span>
+  <div class="cond">Below the 15% GMP gate and only B-rated.</div></div></td>
+</tr><tr data-days="2026-10-15 2026-10-19 2026-10-21 2026-10-23" id="row-sahajanand-medical-technologies-ipo">
+<td class="c-name" data-l="IPO"><a href="#why-sahajanand-medical-technologies-ipo">Sahajanand Medical Technologies</a>
+  <div class="sub2">Mainboard · Anant: <b class="cat">B</b></div></td>
+<td data-l="Apply window"><div class="v"><b>Thu 15 Oct → Mon 19 Oct</b><div class="sub2">Last day, UPI mandate by 5 pm</div></div></td>
+<td data-l="Allotment"><div class="v">Wed 21 Oct</div></td>
+<td data-l="Listing"><div class="v">Fri 23 Oct</div></td>
+<td data-l="Price and lot"><div class="v"><b>₹344</b><div class="sub2">43 shares = ₹14,792</div></div></td>
+<td data-l="GMP"><div class="v"><b class="bad">6.1%</b> <span class="muted">₹21</span><div class="sub2">Stable  · below 15%</div></div></td>
+<td data-l="Subscription"><div class="v"><div class="subgrid"><span>Retail</span><b>0.83×</b><span>NII</span><b>0.51×</b><span>QIB</span><b>1.12×</b><span>Total</span><b>0.83×</b></div><div class="sub2">as of Oct 16, 2026</div></div></td>
+<td data-l="Allotment odds"><div class="v"><b>Full allotment</b><div class="sub2">Retail is undersubscribed, so every valid bid gets its shares.</div></div></td>
+<td data-l="Risk"><div class="v"><span class="risk r-high">High</span></div></td>
+<td class="c-verdict" data-l="Verdict"><div class="v"><span class="verdict v-skip">Skip</span>
+  <div class="cond">Below the 15% GMP gate and only B-rated.</div></div></td>
+</tr><tr data-days="2026-10-21 2026-10-23 2026-10-26 2026-10-28" id="row-jio-platforms-ipo">
+<td class="c-name" data-l="IPO"><a href="#why-jio-platforms-ipo">Jio Platforms</a>
+  <div class="sub2">Mainboard · Anant: <b class="cat">A?</b></div></td>
+<td data-l="Apply window"><div class="v"><b>Wed 21 Oct → Fri 23 Oct</b><div class="sub2">Last day, UPI mandate by 5 pm</div></div></td>
+<td data-l="Allotment"><div class="v">Mon 26 Oct</div></td>
+<td data-l="Listing"><div class="v">Wed 28 Oct</div></td>
+<td data-l="Price and lot"><div class="v"><b>₹1,119</b><div class="sub2">12 shares = ₹13,428</div></div></td>
+<td data-l="GMP"><div class="v"><b class="ok">21.6%</b> <span class="muted">₹242</span><div class="sub2">Strong Upward ↑↑ · clears 15%</div></div></td>
+<td data-l="Subscription"><div class="v"><span class="muted">Opens Wed 21 Oct</span></div></td>
+<td data-l="Allotment odds"><div class="v"><b>Not open yet</b><div class="sub2"></div></div></td>
+<td data-l="Risk"><div class="v"><span class="risk r-med">Medium</span></div></td>
+<td class="c-verdict" data-l="Verdict"><div class="v"><span class="verdict v-apply">Apply</span><div class="amt">₹13,428</div><div class="sub2">1 lot × ₹13,428</div>
+  <div class="cond">Provisional until his ranking video and the anchor book. Recheck on Thu 22 Oct. If GMP stays at or above 15% on Fri 23 morning, apply.</div></div></td>
+</tr><tr data-days="2026-10-21 2026-10-23 2026-10-26 2026-10-28" id="row-paras-healthcare-ipo">
+<td class="c-name" data-l="IPO"><a href="#why-paras-healthcare-ipo">Paras Healthcare</a>
+  <div class="sub2">Mainboard · Anant: <b class="cat">—</b></div></td>
+<td data-l="Apply window"><div class="v"><b>Wed 21 Oct → Fri 23 Oct</b><div class="sub2">Last day, UPI mandate by 5 pm</div></div></td>
+<td data-l="Allotment"><div class="v">Mon 26 Oct</div></td>
+<td data-l="Listing"><div class="v">Wed 28 Oct</div></td>
+<td data-l="Price and lot"><div class="v"><b>₹693</b><div class="sub2">21 shares = ₹14,553</div></div></td>
+<td data-l="GMP"><div class="v"><b class="bad">13.7%</b> <span class="muted">₹95</span><div class="sub2">Stable  · below 15%</div></div></td>
+<td data-l="Subscription"><div class="v"><span class="muted">Opens Wed 21 Oct</span></div></td>
+<td data-l="Allotment odds"><div class="v"><b>Not open yet</b><div class="sub2"></div></div></td>
+<td data-l="Risk"><div class="v"><span class="risk r-high">High</span></div></td>
+<td class="c-verdict" data-l="Verdict"><div class="v"><span class="verdict v-wait">Wait</span>
+  <div class="cond">Apply only if he rates it A and GMP reaches 15% by Fri 23 morning.</div></div></td>
+</tr></tbody></table></div>
+
+<h2>Why each call</h2>
+<section class="card" id="why-tonbo-imaging-india-ipo" data-days="2026-10-15 2026-10-19 2026-10-21 2026-10-23">
+<header><h3>Tonbo Imaging India</h3><span class="verdict v-apply">Apply</span><span class="when">last day Mon 19 Oct</span><a class="vid" href="https://www.youtube.com/watch?v=_oiGEjuRGbU&amp;t=37" target="_blank" rel="noopener">Watch his take</a></header>
+<div class="split">
+  <div><h4>What Anant said</h4><ul><li>Rated A. High-tech defence: thermal imaging, night vision, electro-optical systems, with international defence credentials.</li><li>Negatives: revenue fell 22% in FY26, working capital is stretched, Q1 FY27 was a loss, and P/E is above 75.</li><li>Do not decide on GMP alone. Watch whether the anchor book and HNI demand match the defence-sector buzz.</li></ul></div>
+  <div><h4>Numbers</h4>
+    <div class="spark" aria-label="GMP trend, oldest to newest"><span class="bar" style="--h:82%" title="12-Oct 23:37: 60.71%"></span><span class="bar" style="--h:95%" title="13-Oct 23:37: 70.0%"></span><span class="bar" style="--h:97%" title="14-Oct 23:37: 71.43%"></span><span class="bar" style="--h:97%" title="15-Oct 23:37 Sub: 4.01x O: 71.43%"></span><span class="bar" style="--h:100%" title="16-Oct 23:37 Sub: 7.78x: 73.71%"></span><span class="bar" style="--h:98%" title="17-Oct 23:37: 72.14%"></span><span class="bar" style="--h:98%" title="18-Oct 13:37: 72.14%"></span><span class="gate" style="bottom:20%"><em>15%</em></span></div>
+    <p class="sub2">GMP % over the last 8 readings, oldest left; dashed line is your 15% gate</p>
+    <p><b>Risk: Medium.</b> Huge GMP cushion and strong HNI demand, but the valuation is stretched and the latest quarter was a loss, so the GMP can swing.</p>
+    <p class="sub2">Anchor book: 60.00% of QIB quota, bid Oct 14, 2026</p>
+    <table class="fin"><tr><td>Period Ended</td><td>30 Jun 2026</td><td>31 Mar 2026</td><td>31 Mar 2025</td><td>31 Mar 2024</td></tr><tr><td>Total Income</td><td>37.32</td><td>369.94</td><td>474.39</td><td>431.90</td></tr><tr><td>Profit After Tax</td><td>-17.74</td><td>50.88</td><td>72.76</td><td>68.54</td></tr></table><p class="sub2">₹ crore</p>
+    <p class="sub2"><a href="https://www.chittorgarh.com/ipo/tonbo-imaging-india-ipo/3215/" target="_blank" rel="noopener">Chittorgarh page</a> ·
+    <a href="https://www.chittorgarh.com/ipo_subscription/tonbo-imaging-india-ipo/3215/" target="_blank" rel="noopener">Live subscription</a></p>
+  </div>
+</div></section><section class="card" id="why-bonfiglioli-transmissions-ipo" data-days="2026-10-15 2026-10-19 2026-10-21 2026-10-23">
+<header><h3>Bonfiglioli Transmissions</h3><span class="verdict v-cond">Apply if…</span><span class="when">last day Mon 19 Oct</span><a class="vid" href="https://www.youtube.com/watch?v=_oiGEjuRGbU&amp;t=360" target="_blank" rel="noopener">Watch his take</a></header>
+<div class="split">
+  <div><h4>What Anant said</h4><ul><li>Rated A. Italian parent, high profitability, almost no debt (D/E 0.01), ROCE ~25%; renewables and automation exposure.</li><li>Negatives: the entire issue is OFS, it pays royalty to the parent, related-party spends are ~30%, and P/E 46 is toward the higher side.</li><li>Big issue (₹2,533 Cr): keep watching subscription until the last day.</li></ul></div>
+  <div><h4>Numbers</h4>
+    <div class="spark" aria-label="GMP trend, oldest to newest"><span class="bar" style="--h:87%" title="12-Oct 23:37: 26.45%"></span><span class="bar" style="--h:98%" title="13-Oct 23:37: 29.86%"></span><span class="bar" style="--h:100%" title="14-Oct 23:37: 30.38%"></span><span class="bar" style="--h:79%" title="15-Oct 23:37 Sub: 0.48x O: 23.89%"></span><span class="bar" style="--h:72%" title="16-Oct 23:37 Sub: 0.99x: 22.01%"></span><span class="bar" style="--h:74%" title="17-Oct 23:37: 22.53%"></span><span class="bar" style="--h:74%" title="18-Oct 13:37: 22.53%"></span><span class="gate" style="bottom:49%"><em>15%</em></span></div>
+    <p class="sub2">GMP % over the last 8 readings, oldest left; dashed line is your 15% gate</p>
+    <p><b>Risk: Medium.</b> GMP clears 15% but has been volatile, and QIB was only 0.16× after day 2 on a large, fully OFS issue.</p>
+    <p class="sub2">Anchor book: 60.00% of QIB quota, bid Oct 14, 2026</p>
+    <table class="fin"><tr><td>Period Ended</td><td>30 Jun 2026</td><td>31 Dec 2025</td><td>31 Dec 2024</td><td>31 Dec 2023</td></tr><tr><td>Total Income</td><td>1,139.17</td><td>2,023.59</td><td>1,861.16</td><td>1,701.80</td></tr><tr><td>Profit After Tax</td><td>148.58</td><td>237.87</td><td>195.16</td><td>148.49</td></tr></table><p class="sub2">₹ crore</p>
+    <p class="sub2"><a href="https://www.chittorgarh.com/ipo/bonfiglioli-transmissions-ipo/2861/" target="_blank" rel="noopener">Chittorgarh page</a> ·
+    <a href="https://www.chittorgarh.com/ipo_subscription/bonfiglioli-transmissions-ipo/2861/" target="_blank" rel="noopener">Live subscription</a></p>
+  </div>
+</div></section><section class="card" id="why-zetwerk-ipo" data-days="2026-10-15 2026-10-19 2026-10-21 2026-10-23">
+<header><h3>Zetwerk</h3><span class="verdict v-skip">Skip</span><span class="when">last day Mon 19 Oct</span><a class="vid" href="https://www.youtube.com/watch?v=_oiGEjuRGbU&amp;t=508" target="_blank" rel="noopener">Watch his take</a></header>
+<div class="split">
+  <div><h4>What Anant said</h4><ul><li>Rated low B. ₹5,000 Cr+ issue with only ~10% GMP.</li><li>Revenue is growing 55% a year with blue-chip clients, but the net loss was ₹1,600 Cr in FY26 and 40% of revenue earns ~1% margin.</li></ul></div>
+  <div><h4>Numbers</h4>
+    <div class="spark" aria-label="GMP trend, oldest to newest"><span class="bar lo" style="--h:35%" title="12-Oct 23:37: 10.6%"></span><span class="bar" style="--h:51%" title="13-Oct 23:37: 15.23%"></span><span class="bar lo" style="--h:49%" title="14-Oct 23:37: 14.57%"></span><span class="bar lo" style="--h:31%" title="15-Oct 23:37 Sub: 0.23x O: 9.27%"></span><span class="gate" style="bottom:50%"><em>15%</em></span></div>
+    <p class="sub2">GMP % over the last 5 readings, oldest left; dashed line is your 15% gate</p>
+    <p><b>Risk: High.</b> Loss-making, GMP under 10%, and only 0.31× subscribed after two days.</p>
+    <p class="sub2">Anchor book: 60.00% of QIB quota, bid Oct 14, 2026</p>
+    <table class="fin"><tr><td>Period Ended</td><td>30 Jun 2026</td><td>31 Mar 2026</td><td>30 Jun 2025</td><td>31 Mar 2025</td><td>31 Mar 2024</td></tr><tr><td>Total Income</td><td>4,195.70</td><td>16,100.63</td><td>2,702.10</td><td>11,492.23</td><td>12,523.46</td></tr><tr><td>Profit After Tax</td><td>-732.98</td><td>-1,606.17</td><td>-1,368.47</td><td>-370.71</td><td>-917.95</td></tr></table><p class="sub2">₹ crore</p>
+    <p class="sub2"><a href="https://www.chittorgarh.com/ipo/zetwerk-ipo/3091/" target="_blank" rel="noopener">Chittorgarh page</a> ·
+    <a href="https://www.chittorgarh.com/ipo_subscription/zetwerk-ipo/3091/" target="_blank" rel="noopener">Live subscription</a></p>
+  </div>
+</div></section><section class="card" id="why-sahajanand-medical-technologies-ipo" data-days="2026-10-15 2026-10-19 2026-10-21 2026-10-23">
+<header><h3>Sahajanand Medical Technologies</h3><span class="verdict v-skip">Skip</span><span class="when">last day Mon 19 Oct</span><a class="vid" href="https://www.youtube.com/watch?v=_oiGEjuRGbU&amp;t=625" target="_blank" rel="noopener">Watch his take</a></header>
+<div class="split">
+  <div><h4>What Anant said</h4><ul><li>Rated B. 100+ patents, sells in 76 countries, PAT up 175% in FY26.</li><li>Negatives: P/E about 58, borrowings up from ₹175 Cr to ₹269 Cr, and little market buzz.</li></ul></div>
+  <div><h4>Numbers</h4>
+    <div class="spark" aria-label="GMP trend, oldest to newest"><span class="bar lo" style="--h:34%" title="12-Oct 23:37: 10.17%"></span><span class="bar lo" style="--h:40%" title="13-Oct 23:37: 11.92%"></span><span class="bar lo" style="--h:40%" title="14-Oct 23:37: 11.92%"></span><span class="bar lo" style="--h:42%" title="15-Oct 23:37 Sub: 0.35x O: 12.5%"></span><span class="bar lo" style="--h:34%" title="16-Oct 23:37 Sub: 0.83x: 10.17%"></span><span class="bar lo" style="--h:15%" title="17-Oct 23:37: 4.36%"></span><span class="bar lo" style="--h:20%" title="18-Oct 13:02: 6.1%"></span><span class="gate" style="bottom:50%"><em>15%</em></span></div>
+    <p class="sub2">GMP % over the last 8 readings, oldest left; dashed line is your 15% gate</p>
+    <p><b>Risk: High.</b> GMP around 6% and the issue was undersubscribed (0.83×) after two days.</p>
+    <p class="sub2">Anchor book: 60.00% of QIB quota, bid Oct 14, 2026</p>
+    <table class="fin"><tr><td>Period Ended</td><td>30 Jun 2026</td><td>31 Mar 2026</td><td>31 Mar 2025</td><td>31 Mar 2024</td></tr><tr><td>Total Income</td><td>354.33</td><td>1,218.73</td><td>1,035.96</td><td>908.59</td></tr><tr><td>Profit After Tax</td><td>15.09</td><td>69.08</td><td>25.15</td><td>-7.35</td></tr></table><p class="sub2">₹ crore</p>
+    <p class="sub2"><a href="https://www.chittorgarh.com/ipo/sahajanand-medical-technologies-ipo/2550/" target="_blank" rel="noopener">Chittorgarh page</a> ·
+    <a href="https://www.chittorgarh.com/ipo_subscription/sahajanand-medical-technologies-ipo/2550/" target="_blank" rel="noopener">Live subscription</a></p>
+  </div>
+</div></section><section class="card" id="why-jio-platforms-ipo" data-days="2026-10-21 2026-10-23 2026-10-26 2026-10-28">
+<header><h3>Jio Platforms</h3><span class="verdict v-apply">Apply</span><span class="when">last day Fri 23 Oct</span><a class="vid" href="https://www.youtube.com/watch?v=ZtNgurtWYLI" target="_blank" rel="noopener">Watch his take</a></header>
+<div class="split">
+  <div><h4>What Anant said</h4><ul><li>No A/B/C label yet. He calls the ~20% GMP &#x27;healthy&#x27; and the IPO &#x27;very interesting&#x27;.</li><li>Fully fresh issue with no OFS; Google and Meta are not selling. Money goes to repaying Jio&#x27;s borrowings.</li><li>PAT margin ~20%, P/E ~33 vs Airtel ~41. India&#x27;s 4th-largest company on listing.</li><li>Shareholder quota: if you held Reliance shares in demat by 14 Oct, you can file a second application in that quota (a separate lottery).</li></ul><p class="note">A mega issue may give more than 1 lot to every applicant. If you&#x27;re fine blocking more, apply up to the retail maximum (14 lots, ₹1,87,992); otherwise apply 1 lot.</p></div>
+  <div><h4>Numbers</h4>
+    <div class="spark" aria-label="GMP trend, oldest to newest"><span class="bar" style="--h:51%" title="11-Oct 23:37: 15.37%"></span><span class="bar" style="--h:54%" title="12-Oct 23:37: 16.26%"></span><span class="bar" style="--h:65%" title="13-Oct 23:37: 19.48%"></span><span class="bar" style="--h:61%" title="14-Oct 23:37: 18.41%"></span><span class="bar" style="--h:66%" title="15-Oct 23:37: 19.75%"></span><span class="bar" style="--h:66%" title="16-Oct 23:37: 19.75%"></span><span class="bar" style="--h:70%" title="17-Oct 23:37: 21.0%"></span><span class="bar" style="--h:72%" title="18-Oct 13:02: 21.63%"></span><span class="gate" style="bottom:50%"><em>15%</em></span></div>
+    <p class="sub2">GMP % over the last 8 readings, oldest left; dashed line is your 15% gate</p>
+    <p><b>Risk: Medium.</b> Strong business and GMP above 15%, but a ₹30,213 Cr issue is a lot of supply, so the GMP could compress before listing.</p>
+    
+    <table class="fin"><tr><td>Period Ended</td><td>30 Jun 2026</td><td>31 Mar 2026</td><td>31 Mar 2025</td><td>31 Mar 2024</td></tr><tr><td>Total Income</td><td>40,197.90</td><td>1,49,759.10</td><td>1,29,333.00</td><td>1,10,175.40</td></tr><tr><td>Profit After Tax</td><td>7,764.10</td><td>30,052.70</td><td>26,120.30</td><td>21,434.00</td></tr></table><p class="sub2">₹ crore</p>
+    <p class="sub2"><a href="https://www.chittorgarh.com/ipo/jio-platforms-ipo/3152/" target="_blank" rel="noopener">Chittorgarh page</a> ·
+    <a href="https://www.chittorgarh.com/ipo_subscription/jio-platforms-ipo/3152/" target="_blank" rel="noopener">Live subscription</a></p>
+  </div>
+</div></section><section class="card" id="why-paras-healthcare-ipo" data-days="2026-10-21 2026-10-23 2026-10-26 2026-10-28">
+<header><h3>Paras Healthcare</h3><span class="verdict v-wait">Wait</span><span class="when">last day Fri 23 Oct</span></header>
+<div class="split">
+  <div><h4>What Anant said</h4><ul><li>Not covered yet. Expect his ranking video around Wed 21 Oct.</li></ul></div>
+  <div><h4>Numbers</h4>
+    <div class="spark" aria-label="GMP trend, oldest to newest"><span class="bar lo" style="--h:46%" title="15-Oct 23:37: 13.71%"></span><span class="bar lo" style="--h:46%" title="16-Oct 23:37: 13.71%"></span><span class="bar lo" style="--h:46%" title="17-Oct 23:37: 13.85%"></span><span class="bar lo" style="--h:46%" title="18-Oct 13:37: 13.71%"></span><span class="gate" style="bottom:50%"><em>15%</em></span></div>
+    <p class="sub2">GMP % over the last 5 readings, oldest left; dashed line is your 15% gate</p>
+    <p><b>Risk: High.</b> GMP 13.7% is under the gate, and it made losses in FY24 and FY25 before turning profitable in FY26.</p>
+    
+    <table class="fin"><tr><td>Period Ended</td><td>30 Jun 2026</td><td>31 Mar 2026</td><td>31 Mar 2025</td><td>31 Mar 2024</td></tr><tr><td>Total Income</td><td>478.75</td><td>1,628.78</td><td>1,314.21</td><td>1,151.02</td></tr><tr><td>Profit After Tax</td><td>49.68</td><td>43.83</td><td>-57.98</td><td>-15.33</td></tr></table><p class="sub2">₹ crore</p>
+    <p class="sub2"><a href="https://www.chittorgarh.com/ipo/paras-healthcare-ipo/2256/" target="_blank" rel="noopener">Chittorgarh page</a> ·
+    <a href="https://www.chittorgarh.com/ipo_subscription/paras-healthcare-ipo/2256/" target="_blank" rel="noopener">Live subscription</a></p>
+  </div>
+</div></section>
+
+<h2>Closed, waiting to list</h2><div class="tbl"><table class="main small"><thead><tr><th>IPO</th><th>Allotment</th><th>Listing</th><th>GMP</th><th>Subscribed</th><th>What to do</th></tr></thead>
+<tbody><tr><td>HD Fire Protect <span class='sub2'>Anant: A</span></td><td>Fri 16 Oct</td><td>Wed 21 Oct</td><td><b class="ok">24.7%</b> <span class="muted">₹67</span><div class="sub2">Stable  · clears 15%</div></td><td>132×</td><td class='cond'>Closed 15 Oct. If you applied, check allotment and sell on listing (Wed 21 Oct) using the Rule of 15.</td></tr><tr><td>Fusion CX <span class='sub2'>Anant: C</span></td><td>Mon 19 Oct</td><td>Thu 22 Oct</td><td><b class="bad">5.2%</b> <span class="muted">₹15</span><div class="sub2">Downward ↓ · below 15%</div></td><td>4.68×</td><td class='cond'>Closed 16 Oct. Lists Thu 22 Oct.</td></tr></tbody></table></div>
+
+<h2>How the calls are made</h2>
+<ul class="how">
+<li><b>Apply</b> when Anant rates it A and GMP is at least 15% on the last morning, with institutions (QIB) showing up. <b>Apply if…</b> means it passes on GMP and rating but one check is still open. <b>Wait</b> means not open yet or not covered by Anant. <b>Skip</b> fails the gate.</li>
+<li><b>Allotment odds</b> are for one retail application. When retail is oversubscribed every applicant enters a lottery for exactly 1 lot, so odds are about 1 ÷ retail subscription and extra lots don't help. When it's undersubscribed you get everything you bid for.</li>
+<li><b>Risk</b> is the chance of losing money on listing day. Low: GMP 25%+ and steady, profitable, strong demand. Medium: GMP 15–25% or volatile, or one notable red flag. High: GMP under 15% or falling, loss-making, weak institutions, or SME.</li>
+<li><b>Money</b> assumes one PAN, 1 lot per IPO, and ₹3,00,000 total. SME IPOs only appear when Anant rates them A (left out this week: Shellz India, Ravita Engineering Services, Vaibhav Vyapaar).</li>
+<li><b>Selling</b> follows Anant's Rule of 15: for a good IPO, hold through the first 15 minutes and exit if the price breaks that 15-minute low. For an average one, sell in the pre-open.</li>
+</ul>
+<footer>GMP is unofficial grey-market data and can change fast. This page is a personal tracker, not investment advice.</footer>
+</div>
+<script>
+const say=document.getElementById('say'),chips=[...document.querySelectorAll('.chip')],rows=[...document.querySelectorAll('.main tbody tr[data-days]')];
+chips.forEach(c=>c.addEventListener('click',()=>{
+ const on=c.getAttribute('aria-pressed')!=='true';
+ chips.forEach(o=>o.setAttribute('aria-pressed','false'));
+ if(on)c.setAttribute('aria-pressed','true');
+ say.textContent=on?c.dataset.say:'Tap a day to see what happens and highlight its IPOs.';
+ rows.forEach(r=>{const hit=on&&r.dataset.days.split(' ').includes(c.dataset.day);r.classList.toggle('hit',hit);r.classList.toggle('dim',on&&!hit)});
+}));
+</script>
+</body></html>
