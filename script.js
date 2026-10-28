@@ -8,23 +8,12 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   localStorage.setItem('theme', next);
 });
 
-// Hero graph: me -> language -> upstream repos I've had PRs merged into.
-const langs = [
-  { id: 'ts', label: 'typescript' },
-  { id: 'go', label: 'go' },
-  { id: 'py', label: 'python' },
-];
-const repos = [
-  { id: 'docusaurus', label: 'docusaurus', full: 'facebook/docusaurus', lang: 'ts', prs: 1, stars: '66k' },
-  { id: 'lexical', label: 'lexical', full: 'facebook/lexical', lang: 'ts', prs: 2, stars: '24k' },
-  { id: 'k6', label: 'k6', full: 'grafana/k6', lang: 'go', prs: 3, stars: '32k' },
-  { id: 'osv', label: 'osv-scanner', full: 'google/osv-scanner', lang: 'go', prs: 1, stars: '11k' },
-  { id: 'gogcli', label: 'gogcli', full: 'openclaw/gogcli', lang: 'go', prs: 2, stars: '8.5k' },
-  { id: 'ggcr', label: 'go-containerregistry', full: 'google/go-containerregistry', lang: 'go', prs: 3, stars: '4k' },
-  { id: 'cel', label: 'cel-go', full: 'cel-expr/cel-go', lang: 'go', prs: 2, stars: '3k' },
-  { id: 'playwright', label: 'playwright-python', full: 'microsoft/playwright-python', lang: 'py', prs: 1, stars: '15k' },
-  { id: 'azure', label: 'azure-cli', full: 'Azure/azure-cli', lang: 'py', prs: 1, stars: '4.6k' },
-];
+// Hero graph: me -> language -> popular repos I've had PRs merged into.
+// Repo data is written into index.html by scripts/update_oss.py.
+const repos = JSON.parse(document.getElementById('oss-data')?.textContent || '[]');
+const langOrder = ['typescript', 'go', 'python', 'rust, c++', 'other'];
+repos.sort((a, b) => langOrder.indexOf(a.lang) - langOrder.indexOf(b.lang));
+const langs = langOrder.filter((l) => repos.some((r) => r.lang === l)).map((l) => ({ id: l, label: l }));
 
 function buildGraph(svg) {
   const NS = 'http://www.w3.org/2000/svg';
@@ -37,8 +26,9 @@ function buildGraph(svg) {
   const readout = document.getElementById('graph-readout');
   const idle = readout.textContent;
 
-  const X = { me: 34, lang: 150, repo: 268 };
-  const top = 26, gap = 38;
+  const X = { me: 30, lang: 128, repo: 232 };
+  const gap = Math.min(38, 312 / Math.max(repos.length - 1, 1));
+  const top = (360 - gap * (repos.length - 1)) / 2 - 8;
   repos.forEach((r, i) => { r.x = X.repo; r.y = top + i * gap; });
   langs.forEach((l) => {
     const mine = repos.filter((r) => r.lang === l.id);
@@ -74,10 +64,10 @@ function buildGraph(svg) {
   node(me, 7, 'rohan', 'root', 'below');
   langs.forEach((l) => node(l, 4.5, l.label, 'lang', 'below'));
   repos.forEach((r) => {
-    const g = node(r, 3 + r.prs * 1.3, `${r.label} ${r.prs}`, 'repo', 'right');
+    const g = node(r, 3 + Math.min(r.prs, 3) * 1.3, `${r.label} (${r.short})`, 'repo', 'right');
     g.setAttribute('tabindex', '0');
     g.setAttribute('role', 'link');
-    g.setAttribute('aria-label', `${r.full}: ${r.prs} merged pull request${r.prs > 1 ? 's' : ''}`);
+    g.setAttribute('aria-label', `${r.full}, ${r.company}`);
   });
 
   const clear = () => {
@@ -90,13 +80,12 @@ function buildGraph(svg) {
   const showRepo = (r) => {
     clear();
     lightRepo(r);
-    readout.textContent = `${r.full}: ${r.prs} merged PR${r.prs > 1 ? 's' : ''}, ${r.stars} stars`;
+    readout.textContent = `${r.full} (${r.company}), ${r.stars} stars`;
   };
   const showLang = (l) => {
     clear();
     l.repos.forEach(lightRepo);
-    const n = l.repos.reduce((s, r) => s + r.prs, 0);
-    readout.textContent = `${l.label}: ${n} merged PRs across ${l.repos.length} repos`;
+    readout.textContent = `${l.label}: ${l.repos.map((r) => r.label).join(', ')}`;
   };
 
   repos.forEach((r) => {
@@ -137,7 +126,7 @@ function buildGraph(svg) {
   setInterval(() => { if (!document.hidden) fire(); }, 1400);
 }
 
-buildGraph(document.getElementById('graph'));
+if (repos.length) buildGraph(document.getElementById('graph'));
 
 // Contact form via EmailJS.
 const form = document.getElementById('contact-form');

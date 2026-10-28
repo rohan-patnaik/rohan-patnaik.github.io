@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- Source for public/og.png (1200x630). Re-render with headless Chrome:
+     chrome --headless=new --window-size=1200,800 --screenshot=og.png, then crop the top 1200x630 (headless viewports run short) -->
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden}
+  body{background:#0e100f;color:#e8eae4;font-family:"Geist Mono",monospace;position:relative;
+    background-image:radial-gradient(circle,rgba(127,135,127,.22) 1px,transparent 1.3px);background-size:22px 22px}
+  .card{position:absolute;inset:56px 72px 52px;display:flex;flex-direction:column}
+  .top{display:flex;align-items:center;gap:18px;font-size:22px;color:#b4bab3}
+  .top img{width:56px;height:56px;border-radius:50%}
+  .dot{width:10px;height:10px;border-radius:50%;background:#b7a6ff;box-shadow:0 0 0 5px rgba(183,166,255,.2);margin-left:auto}
+  h1{font:400 80px/1.04 "Newsreader",serif;letter-spacing:-.02em;margin:auto 0 18px}
+  p{margin:0;font-size:24px;color:#b4bab3;line-height:1.5}
+  p b{color:#e8eae4;font-weight:500}
+  .foot{display:flex;justify-content:space-between;margin-top:30px;padding-top:22px;border-top:1px solid #2a302c;font-size:21px;color:#7f877f}
+  .foot span:first-child{color:#b7a6ff}
+</style></head><body>
+<div class="card">
+  <div class="top"><img src="../public/dp.png" alt="">rohan patnaik<span class="dot"></span><span>lead ml engineer @ altimetrik</span></div>
+  <h1>I build ML systems and<br>the tools around them.</h1>
+  <p>Merged PRs in <b>docusaurus, goose, k6, t3code, onnxruntime</b> and more.</p>
+  <div class="foot"><span>rohan-patnaik.github.io</span><span>x.com/ronin_lab</span></div>
+</div>
+</body></html>
