@@ -1,0 +1,108 @@
+<!doctype html>
+<!-- Source for "public/Rohan Patnaik resume v1.pdf". Re-render with headless Chrome:
+     chrome --headless=new --no-pdf-header-footer --print-to-pdf="public/Rohan Patnaik resume v1.pdf" scripts/resume.html -->
+<html lang="en"><head><meta charset="utf-8">
+<title>Rohan Patnaik, Lead ML Engineer, Résumé</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 11mm 14mm 10mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 400 8.9pt/1.33 "Geist", system-ui, sans-serif; color: #1c1d18; }
+  a { color: inherit; text-decoration: none; }
+  h1 { font: 400 23pt/1 "Newsreader", Georgia, serif; letter-spacing: -.015em; margin: 0; }
+  .role { font: 500 10.5pt "Geist"; color: #5340c0; margin: 4pt 0 0; }
+  .contact { display: flex; flex-wrap: wrap; gap: 3pt 12pt; margin-top: 5pt; font-size: 8.8pt; color: #3d3f37; }
+  .contact a { border-bottom: .5pt solid #cdc8b9; }
+  h2 { font: 600 10.5pt "Geist", sans-serif; letter-spacing: .01em; margin: 8pt 0 3.5pt; padding-bottom: 2.5pt; border-bottom: .6pt solid #cdc8b9; position: relative; }
+  h2::after { content: ""; position: absolute; left: 0; bottom: -.6pt; width: 26pt; height: 1.4pt; background: #5340c0; }
+  p { margin: 0; }
+  .summary { color: #3d3f37; }
+  .job { margin-top: 5pt; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
+  .job-head h3 { font: 600 10pt "Geist"; margin: 0; }
+  .job-head h3 span { font-weight: 400; color: #3d3f37; }
+  .when { font-size: 8.8pt; color: #6a6b60; white-space: nowrap; }
+  .sub { font-size: 8.8pt; color: #5340c0; margin-top: 1pt; }
+  ul { margin: 3pt 0 0; padding-left: 11pt; }
+  li { margin: 1.1pt 0; }
+  li::marker { color: #5340c0; }
+  .oss li, .proj li { margin: 1.4pt 0; }
+  b { font-weight: 600; }
+  .skills p { margin: 2pt 0; display: grid; grid-template-columns: 104pt 1fr; }
+  .muted { color: #6a6b60; }
+</style></head><body>
+
+<header>
+  <h1>Rohan Patnaik</h1>
+  <p class="role">Lead ML Engineer</p>
+  <div class="contact">
+    <a href="mailto:rohanpatnaik1997@gmail.com">rohanpatnaik1997@gmail.com</a>
+    <span>+91 82838 32094</span>
+    <a href="https://rohan-patnaik.github.io">rohan-patnaik.github.io</a>
+    <a href="https://github.com/rohan-patnaik">github.com/rohan-patnaik</a>
+    <a href="https://www.linkedin.com/in/rohan-patnaik-88929b159/">linkedin.com/in/rohan-patnaik</a>
+    <a href="https://x.com/ronin_lab">x.com/ronin_lab</a>
+  </div>
+</header>
+
+<h2>Summary</h2>
+<p class="summary">ML engineer with six years across fraud detection, predictive maintenance and ML platforms, now leading feature engineering and ML orchestration on Databricks. Outside work I ship developer tools and contribute upstream: 20+ merged pull requests in projects from Meta, Google, Microsoft, Grafana Labs and the Agentic AI Foundation.</p>
+
+<h2>Experience</h2>
+
+<div class="job">
+  <div class="job-head"><h3>Altimetrik <span>· Lead ML Engineer</span></h3><span class="when">&nbsp;Jun 2025 – Present</span></div>
+  <p class="sub">Promoted from Senior ML Engineer. Own feature engineering and ML orchestration for Calibo's data and AI platform: technical design, delivery and integration across ML services and data pipelines.</p>
+  <ul>
+    <li>Built configurable data preparation in Python, PySpark and SQL, adding source filtering, missing-value handling, query profiling and custom feature creation.</li>
+    <li>Built reusable scikit-learn training for six classification and regression algorithms, combining preprocessing, held-out evaluation and saved pipelines for inference.</li>
+    <li>Connected profiling and preprocessing review workflows with LangGraph, FastAPI and Pydantic, validating plans and passing approved configurations between stages.</li>
+    <li>Made training results traceable through Databricks and MLflow, recording evaluation metrics, model artifacts and registration results.</li>
+    <li>Added pytest regression coverage catching invalid feature selections, unsupported preprocessing settings and training or evaluation data errors.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><h3>National Payments Corporation of India <span>· Data Scientist (via Euclid Innovations)</span></h3><span class="when">&nbsp;Apr 2024 – Oct 2024</span></div>
+  <ul>
+    <li>Led fraud detection for AePS (Aadhaar Enabled Payment System), engineering features from 4TB+ of raw transactions into predictive models that cut fraud incidents by 1.2 million.</li>
+    <li>Built a federated fraud-detection model for UPI, handling real-world financial data for newly onboarding Indian banks.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><h3>Siemens <span>· Data Scientist and Software Engineer</span></h3><span class="when">&nbsp;Jul 2019 – Apr 2022</span></div>
+  <ul>
+    <li>Analyzed sound and sensor data from client assets for remaining-useful-life classification, reaching 92% accuracy in fault detection.</li>
+    <li>Built dashboard views with API integrations showing the health of 97 assets alongside ML analysis.</li>
+  </ul>
+</div>
+
+<h2>Open Source</h2>
+<ul class="oss">
+  <li><b>goose</b> <span class="muted">(Agentic AI Foundation, 56k★)</span>: kept session context alive across the agent's reply lifecycle, including ACP delegation.</li>
+  <li><b>k6</b> <span class="muted">(Grafana Labs, 32k★)</span>: static Prometheus remote-write labels, periodic file-log flushing, and <code>single()</code> in k6/html.</li>
+  <li><b>t3code</b> <span class="muted">(T3, 31k★)</span>: async image decoding for a smoother chat timeline; consistent versions across desktop builds.</li>
+  <li><b>onnxruntime</b> <span class="muted">(Microsoft, 22k★)</span>: int8 and uint32 support in the CPU Where operator.</li>
+  <li><b>Docusaurus</b>, <b>Lexical</b> <span class="muted">(Meta)</span>, <b>osv-scanner</b>, <b>go-containerregistry</b>, <b>cel-go</b> <span class="muted">(Google)</span>, <b>playwright-python</b>, <b>azure-cli</b> <span class="muted">(Microsoft)</span>, <b>Unstructured</b>, <b>gogcli</b>: fixes and features across localization, editors, security scanning, registries and CLIs.</li>
+</ul>
+
+<h2>Projects</h2>
+<ul class="proj">
+  <li><b>Codebloom</b>: VS Code and JetBrains extension that turns any codebase into a mind map with call arrows across files.</li>
+  <li><b>subpool</b>: single Rust binary exposing Claude, ChatGPT and Gemini subscriptions as one OpenAI, Anthropic and Gemini compatible API.</li>
+  <li><b>Anthropic performance take-home</b>: optimized vector kernel for a simulated machine, passing at 1,430 cycles. Also <b>OpenCalendly</b> and <b>ZenPDF</b>, open-source scheduling and PDF tools.</li>
+</ul>
+
+<h2>Skills</h2>
+<div class="skills">
+  <p><b>ML and data</b>scikit-learn, PyTorch, PySpark, pandas, NumPy, SQL, feature engineering, model evaluation, time series, NLP</p>
+  <p><b>LLMs and agents</b>LangGraph, LangChain, OpenAI GPT-4.1, workflow orchestration, RAG</p>
+  <p><b>MLOps and platforms</b>Databricks, Unity Catalog, MLflow, Kubeflow Pipelines, Docker, Kubernetes, AWS, Google Cloud</p>
+  <p><b>Engineering</b>Python, Go, TypeScript, Rust, FastAPI, Pydantic, pytest, Git, GitHub Actions, SonarCloud</p>
+</div>
+
+<h2>Education</h2>
+<div class="job-head"><h3>SRM University <span>· B.Tech, Computer Science and Engineering</span></h3><span class="when">&nbsp;2015 – 2019</span></div>
+
+</body></html>
