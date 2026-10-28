@@ -1,249 +1,238 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Rohan Patnaik, Lead ML Engineer</title>
+  <meta name="description" content="Rohan Patnaik is a Lead ML Engineer at Altimetrik who builds developer tools like Codebloom and has 16 merged pull requests across Docusaurus, k6, Lexical, Playwright and more.">
+  <meta property="og:title" content="Rohan Patnaik">
+  <meta property="og:description" content="Lead ML Engineer at Altimetrik. Builds developer tools and fixes the ones he uses: 16 merged PRs across Meta, Google, Microsoft and Grafana projects.">
+  <meta property="og:image" content="https://rohan-patnaik.github.io/public/dp.png">
+  <meta property="og:url" content="https://rohan-patnaik.github.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@ronin_lab">
+  <link rel="icon" href="public/dp.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-<!-- Header -->
-<header class="header">
-  <nav class="nav container">
-    <!-- Hamburger (hidden on desktop, shown on mobile) -->
-    <button id="hamburger" class="hamburger" aria-label="Open sidebar">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
+<a class="skip" href="#main">Skip to content</a>
 
-    <!-- Desktop Nav Links (hidden on mobile) -->
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#blogs">Blogs</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <!-- Theme Toggle -->
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-      <img src="public/icons/light-mode.png" alt="Light Mode Icon" class="light-mode-icon">
-      <img src="public/icons/night-mode.png" alt="Dark Mode Icon" class="dark-mode-icon">
+<header class="bar">
+  <div class="wrap bar-inner">
+    <a class="mark" href="#top"><img src="public/dp.png" alt="" width="26" height="26">rohan patnaik</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">work</a>
+      <a href="#open-source">open source</a>
+      <a href="#projects">projects</a>
+      <a href="#writing">writing</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <button id="theme-toggle" class="theme" type="button" aria-label="Switch between light and dark theme">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
     </button>
-  </nav>
+  </div>
 </header>
 
-<!-- Side Navbar (mobile) -->
-<div id="sidebar" class="sidebar">
-  <button class="close-btn" id="close-sidebar" aria-label="Close sidebar">×</button>
-  <ul class="sidebar-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#blogs">Blogs</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<main id="main">
+
+<section class="hero wrap" id="top">
+  <div class="hero-copy">
+    <p class="now"><span class="dot" aria-hidden="true"></span>now: lead ml engineer @ altimetrik</p>
+    <h1>Hi, I'm Rohan.<br>I build ML systems and the tools around them.</h1>
+    <p class="intro">
+      Lead ML engineer in India, working mostly in Python, Go and TypeScript.
+      Outside work I ship developer tools like Codebloom, and send fixes upstream
+      to the open-source projects I depend on.
+    </p>
+    <div class="actions">
+      <a class="btn btn-solid" href="#open-source">see my open-source work</a>
+      <a class="btn" href="https://x.com/ronin_lab">follow on x</a>
+    </div>
+  </div>
+
+  <figure class="graph" aria-labelledby="graph-caption">
+    <svg id="graph" viewBox="0 0 440 360" role="img" aria-labelledby="graph-caption"></svg>
+    <figcaption id="graph-caption"><span id="graph-readout">my merged PRs, by language</span><span class="hint">hover or tap a node</span></figcaption>
+  </figure>
+</section>
+
+<div class="stats wrap" role="list">
+  <div class="stat" role="listitem"><span class="stat-k">merged upstream prs</span><span class="stat-v">16</span></div>
+  <div class="stat" role="listitem"><span class="stat-k">stars across those repos</span><span class="stat-v">169k</span></div>
+  <div class="stat" role="listitem"><span class="stat-k">things shipped</span><span class="stat-v">10</span></div>
+  <div class="stat" role="listitem"><span class="stat-k">contributed to</span><span class="stat-v stat-small">meta, google, microsoft, grafana</span></div>
 </div>
 
-<!-- Intro Section -->
-<!-- Notice the top padding added to ensure content isn't hidden behind the fixed header -->
-<section id="home" class="intro">
-  <div class="container">
-    <div class="intro-content">
-      <div class="intro-left">
-        <h1>ROHAN PATNAIK</h1>
-        <h2>DATA SCIENTIST</h2>
-        <div class="intro-icons">
-          <a href="https://github.com/rohan-patnaik" target="_blank" class="icon-link" title="GitHub">
-            <img class="light-icon" src="public/icons/github_light.svg" alt="GitHub Light">
-            <img class="dark-icon" src="public/icons/github_dark.png" alt="GitHub Dark">
-          </a>
-          <a href="https://www.linkedin.com/in/rohan-patnaik-88929b159" target="_blank" class="icon-link" title="LinkedIn">
-            <img class="light-icon" src="public/icons/linkedin_light.svg" alt="LinkedIn Light">
-            <img class="dark-icon" src="public/icons/linkedin_dark.png" alt="LinkedIn Dark">
-          </a>
-          <a href="https://medium.com/@rohanpatnaik1997" target="_blank" class="icon-link" title="Medium">
-            <img class="light-icon" src="public/icons/medium_light.svg" alt="Medium Light">
-            <img class="dark-icon" src="public/icons/medium_dark.png" alt="Medium Dark">
-          </a>
-          <a href="https://www.kaggle.com/rohanpatnaik" target="_blank" class="icon-link" title="Kaggle">
-            <img class="light-icon" src="public/icons/kaggle_light.svg" alt="Kaggle Light">
-            <img class="dark-icon" src="public/icons/kaggle_light.svg" alt="Kaggle Dark">
-          </a>
-        </div>
-        <p class="intro-summary"> 
-          <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="20">
-          I'm a data scientist with hands-on experience building machine learning systems and predictive modeling using Python, SQL & stats! <br>
-          <span style="margin-top: 10px; display: block;">I've honed my skills in financial data classification, fraud detection and Natural Language Processing.</span>
-        </p>
-        <a href="public/Rohan Patnaik resume v1.pdf" target="_blank" class="resume-button">Resume</a>
+<section id="work" class="sec wrap">
+  <div class="sec-head"><h2>Work</h2><span class="sec-meta">in ml since 2019</span></div>
+  <ol class="rows">
+    <li class="row">
+      <div class="row-meta"><span class="when">jun 2025 – now</span></div>
+      <div class="row-body">
+        <h3>Lead ML Engineer <span class="org">Altimetrik</span></h3>
+        <p>Joined as a Senior ML Engineer and was promoted to Lead ML Engineer.</p>
+        <p class="steps"><span>senior ml engineer</span><span class="arrow" aria-hidden="true"></span><span class="current">lead ml engineer</span></p>
       </div>
-      <div class="intro-right">
-        <img src="public/dp.png" alt="Profile picture">
+    </li>
+    <li class="row">
+      <div class="row-meta"><span class="when">apr 2024 – oct 2024</span></div>
+      <div class="row-body">
+        <h3>Data Scientist <span class="org">National Payments Corporation of India</span></h3>
+        <p>Led fraud detection for AePS, turning 4TB+ of raw transactions into features and predictive models that cut fraud incidents by 1.2 million. Built supervised time-series anomaly detection, and a federated fraud model for banks newly joining UPI.</p>
       </div>
-    </div>
-  </div>
+    </li>
+    <li class="row">
+      <div class="row-meta"><span class="when">co-founder</span></div>
+      <div class="row-body">
+        <h3>Data Scientist <span class="org">SkipCheckr AI</span></h3>
+        <p>Took an ML-powered retail self-checkout from concept to MVP with computer vision, targeted research and A/B testing.</p>
+      </div>
+    </li>
+    <li class="row">
+      <div class="row-meta"><span class="when">jul 2019 – apr 2022</span></div>
+      <div class="row-body">
+        <h3>Data Scientist &amp; Software Engineer <span class="org">Siemens</span></h3>
+        <p>Fault detection on client assets from sound and sensor data, reaching 87% accuracy on remaining-useful-life classification, plus the dashboards that tracked asset health.</p>
+      </div>
+    </li>
+  </ol>
+  <p class="aside">Résumé as a <a href="public/Rohan Patnaik resume v1.pdf">pdf</a>, full history on <a href="https://www.linkedin.com/in/rohan-patnaik-88929b159">LinkedIn</a>.</p>
 </section>
 
-<!-- Projects Section -->
-<section id="projects" class="projects">
-  <div class="container">
-    <h2>PROJECTS</h2>
-    <div class="projects-grid">
-      <a href="https://github.com/rohan-patnaik/Fake-News-Classifier-using-bidirectional-LSTM" class="project-wrapper" target="_blank" rel="noopener noreferrer">
-        <div class="project-card" style="background-image: url('public/project_images/fake_news_logo.jpg');"></div>
-        <h3>Fake news identifer</h3>
-        <p>Classifies news as true or untrue using a bidirectional LSTM model.</p> 
-      </a>
-      <a href="https://github.com/rohan-patnaik/article-writer-LLM-using-Llama2" class="project-wrapper" target="_blank" rel="noopener noreferrer">
-        <div class="project-card" style="background-image: url('public/project_images/article_writer_logo.jpg');"></div>
-        <h3>AI article writer</h3>
-        <p>Generate tailored articles by specifying a topic and word count limit.</p> 
-      </a>
-      <a href="https://github.com/rohan-patnaik/decensored-deepseekR1-for-vscode" class="project-wrapper" target="_blank" rel="noopener noreferrer">
-        <div class="project-card" style="background-image: url('public/project_images/deepseek_logo.jpg');"></div>
-        <h3>Decensored DeepseekR1</h3>
-        <p>A VS Code extension for an AI-powered chat assistant within VSCode.</p> 
-      </a>
-      <a href="https://github.com/rohan-patnaik/Is-This-Food" class="project-wrapper" target="_blank" rel="noopener noreferrer">
-        <div class="project-card" style="background-image: url('public/project_images/is_this_food_logo.jpg');"></div>
-        <h3>Is This Food</h3>
-        <p>A web app to detect food in images using a TensorFlow Lite model.</p> 
-      </a>
-    </div>
-  </div>
+<section id="open-source" class="sec wrap">
+  <div class="sec-head"><h2>Open source</h2><span class="sec-meta">16 merged since may 2026</span></div>
+  <ol class="rows oss">
+    <li class="row" id="r-docusaurus">
+      <div class="row-meta"><a class="repo" href="https://github.com/facebook/docusaurus">facebook/docusaurus</a><span class="stars">66k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/facebook/docusaurus/pull/12054">#12054</a><span>Fixed localized sites publishing wrong URLs in metadata and sitemaps.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-k6">
+      <div class="row-meta"><a class="repo" href="https://github.com/grafana/k6">grafana/k6</a><span class="stars">32k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/grafana/k6/pull/6071">#6071</a><span>Added static labels so Prometheus metrics from parallel k6 runs stay distinguishable.</span></li>
+        <li><a href="https://github.com/grafana/k6/pull/6070">#6070</a><span>Stopped recent console logs getting lost by flushing file logs during runs.</span></li>
+        <li><a href="https://github.com/grafana/k6/pull/6002">#6002</a><span>Added <code>single()</code> to grab the first matching element in k6/html.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-lexical">
+      <div class="row-meta"><a class="repo" href="https://github.com/facebook/lexical">facebook/lexical</a><span class="stars">24k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/facebook/lexical/pull/8539">#8539</a><span>Fixed collapsible blocks breaking on empty or inline-only content.</span></li>
+        <li><a href="https://github.com/facebook/lexical/pull/8541">#8541</a><span>Added markdown round-trip tests for bold-italic text.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-playwright">
+      <div class="row-meta"><a class="repo" href="https://github.com/microsoft/playwright-python">microsoft/playwright-python</a><span class="stars">15k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/microsoft/playwright-python/pull/3084">#3084</a><span>Fixed handlers with keyword-only parameters getting the wrong arguments.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-osv">
+      <div class="row-meta"><a class="repo" href="https://github.com/google/osv-scanner">google/osv-scanner</a><span class="stars">11k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/google/osv-scanner/pull/2808">#2808</a><span>Removed duplicate vulnerability queries in bulk scans, keeping result order.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-gogcli">
+      <div class="row-meta"><a class="repo" href="https://github.com/openclaw/gogcli">openclaw/gogcli</a><span class="stars">8.5k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/openclaw/gogcli/pull/554">#554</a><span>Added read-only Drive reports: tree views, folder summaries and inspection.</span></li>
+        <li><a href="https://github.com/openclaw/gogcli/pull/555">#555</a><span>Added a safe preview for finding duplicate Google Contacts.</span></li>
+        <li class="muted"><a href="https://github.com/openclaw/gogcli/pull/116">#116</a><span>The original proposal these two landed from.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-azure">
+      <div class="row-meta"><a class="repo" href="https://github.com/Azure/azure-cli">Azure/azure-cli</a><span class="stars">4.6k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/Azure/azure-cli/pull/33429">#33429</a><span>Kept <code>az vm image list</code> working when the remote alias file is malformed.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-ggcr">
+      <div class="row-meta"><a class="repo" href="https://github.com/google/go-containerregistry">google/go-containerregistry</a><span class="stars">4k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/google/go-containerregistry/pull/2314">#2314</a><span>Ensured only true loopback hosts get plain-HTTP registry access.</span></li>
+        <li><a href="https://github.com/google/go-containerregistry/pull/2315">#2315</a><span>Let push-only workflows skip Kubernetes pull secrets.</span></li>
+        <li><a href="https://github.com/google/go-containerregistry/pull/2316">#2316</a><span>Kept <code>localhost/...</code> image references pointing at the local registry.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-cel">
+      <div class="row-meta"><a class="repo" href="https://github.com/cel-expr/cel-go">cel-expr/cel-go</a><span class="stars">3k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/cel-expr/cel-go/pull/1340">#1340</a><span>Added a JSON encoder to CEL's standard extensions.</span></li>
+        <li><a href="https://github.com/cel-expr/cel-go/pull/1327">#1327</a><span>Allowed container aliases for simple names, with validation still strict.</span></li>
+      </ul>
+    </li>
+  </ol>
 </section>
 
-<!-- Blogs Section -->
-<section id="blogs" class="blogs">
-  <div class="container">
-    <h2>ARTICLES</h2>
-    <div class="blogs-grid">
-      <a href="https://medium.com/@rohanpatnaik1997/your-comprehensive-time-series-analysis-roadmap-911d7549011e" class="blog-card" target="_blank" rel="noopener noreferrer">
-        <img src="public/project_images/article_timeseries.jpg" alt="Time Series Analysis Article" class="blog-image">
-        <div class="blog-content">
-          <h3 style="text-align: center;">A comprehensive Time Series Analysis roadmap</h3>
-          <p style="text-align: center;">A one-stop resource for learning and practicing time series analysis (TSA) from start to finish.</p>
-        </div>
-      </a>
-      <a href="https://medium.com/@rohanpatnaik1997/how-to-run-a-hugging-face-gguf-model-locally-ollama-on-our-windows-machine-1c79b45e483a" class="blog-card" target="_blank" rel="noopener noreferrer">
-        <img src="public/project_images/ollama_gguf.jpg" alt="Hugging Face GGUF Model Article" class="blog-image">
-        <div class="blog-content">
-          <h3 style="text-align: center;">Run any huggingface GGUF model locally on windows</h3>
-          <p style="text-align: center;">In this post I’ll walk you through the process of downloading a GGUF model from Hugging Face and running it locally with Ollama.</p>
-        </div>
-      </a>
-      <a href="https://medium.com/@rohanpatnaik1997/from-youtube-to-answers-building-a-rag-system-with-python-whisper-and-langchain-480da3ffaffd" class="blog-card" target="_blank" rel="noopener noreferrer">
-        <img src="public\project_images\RAG logo.png" alt="Hugging Face GGUF Model Article" class="blog-image">
-        <div class="blog-content">
-          <h3 style="text-align: center;">From YouTube to Answers: Building a RAG System on youtube transcripts</h3>
-          <p style="text-align: center;">In this blog post, we’ll explore how to transform a YouTube video into a powerful personal Q&A engine!</p>
-        </div>
-      </a>
-    </div>
-  </div>
+<section id="projects" class="sec wrap">
+  <div class="sec-head"><h2>Projects</h2><a class="sec-meta" href="https://github.com/rohan-patnaik">all on github</a></div>
+  <ul class="list">
+    <li><a href="https://github.com/rohan-patnaik/codebloom"><span class="t">Codebloom</span><span class="d">See any codebase bloom into a mind map, with call arrows across files. On VS Code, Open VSX and JetBrains.</span><span class="tag">ide extension</span></a></li>
+    <li><a href="https://opencalendly.com"><span class="t">OpenCalendly</span><span class="d">Open-source Calendly: share a link, take 1:1 or team bookings, synced to your calendar.</span><span class="tag">web app</span></a></li>
+    <li><a href="https://thezenpdf.vercel.app"><span class="t">ZenPDF</span><span class="d">A clean, open-source PDF workbench with practical tools and transparent usage limits.</span><span class="tag">web app</span></a></li>
+    <li><a href="https://github.com/rohan-patnaik/gogcli-plus"><span class="t">gogcli-plus</span><span class="d">Drive reports, local-to-Drive sync and contact deduplication on top of gogcli.</span><span class="tag">cli</span></a></li>
+    <li><a href="https://mypaperloop.vercel.app"><span class="t">Paperloop</span><span class="d">Ilya Sutskever's must-read AI papers, explored in a Minecraft-style mini world.</span><span class="tag">web app</span></a></li>
+    <li><a href="https://pasture-imposters-web.pages.dev"><span class="t">Pasture Imposters</span><span class="d">Among Us on a Pokémon-style farm: make your avatar and catch the imposter.</span><span class="tag">game</span></a></li>
+    <li><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.window-switcher"><span class="t">Orbit</span><span class="d">A better Alt+Tab for Omarchy: macOS icons, Windows 7 stacks or a Windows 11 grid.</span><span class="tag">omarchy</span></a></li>
+    <li><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.solitaire"><span class="t">Solitaire</span><span class="d">Five classic solitaire games for Omarchy, offline and ad-free.</span><span class="tag">omarchy</span></a></li>
+    <li><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.zenpdf"><span class="t">ZenPDF for Omarchy</span><span class="d">An offline-first Acrobat alternative for Omarchy and Arch Linux.</span><span class="tag">in progress</span></a></li>
+    <li><a href="https://github.com/rohan-patnaik/Chromarchy"><span class="t">Chromarchy</span><span class="d">A local-first Photoshop alternative for Omarchy and Arch Linux.</span><span class="tag">in progress</span></a></li>
+  </ul>
 </section>
 
-<!-- Skills Section -->
-<section id="skills" class="skills">
-  <div class="container">
-    <h2>SKILLS</h2>
-    <div class="skills-list">
-      <p>Pytorch, Keras, Scikit-Learn, TensorFlow, A/B testing, Excel, Tableau, NLP, Kubeflow Pipelines, Timeseries</p>
-      <hr>
-      <p>MySQL, PostgreSQL, Trino, MinIO</p>
-      <hr>
-      <p>Python, Flask, Jenkins, TypeScript, Docker, Kubernetes, Git, GitHub Actions</p>
-    </div>
-  </div>
+<section id="writing" class="sec wrap">
+  <div class="sec-head"><h2>Writing</h2><a class="sec-meta" href="https://medium.com/@rohanpatnaik1997">more on medium</a></div>
+  <ul class="list">
+    <li><a href="ml_paper_ideas.html"><span class="t">Your first solo AI research paper</span><span class="d">Ten research ideas, publication routes and a reproducible project plan.</span><span class="tag">guide</span></a></li>
+    <li><a href="https://medium.com/@rohanpatnaik1997/from-youtube-to-answers-building-a-rag-system-with-python-whisper-and-langchain-480da3ffaffd"><span class="t">From YouTube to answers</span><span class="d">Building a RAG system over video transcripts with Whisper and LangChain.</span><span class="tag">rag</span></a></li>
+    <li><a href="https://medium.com/@rohanpatnaik1997/how-to-run-a-hugging-face-gguf-model-locally-ollama-on-our-windows-machine-1c79b45e483a"><span class="t">Run any Hugging Face GGUF model locally</span><span class="d">Downloading a GGUF model and running it with Ollama on Windows.</span><span class="tag">llm</span></a></li>
+    <li><a href="https://medium.com/@rohanpatnaik1997/your-comprehensive-time-series-analysis-roadmap-911d7549011e"><span class="t">A time series analysis roadmap</span><span class="d">One place to learn and practise time series analysis from start to finish.</span><span class="tag">time series</span></a></li>
+  </ul>
 </section>
 
-<!-- Experience Section -->
-<section id="experience" class="experience">
-  <div class="container">
-    <h2>WORK EXPERIENCE</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Senior Analyst</h3>
-          <div class="company">Tiger Analytics</div>
-          <div class="period">Dec 2024 – Present</div>
-          <ul>
-            <li>Worked on the McDonalds Insights project by analyzing sales and revenue generation queries using SQL and Python.</li>
-            <li>Developed dashboards to provide actionable insights for business strategy.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Data Scientist</h3>
-          <div class="company">National Payment Corporation of India (NPCI)</div>
-          <div class="period">April 2024 - October 2024</div>
-          <ul>
-            <li>Led the development of fraud detection for AePS by engineering raw data features to create predictive models—reducing fraud incidents by 1.2 million while processing over 4TB of data.</li>
-            <li>Utilized Python to implement supervised machine learning techniques for time series anomaly detection.</li>
-            <li>Contributed to a pioneering UPI project by developing a federated model for financial fraud detection, handling complex real-world data for new onboarding banks.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Data Scientist / Cofounder</h3>
-          <div class="company">SKIPCHECKR AI</div>
-          <div class="period"></div>
-          <ul>
-            <li>Spearheaded development of an innovative self-checkout system powered by machine learning, from concept to MVP.</li>
-            <li>Demonstrated strong leadership and project management by driving sub-projects to completion.</li>
-            <li>Applied data science and computer vision in retail to enhance efficiency through targeted research and A/B testing.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Data Scientist / Software Engineer</h3>
-          <div class="company">SIEMENS</div>
-          <div class="period">July 2019 – April 2022</div>
-          <ul>
-            <li>Developed and analyzed sound and numeric data for client assets using computer vision, achieving 87% accuracy in fault detection via RUL classification.</li>
-            <li>Designed dashboard views with API calls to monitor asset health while performing ML analysis.</li>
-            <li>Led team communications to address key security issues arising from tokenization in the user app.</li>
-          </ul>
-        </div>
-      </div>
+<section id="contact" class="sec wrap">
+  <div class="sec-head"><h2>Contact</h2><span class="sec-meta">hiring, collaborating, or a bug report</span></div>
+  <div class="contact">
+    <div class="elsewhere">
+      <p>The fastest way to reach me is a DM on X. I'm also on:</p>
+      <ul>
+        <li><a href="https://x.com/ronin_lab">x <span>@ronin_lab</span></a></li>
+        <li><a href="https://github.com/rohan-patnaik">github <span>rohan-patnaik</span></a></li>
+        <li><a href="https://www.linkedin.com/in/rohan-patnaik-88929b159">linkedin <span>rohan patnaik</span></a></li>
+        <li><a href="https://www.kaggle.com/rohanpatnaik">kaggle <span>rohanpatnaik</span></a></li>
+      </ul>
     </div>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="contact">
-  <div class="container">
-    <h2>CONTACT ME!</h2>
-    <form id="contact-form" class="contact-form">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="user_name" required>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="user_email" required>
-      <label for="message">Message</label>
-      <textarea id="message" name="user_message" rows="5" required></textarea>
-      <button type="submit">Submit</button>
+    <form id="contact-form" class="form">
+      <label>name<input type="text" name="user_name" autocomplete="name" required></label>
+      <label>email<input type="email" name="user_email" autocomplete="email" required></label>
+      <label class="wide">message<textarea name="user_message" rows="4" required></textarea></label>
+      <div class="wide form-foot">
+        <button class="btn btn-solid" type="submit">send message</button>
+        <p id="form-status" class="status" role="status"></p>
+      </div>
     </form>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div>© 2026 Rohan Patnaik. All rights reserved.</div>
-    </div>
-  </div>
-</footer>
+</main>
 
-<script src="script.js"></script>
+<footer class="wrap foot">
+  <span>© 2026 rohan patnaik</span>
+  <a href="https://github.com/rohan-patnaik/rohan-patnaik.github.io">source</a>
+</footer>
 </body>
 </html>
