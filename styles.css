@@ -237,3 +237,10 @@ a.sec-meta:hover { color: var(--ink); }
 .node.repo circle { stroke: color-mix(in srgb, var(--accent) 75%, var(--muted)); }
 .node.root .core { fill: var(--accent); stroke: var(--accent); }
 .oss .stars, .when { color: color-mix(in srgb, var(--accent) 55%, var(--muted)); }
+
+/* Work: highlights and tools */
+.row-body a { color: var(--ink); text-underline-offset: .2em; }
+.points { margin: .9rem 0 0; padding: 0; list-style: none; display: grid; gap: .45rem; max-width: 44rem; }
+.points li { position: relative; padding-left: 1.1rem; }
+.points li::before { content: ""; position: absolute; left: 0; top: .72em; width: .4rem; height: 1px; background: var(--accent); }
+.tools { font: 400 .78rem/1.7 var(--mono); color: var(--muted); }
