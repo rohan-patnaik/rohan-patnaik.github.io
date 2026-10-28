@@ -13,7 +13,8 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
 const repos = JSON.parse(document.getElementById('oss-data')?.textContent || '[]');
 const langOrder = ['typescript', 'go', 'python', 'rust, c++', 'other'];
 repos.sort((a, b) => langOrder.indexOf(a.lang) - langOrder.indexOf(b.lang));
-const langs = langOrder.filter((l) => repos.some((r) => r.lang === l)).map((l) => ({ id: l, label: l }));
+const langLabels = { typescript: 'TypeScript', go: 'Go', python: 'Python', 'rust, c++': 'Rust, C++', other: 'Other' };
+const langs = langOrder.filter((l) => repos.some((r) => r.lang === l)).map((l) => ({ id: l, label: langLabels[l] }));
 
 function buildGraph(svg) {
   const NS = 'http://www.w3.org/2000/svg';
@@ -61,7 +62,7 @@ function buildGraph(svg) {
     return g;
   };
 
-  node(me, 7, 'rohan', 'root', 'below');
+  node(me, 7, 'Rohan', 'root', 'below');
   langs.forEach((l) => node(l, 4.5, l.label, 'lang', 'below'));
   repos.forEach((r) => {
     const g = node(r, 3 + Math.min(r.prs, 3) * 1.3, `${r.label} (${r.short})`, 'repo', 'right');
@@ -139,7 +140,7 @@ form.addEventListener('submit', (e) => {
   }
   const button = form.querySelector('button');
   button.disabled = true;
-  status.textContent = 'sending…';
+  status.textContent = 'Sending…';
   emailjs.init('ATlJunWlfoUMFBJJy');
   emailjs.sendForm('service_7et6vtg', 'template_8u2onnm', form)
     .then(() => {
@@ -152,3 +153,13 @@ form.addEventListener('submit', (e) => {
     })
     .finally(() => { button.disabled = false; });
 });
+
+// Highlight the nav link for the section in view.
+const navLinks = [...document.querySelectorAll('.nav a')];
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`));
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+navLinks.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
