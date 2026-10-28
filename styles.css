@@ -215,3 +215,12 @@ a.sec-meta:hover { color: var(--ink); }
   .graph figcaption .hint { display: none; }
   .node text { font-size: 12.5px; }
 }
+
+/* Open source: company next to repo, intro line */
+.oss .row-meta { display: block; }
+.oss .company { color: var(--soft); margin-left: .35rem; }
+.oss .company::before { content: "("; }
+.oss .company::after { content: ")"; }
+.oss .stars { display: block; margin-top: .3rem; }
+.sec-intro { margin: 1.25rem 0 .25rem; max-width: 40rem; color: var(--soft); }
+.sec-intro a { color: var(--ink); text-underline-offset: .2em; }
