@@ -244,3 +244,8 @@ a.sec-meta:hover { color: var(--ink); }
 .points li { position: relative; padding-left: 1.1rem; }
 .points li::before { content: ""; position: absolute; left: 0; top: .72em; width: .4rem; height: 1px; background: var(--accent); }
 .tools { font: 400 .78rem/1.7 var(--mono); color: var(--muted); }
+
+/* Open-to line */
+.open-line { font: 400 .8rem/1.6 var(--mono); color: var(--muted); margin: -1rem 0 2rem; max-width: 30rem; }
+.open-to { padding: .85rem 1rem; border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); border-radius: 10px; background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.open-to strong { color: var(--accent); font-weight: 500; }
