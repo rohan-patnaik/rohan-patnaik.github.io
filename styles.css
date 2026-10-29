@@ -331,3 +331,10 @@ a.sec-meta:hover { color: var(--ink); }
 @media (max-width: 380px) {
   .mark img { display: none; }
 }
+
+/* Text links read as links: underline socials, PR numbers, repo names and footer links */
+.elsewhere a span, .elsewhere li.plain a, a.sec-meta, .foot a, .oss .repo, .prs a {
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em;
+  text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+}
+.elsewhere a:hover span, .elsewhere li.plain a:hover, a.sec-meta:hover, .foot a:hover, .oss .repo:hover, .prs a:hover { text-decoration-color: currentColor; }
