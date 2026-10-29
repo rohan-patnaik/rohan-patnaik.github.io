@@ -3,6 +3,7 @@
   "min_stars": 8000,
   "max_repos": 10,
   "max_prs_per_repo": 3,
+  "lead_rows": 5,
   "companies": {
     "facebook": "Meta",
     "google": "Google",
@@ -82,10 +83,10 @@
     "Google",
     "Meta",
     "Microsoft",
-    "OpenClaw",
     "Grafana Labs",
-    "Agentic AI Foundation",
     "T3",
+    "OpenClaw",
+    "Agentic AI Foundation",
     "Unstructured"
   ],
   "max_companies": 5,

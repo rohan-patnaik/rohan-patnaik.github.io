@@ -3,7 +3,9 @@
 
 Finds merged PRs by the configured author in repositories they don't own and
 rewrites everything between the <!-- oss:... --> markers in index.html. Every
-repository gets a row, most-starred first (the page folds the list after a few);
+repository gets a row. The first lead_rows rows (what the page shows before
+"More below") are the best repo of each company in company_order; the rest follow
+grouped by company. Within a company, more merged PRs first, then stars;
 the hero graph only shows popular ones (data/oss.json: min_stars, max_repos).
 landed_prs are PRs GitHub shows as closed because the project imported the
 commit itself (Meta's repos do this), so they count as merged.
@@ -100,8 +102,21 @@ def build():
     total = len(seen)
 
     notes = {u.split("github.com/")[1].split("/", 1)[1]: n for u, n in CONFIG["notes"].items()}
-    ranked = sorted(repos.values(), key=lambda r: -r["meta"]["stargazers_count"])
-    popular = [r for r in ranked if r["meta"]["stargazers_count"] >= CONFIG["min_stars"]][: CONFIG["max_repos"]]
+    by_stars = sorted(repos.values(), key=lambda r: -r["meta"]["stargazers_count"])
+    popular = [r for r in by_stars if r["meta"]["stargazers_count"] >= CONFIG["min_stars"]][: CONFIG["max_repos"]]
+
+    # Prominent companies and repeat contributions first, like the profile README.
+    order = CONFIG.get("company_order", [])
+    company_of = lambda r: CONFIG["companies"].get(r["meta"]["owner"]["login"], r["meta"]["owner"]["login"])
+    rank = lambda r: (order.index(company_of(r)) if company_of(r) in order else len(order),
+                      -len(r["prs"]), -r["meta"]["stargazers_count"])
+    grouped = sorted(repos.values(), key=rank)
+    lead, seen_co = [], set()
+    for r in grouped:
+        if company_of(r) not in seen_co and len(lead) < CONFIG.get("lead_rows", 5):
+            seen_co.add(company_of(r))
+            lead.append(r)
+    ranked = lead + [r for r in grouped if r not in lead]
 
     rows, graph = [], []
     for r in ranked:
