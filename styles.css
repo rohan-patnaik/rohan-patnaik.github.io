@@ -150,7 +150,8 @@ a.sec-meta:hover { color: var(--ink); }
 .row { display: grid; grid-template-columns: 18rem minmax(0, 1fr); gap: 2rem; padding-block: 1.6rem; border-bottom: 1px solid var(--line); scroll-margin-top: 6rem; }
 .row-meta { display: grid; gap: .3rem; align-content: start; font: 400 .8rem var(--mono); color: var(--muted); padding-top: .2rem; }
 .row-body h3 { font: 500 1.05rem/1.4 var(--sans); }
-.org { font: italic 400 1.1rem var(--serif); color: var(--accent); margin-left: .35rem; }
+.org { font: 400 .85rem var(--mono); color: var(--accent); margin-left: .5rem; letter-spacing: .01em; white-space: nowrap; }
+.org::before { content: "@ "; color: var(--muted); }
 .row-body p { margin: .45rem 0 0; max-width: 40rem; }
 .steps { display: flex; align-items: center; gap: .6rem; font: 400 .78rem var(--mono); color: var(--muted); }
 .steps .arrow { width: 1.75rem; height: 1px; background: var(--muted); position: relative; }
