@@ -1,107 +1,114 @@
 <!doctype html>
-<!-- Source for "public/Rohan Patnaik resume v1.pdf". Re-render with headless Chrome:
-     chrome --headless=new --no-pdf-header-footer --print-to-pdf="public/Rohan Patnaik resume v1.pdf" scripts/resume.html -->
+<!-- Source for "public/Rohan Patnaik resume v1.pdf". Mirrors the original Google Docs résumé layout.
+     Re-render: chrome --headless=new --no-pdf-header-footer --print-to-pdf="public/Rohan Patnaik resume v1.pdf" scripts/resume.html -->
 <html lang="en"><head><meta charset="utf-8">
-<title>Rohan Patnaik, Lead ML Engineer, Résumé</title>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Rohan Patnaik Résumé</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  @page { size: A4; margin: 9mm 14mm 9mm; }
+  @page { size: Letter; margin: 0.55in 0.55in 0.45in; }
   * { box-sizing: border-box; }
-  body { margin: 0; font: 400 8.9pt/1.33 "Geist", system-ui, sans-serif; color: #1c1d18; }
-  a { color: inherit; text-decoration: none; }
-  h1 { font: 400 23pt/1 "Newsreader", Georgia, serif; letter-spacing: -.015em; margin: 0; }
-  .role { font: 500 10.5pt "Geist"; color: #5340c0; margin: 4pt 0 0; }
-  .contact { display: flex; flex-wrap: wrap; gap: 3pt 12pt; margin-top: 5pt; font-size: 8.8pt; color: #3d3f37; }
-  .contact a { border-bottom: .5pt solid #cdc8b9; }
-  h2 { font: 600 10.5pt "Geist", sans-serif; letter-spacing: .01em; margin: 8pt 0 3.5pt; padding-bottom: 2.5pt; border-bottom: .6pt solid #cdc8b9; position: relative; }
-  h2::after { content: ""; position: absolute; left: 0; bottom: -.6pt; width: 26pt; height: 1.4pt; background: #5340c0; }
-  p { margin: 0; }
-  .summary { color: #3d3f37; }
-  .job { margin-top: 5pt; }
-  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10pt; }
-  .job-head h3 { font: 600 10pt "Geist"; margin: 0; }
-  .job-head h3 span { font-weight: 400; color: #3d3f37; }
-  .when { font-size: 8.8pt; color: #6a6b60; white-space: nowrap; }
-  .sub { font-size: 8.8pt; color: #5340c0; margin-top: 1pt; }
-  ul { margin: 3pt 0 0; padding-left: 11pt; }
-  li { margin: 1.1pt 0; }
-  li::marker { color: #5340c0; }
-  .oss li, .proj li { margin: 1.4pt 0; }
-  b { font-weight: 600; }
-  .skills p { margin: 2pt 0; display: grid; grid-template-columns: 104pt 1fr; }
-  .muted { color: #6a6b60; }
-  .open { color: #5340c0; }
+  body { margin: 0; font: 400 9pt/1.42 "Merriweather", Georgia, serif; color: #000; }
+  a { color: #1155cc; }
+  b { font-weight: 700; }
+  header { text-align: center; }
+  h1 { font: 700 15.5pt/1.2 "Merriweather", serif; margin: 0; }
+  .title { margin: 2pt 0 0; font-size: 10pt; }
+  .links { display: flex; justify-content: space-between; align-items: center; margin: 13pt 0 0; padding: 0 0.05in; font-size: 10.5pt; }
+  .links span { display: inline-flex; align-items: center; gap: 5pt; }
+  .links svg { width: 14pt; height: 14pt; flex: none; }
+  h2 { font: 700 9.6pt "Merriweather", serif; text-align: center; margin: 13pt 0 9pt; letter-spacing: .02em; }
+  ul { margin: 0; padding-left: 0.4in; }
+  li { margin: 0; }
+  .summary ul { padding-left: 0.3in; }
+  .skills { padding-left: 0.12in; text-align: justify; }
+  .skills p { margin: 0; }
+  .job { padding-left: 0.12in; margin-top: 8pt; }
+  .job:first-of-type { margin-top: 0; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; padding-right: 0.15in; }
+  .co { font-weight: 700; font-size: 10pt; }
+  .co.small { font-size: 9pt; }
+  .when { font-weight: 700; }
+  .role { font-weight: 700; margin-bottom: 2pt; }
+  .job ul { padding-left: 0.28in; text-align: justify; }
+  .proj { padding-left: 0.12in; margin-top: 8pt; }
+  .proj:first-of-type { margin-top: 0; }
+  .proj ul { padding-left: 0.18in; margin-left: -0.12in; text-align: justify; }
+  .edu { display: grid; grid-template-columns: 1.4in 1fr auto; padding: 0 0.15in 0 0.12in; }
 </style></head><body>
 
 <header>
   <h1>Rohan Patnaik</h1>
-  <p class="role">Lead ML Engineer</p>
-  <div class="contact">
-    <a href="mailto:rohanpatnaik1997@gmail.com">rohanpatnaik1997@gmail.com</a>
-    <span>+91 82838 32094</span>
-    <a href="https://rohan-patnaik.github.io">rohan-patnaik.github.io</a>
-    <a href="https://github.com/rohan-patnaik">github.com/rohan-patnaik</a>
-    <a href="https://www.linkedin.com/in/rohan-patnaik-88929b159/">linkedin.com/in/rohan-patnaik</a>
-    <a href="https://x.com/ronin_lab">x.com/ronin_lab</a>
-    <span class="open">Open to remote, or on-site in Hyderabad, Seattle, San Francisco, Netherlands, Germany, Denmark</span>
+  <p class="title">Lead ML Engineer</p>
+  <div class="links">
+    <span><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#2867b2"/><rect x="5.5" y="9.5" width="2.8" height="9" fill="#fff"/><circle cx="6.9" cy="6.6" r="1.6" fill="#fff"/><path fill="#fff" d="M10.5 9.5h2.6v1.3c.5-.8 1.4-1.5 2.8-1.5 2.8 0 3.3 1.8 3.3 4.2v5h-2.8v-4.4c0-1.1-.1-2.3-1.4-2.3-1.4 0-1.7 1-1.7 2.2v4.5h-2.8z"/></svg><a href="https://www.linkedin.com/in/rohan-patnaik-88929b159/">LinkedIn</a></span>
+    <span><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>8283832094</span>
+    <span><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="#000" stroke-width="1.8"/><text x="12" y="16" font-size="9" font-family="Arial" font-weight="700" text-anchor="middle">PF</text></svg><a href="https://rohan-patnaik.github.io">Portfolio</a></span>
+    <span><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.300.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg><a href="https://github.com/rohan-patnaik">Github</a></span>
+    <span><svg viewBox="0 0 24 24"><path fill="#20beff" d="M7 2h2.6v11.3L15.3 7h3.3l-6.1 6.6L19 22h-3.3l-5.2-6.9-.9 1V22H7z"/></svg><a href="https://www.kaggle.com/rohanpatnaik">Kaggle</a></span>
   </div>
 </header>
 
-<h2>Summary</h2>
-<p class="summary">ML engineer with six years across fraud detection, predictive maintenance and ML platforms, now leading ML orchestration on Databricks. I also ship developer tools and have 20+ merged PRs in Meta, Google, Microsoft, Grafana Labs and Agentic AI Foundation projects.</p>
-
-<h2>Experience</h2>
-
-<div class="job">
-  <div class="job-head"><h3>Altimetrik <span>· Lead ML Engineer</span></h3><span class="when">&nbsp;Jun 2025 – Present</span></div>
-  <p class="sub">Promoted from Senior ML Engineer. Own feature engineering and ML orchestration for Calibo's data and AI platform: technical design, delivery and integration across ML services and data pipelines.</p>
+<section class="summary">
+  <h2>SUMMARY</h2>
   <ul>
-    <li><b>Feature engineering track:</b> built configurable data preparation in Python, PySpark and SQL (source filtering, missing-value handling, query profiling, custom features), with LangGraph review workflows behind FastAPI that validate each plan before approved configs move on.</li>
-    <li><b>ML orchestration and training:</b> built reusable scikit-learn training for six classification and regression algorithms with held-out evaluation and saved inference pipelines, made every run traceable in Databricks and MLflow, and added pytest regression coverage for bad feature and preprocessing settings.</li>
+    <li>Data scientist skilled in machine learning, predictive modeling, and software engineering.</li>
+    <li>Proficient in Python, SQL, and statistics. Specialized in financial data classification and fraud prediction.</li>
+    <li>Expert in communicating technical concepts to non-experts with commendable teamwork and leadership abilities.</li>
   </ul>
-</div>
+</section>
 
-<div class="job">
-  <div class="job-head"><h3>National Payments Corporation of India <span>· Data Scientist (via Euclid Innovations)</span></h3><span class="when">&nbsp;Apr 2024 – Oct 2024</span></div>
-  <ul>
-    <li>Led fraud detection for AePS (Aadhaar Enabled Payment System), engineering features from 4TB+ of raw transactions into predictive models that cut fraud incidents by 1.2 million.</li>
-    <li>Built a federated fraud-detection model for UPI, handling real-world financial data for newly onboarding Indian banks.</li>
-  </ul>
-</div>
+<section class="skills">
+  <h2>TECHNICAL SKILLS</h2>
+  <p><b>Data Science and Analytics:</b> Pytorch, Keras, Scikit-Learn, Machine learning, TensorFlow, Deep learning, Neural networks, A/B testing, Excel, Clustering, Tableau, NLP, Computer vision, Timeseries, GenAI</p>
+  <p><b>Database related:</b> MySQL, PostgreSQL, Trino, Redis, MinIO</p>
+  <p><b>Cloud Platforms (IaaS, PaaS, SaaS):</b> AWS (S3, EC2, RDS, Lambda), Google Cloud</p>
+  <p><b>Software Development:</b> Python, NumPy, Pandas, Flask, Jenkins, NLTK, Jupyter, TypeScript, Docker, Kubernetes, Git, GitHub Actions, Trello, JIRA, Kubeflow</p>
+</section>
 
-<div class="job">
-  <div class="job-head"><h3>Siemens <span>· Data Scientist and Software Engineer</span></h3><span class="when">&nbsp;Jul 2019 – Apr 2022</span></div>
-  <ul>
-    <li>Analyzed sound and sensor data from client assets for remaining-useful-life classification, reaching 92% accuracy in fault detection.</li>
-    <li>Built dashboard views with API integrations showing the health of 97 assets alongside ML analysis.</li>
-  </ul>
-</div>
+<section>
+  <h2>WORK EXPERIENCE</h2>
+  <div class="job">
+    <div class="row"><span class="co">Altimetrik</span><span class="when">Jun 2025 – Present</span></div>
+    <div class="role">Lead ML Engineer (promoted from Senior ML Engineer)</div>
+    <ul>
+      <li>Built the feature engineering track for <b>Calibo's</b> data and AI platform: configurable data preparation in Python, <b>PySpark</b> and SQL, with <b>LangGraph</b> review workflows that validate each plan.</li>
+      <li>Built ML orchestration and training with scikit-learn, tracked in <b>Databricks</b> and <b>MLflow</b>.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="row"><span class="co">National Payment Corporation of India (NPCI)- Euclid Innovations</span><span class="when">Apr 2024 – Oct 2024</span></div>
+    <div class="role">Data Scientist</div>
+    <ul>
+      <li>Led the development of fraud detection for the <b>AePS</b> (Aadhar Enabled Payment System) by engineering raw data features to create predictive models to reduce fraud incidents by <b>1.2million</b> working on more than <b>4TB data.</b></li>
+      <li>Contributed to a pioneering project on <b>UPI</b>, developing a federated model for <b>financial fraud detection</b>, showcasing expertise in handling complex, real-world financial data for new onboarding Indian banks.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="row"><span class="co small">SIEMENS</span><span class="when">Jul 2019 – Apr 2022</span></div>
+    <div class="role">Data Scientist/ Software Engineer</div>
+    <ul>
+      <li>Developed and analyzed sound and numeric data for the client assets using computer vision -&gt; Outcome: useful insights using RUL classification, with an <b>92% accuracy</b> for fault detection in the assets.</li>
+      <li>Designed <b>dashboard</b> views with API calls to display asset health of 97 assets &amp; performed ML analysis.</li>
+      <li>Led team communications to address key security issues generated from tokenization for the user app.</li>
+    </ul>
+  </div>
+</section>
 
-<h2>Open Source</h2>
-<ul class="oss">
-  <li><b>goose</b> <span class="muted">(Agentic AI Foundation, 56k★)</span>: kept session context alive across the agent's reply lifecycle, including ACP delegation.</li>
-  <li><b>k6</b> <span class="muted">(Grafana Labs, 32k★)</span>: static Prometheus remote-write labels, periodic file-log flushing, and <code>single()</code> in k6/html.</li>
-  <li><b>t3code</b> <span class="muted">(T3, 31k★)</span>: async image decoding for a smoother chat timeline; consistent versions across desktop builds.</li>
-  <li><b>onnxruntime</b> <span class="muted">(Microsoft, 22k★)</span>: int8 and uint32 support in the CPU Where operator.</li>
-  <li><b>Docusaurus</b>, <b>Lexical</b> <span class="muted">(Meta)</span>, <b>osv-scanner</b>, <b>go-containerregistry</b>, <b>cel-go</b> <span class="muted">(Google)</span>, <b>playwright-python</b>, <b>azure-cli</b> <span class="muted">(Microsoft)</span>, <b>Unstructured</b>, <b>gogcli</b>: fixes and features across localization, editors, security scanning, registries and CLIs.</li>
-</ul>
+<section>
+  <h2>PROJECTS</h2>
+  <div class="proj">
+    <div class="co small">DECENSORED DEEPSEEKR1 EXTENSION</div>
+    <ul><li>Decensored DeepseekR1 for VSCode is an open-source <b>extension</b> in the VSCode marketplace that transforms VS Code into a personal AI-powered chat assistant using a decensored version built on top of <b>Deepseek R1</b> open weights.</li></ul>
+  </div>
+  <div class="proj">
+    <div class="co small">AI ARTICLE WRITER</div>
+    <ul><li>Customized and fine-tuned LLM using Llama2 as base model to generate articles for multiple categories of people with varied length of outputs while leveraging <b>langchain</b> as well. Deployed the app on <b>streamlit</b> for better reach and efficiency.</li></ul>
+  </div>
+</section>
 
-<h2>Projects</h2>
-<ul class="proj">
-  <li><b>Codebloom</b>: VS Code and JetBrains extension that turns any codebase into a mind map with call arrows across files.</li>
-  <li><b>subpool</b>: single Rust binary exposing Claude, ChatGPT and Gemini subscriptions as one OpenAI, Anthropic and Gemini compatible API.</li>
-  <li><b>Anthropic performance take-home</b>: optimized vector kernel for a simulated machine, passing at 1,430 cycles. Also <b>OpenCalendly</b> and <b>ZenPDF</b>, open-source scheduling and PDF tools.</li>
-</ul>
-
-<h2>Skills</h2>
-<div class="skills">
-  <p><b>ML and data:</b>scikit-learn, PyTorch, PySpark, pandas, NumPy, SQL, feature engineering, model evaluation, time series, NLP</p>
-  <p><b>LLMs and agents:</b>LangGraph, LangChain, OpenAI GPT-4.1, workflow orchestration, RAG</p>
-  <p><b>MLOps and platforms:</b>Databricks, Unity Catalog, MLflow, Kubeflow Pipelines, Docker, Kubernetes, AWS, Google Cloud</p>
-  <p><b>Engineering:</b>Python, Go, TypeScript, Rust, FastAPI, Pydantic, pytest, Git, GitHub Actions, SonarCloud</p>
-</div>
-
-<h2>Education</h2>
-<div class="job-head"><h3>SRM University <span>· B.Tech, Computer Science and Engineering</span></h3><span class="when">&nbsp;2015 – 2019</span></div>
+<section>
+  <h2>EDUCATION</h2>
+  <div class="edu"><b>SRM UNIVERSITY</b><span>Bachelor of Technology in Computer Science and Engineering</span><b>2015 – 2019</b></div>
+</section>
 
 </body></html>
