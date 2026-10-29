@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Regenerate the open-source section of index.html from GitHub.
 
-Finds merged PRs by the configured author in repositories they don't own,
-keeps only popular repositories (data/oss.json: min_stars, max_repos), and
-rewrites everything between the <!-- oss:... --> markers in index.html.
+Finds merged PRs by the configured author in repositories they don't own and
+rewrites everything between the <!-- oss:... --> markers in index.html. Every
+repository gets a row, most-starred first (the page folds the list after a few);
+the hero graph only shows popular ones (data/oss.json: min_stars, max_repos).
+landed_prs are PRs GitHub shows as closed because the project imported the
+commit itself (Meta's repos do this), so they count as merged.
 
 Usage: GITHUB_TOKEN=... python3 scripts/update_oss.py
 Standard library only, so it runs on a bare Actions runner.
@@ -53,6 +56,13 @@ def merged_prs():
                 prs[url] = {"html_url": url, "title": pr["title"], "number": pr["number"],
                             "repository_url": f"{API}/repos/{owner}/{repo}",
                             "pull_request": {"merged_at": pr["merged_at"]}}
+    for url in CONFIG.get("landed_prs", []):
+        if url not in prs:
+            owner, repo, _, num = url.split("/")[-4:]
+            pr = get(f"/repos/{owner}/{repo}/pulls/{num}")
+            prs[url] = {"html_url": url, "title": pr["title"], "number": pr["number"],
+                        "repository_url": f"{API}/repos/{owner}/{repo}",
+                        "pull_request": {"merged_at": pr["merged_at"] or pr["closed_at"]}}
     for url in CONFIG.get("exclude_prs", []):
         prs.pop(url, None)
     return list(prs.values())
@@ -90,11 +100,11 @@ def build():
     total = len(seen)
 
     notes = {u.split("github.com/")[1].split("/", 1)[1]: n for u, n in CONFIG["notes"].items()}
-    popular = sorted((r for r in repos.values() if r["meta"]["stargazers_count"] >= CONFIG["min_stars"]),
-                     key=lambda r: -r["meta"]["stargazers_count"])[: CONFIG["max_repos"]]
+    ranked = sorted(repos.values(), key=lambda r: -r["meta"]["stargazers_count"])
+    popular = [r for r in ranked if r["meta"]["stargazers_count"] >= CONFIG["min_stars"]][: CONFIG["max_repos"]]
 
     rows, graph = [], []
-    for r in popular:
+    for r in ranked:
         m = r["meta"]
         full, owner, name = m["full_name"], m["owner"]["login"], m["name"]
         company = CONFIG["companies"].get(owner, owner)
@@ -112,6 +122,8 @@ def build():
             f'<span class="stars">{short_stars(m["stargazers_count"])} ★</span></div>\n'
             f'      <ul class="prs">\n' + "\n".join(lis) + "\n      </ul>\n    </li>"
         )
+        if r not in popular:
+            continue
         graph.append({"id": slug, "label": name, "full": full, "company": company,
                       "short": CONFIG.get("short_companies", {}).get(company, company),
                       "lang": CONFIG.get("lang_overrides", {}).get(full) or LANGS.get(m.get("language"), "other"), "prs": len(items),

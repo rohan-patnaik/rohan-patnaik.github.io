@@ -102,7 +102,7 @@
       Outside work I ship developer tools like Codebloom, and send fixes upstream
       to the open-source projects I depend on.
     </p>
-    <p class="open-line">Open to remote roles, or on-site in Hyderabad, Seattle, San Francisco, the Netherlands, Germany and Denmark.</p>
+    <p class="open-line">Open to remote roles, or on-site in San Francisco, Hyderabad, Seattle, New York, Amsterdam, Copenhagen, Frankfurt and Munich.</p>
     <div class="actions">
       <a class="btn btn-solid" href="#shipped">See What I've Shipped</a>
       <a class="btn" href="https://x.com/ronin_lab">Follow on X</a>
@@ -118,8 +118,8 @@
 
 <section id="shipped" class="sec wrap">
   <div class="sec-head"><h2>Things Shipped</h2></div>
-  <div class="ships-wrap">
-    <ol class="ships" id="ships" tabindex="0" aria-label="Shipped projects, scrollable">
+  <div class="fold" data-show="5" data-show-phone="3">
+    <ol class="ships" id="ships">
       <li class="ship"><a href="https://github.com/rohan-patnaik/codebloom">
         <span class="thumb"><img class="poster" src="public/demos/codebloom.jpg" alt="" loading="lazy"><video src="public/demos/codebloom.mp4" muted loop playsinline preload="none" aria-hidden="true"></video></span>
         <span class="info"><span class="t">Codebloom</span><span class="d">See any codebase bloom into a mind map, with call arrows across files. On VS Code, Open VSX and JetBrains.</span></span>
@@ -176,13 +176,14 @@
         <span class="tag tag-next">In Progress</span>
       </a></li>
     </ol>
-    <button class="ships-more" id="ships-more" type="button"><span aria-hidden="true">⋯</span> <span id="ships-more-n">6</span> more below</button>
+    <button class="more" type="button" aria-expanded="false"><span aria-hidden="true">⋯</span> <span class="more-label">More below</span></button>
   </div>
 </section>
 
 <section id="open-source" class="sec wrap">
-  <div class="sec-head"><h2>Open Source</h2></div>
+  <div class="sec-head"><h2>OSS Contributions</h2></div>
   <p class="sec-intro">A selection from popular projects at <!-- oss:companies -->Google, Meta, Microsoft, OpenClaw, Grafana Labs<!-- /oss:companies --> and others. These aren't all of them: see more on <a href="https://github.com/rohan-patnaik">GitHub</a>.</p>
+  <div class="fold" data-show="5" data-show-phone="4">
   <ol class="rows oss"><!-- oss:rows -->
     <li class="row" id="r-docusaurus">
       <div class="row-meta"><a class="repo" href="https://github.com/meta/docusaurus">meta/docusaurus</a><span class="company">Meta</span><span class="stars">67k ★</span></div>
@@ -249,7 +250,43 @@
         <li><a href="https://github.com/openclaw/gogcli/pull/554">#554</a><span>Added read-only Drive reports: tree views, folder summaries and inspection.</span></li>
       </ul>
     </li>
+    <li class="row" id="r-azure-cli">
+      <div class="row-meta"><a class="repo" href="https://github.com/Azure/azure-cli">Azure/azure-cli</a><span class="company">Microsoft</span><span class="stars">4.7k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/Azure/azure-cli/pull/33429">#33429</a><span>Kept <code>az vm image list</code> working when the remote alias file is malformed.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-go-containerregistry">
+      <div class="row-meta"><a class="repo" href="https://github.com/google/go-containerregistry">google/go-containerregistry</a><span class="company">Google</span><span class="stars">4.1k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/google/go-containerregistry/pull/2316">#2316</a><span>Kept <code>localhost/...</code> image references pointing at the local registry.</span></li>
+        <li><a href="https://github.com/google/go-containerregistry/pull/2315">#2315</a><span>Let push-only workflows skip Kubernetes pull secrets.</span></li>
+        <li><a href="https://github.com/google/go-containerregistry/pull/2314">#2314</a><span>Ensured only true loopback hosts get plain-HTTP registry access.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-botorch">
+      <div class="row-meta"><a class="repo" href="https://github.com/meta-pytorch/botorch">meta-pytorch/botorch</a><span class="company">Meta</span><span class="stars">3.6k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/meta-pytorch/botorch/pull/3370">#3370</a><span>Fixed sampling from batched truncated normal distributions, which used to reject batched constraints.</span></li>
+        <li><a href="https://github.com/meta-pytorch/botorch/pull/3372">#3372</a><span>Let nonlinear-constrained optimization start from infeasible points, since SLSQP can repair them.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-cel-go">
+      <div class="row-meta"><a class="repo" href="https://github.com/cel-expr/cel-go">cel-expr/cel-go</a><span class="company">Google</span><span class="stars">3.1k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/cel-expr/cel-go/pull/1340">#1340</a><span>Added a JSON encoder to CEL's standard extensions.</span></li>
+        <li><a href="https://github.com/cel-expr/cel-go/pull/1327">#1327</a><span>Allowed container aliases for simple names, with validation still strict.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-torchft">
+      <div class="row-meta"><a class="repo" href="https://github.com/meta-pytorch/torchft">meta-pytorch/torchft</a><span class="company">Meta</span><span class="stars">552 ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/meta-pytorch/torchft/pull/356">#356</a><span>Made checkpoint transfers honour the transport's configured timeout by default.</span></li>
+      </ul>
+    </li>
     <!-- /oss:rows --></ol>
+    <button class="more" type="button" aria-expanded="false"><span aria-hidden="true">⋯</span> <span class="more-label">More below</span></button>
+  </div>
 </section>
 
 <section id="work" class="sec wrap">
@@ -306,7 +343,7 @@
   <div class="sec-head"><h2>Contact</h2></div>
   <div class="contact">
     <div class="elsewhere">
-      <p class="open-to"><strong>Open to:</strong> remote roles, or on-site in Hyderabad, Seattle, San Francisco, the Netherlands, Germany and Denmark.</p>
+      <p class="open-to"><strong>Open to:</strong> remote roles, or on-site in San Francisco, Hyderabad, Seattle, New York, Amsterdam, Copenhagen, Frankfurt and Munich.</p>
       <p>The fastest way to reach me is a DM on X. I'm also on:</p>
       <ul>
         <li><a href="https://github.com/rohan-patnaik">GitHub <span>rohan-patnaik</span></a></li>

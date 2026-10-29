@@ -179,30 +179,59 @@ const spy = new IntersectionObserver((entries) => {
 }, { rootMargin: '-45% 0px -50% 0px' });
 navLinks.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
 
-// Things Shipped: show five rows plus a peek of the sixth; the rest scroll inside the box.
+// Folded lists: show the first few rows plus a peek of the next, and a "More below"
+// button that opens the whole list in place. No scrolling inside the section.
+const phone = matchMedia('(max-width: 760px)');
+const folds = [...document.querySelectorAll('.fold')];
+const shown = (f) => +(phone.matches ? f.dataset.showPhone : f.dataset.show);
+function foldedHeight(f) {
+  const list = f.querySelector('ol');
+  const peek = list.children[shown(f)];
+  return peek.offsetTop - list.offsetTop + peek.offsetHeight * 0.5;
+}
+function sizeFold(f) {
+  const list = f.querySelector('ol');
+  const can = list.children.length > shown(f);
+  f.classList.toggle('can-fold', can);
+  list.style.maxHeight = can && !f.classList.contains('open') ? `${foldedHeight(f)}px` : '';
+  if (can) list.style.setProperty('--fade', `${list.children[shown(f)].offsetHeight * 0.5 + 16}px`);
+}
+function setFold(f, open) {
+  const list = f.querySelector('ol');
+  const btn = f.querySelector('.more');
+  list.style.maxHeight = `${open ? foldedHeight(f) : list.scrollHeight}px`;
+  list.offsetHeight; // commit the start height so the change animates
+  f.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+  btn.querySelector('.more-label').textContent = open ? 'Show less' : 'More below';
+  list.style.maxHeight = `${open ? list.scrollHeight : foldedHeight(f)}px`;
+  if (!open && f.getBoundingClientRect().top < 0) f.closest('section').scrollIntoView({ behavior: 'smooth' });
+}
+folds.forEach((f) => {
+  const list = f.querySelector('ol');
+  f.querySelector('.more').addEventListener('click', () => setFold(f, !f.classList.contains('open')));
+  list.addEventListener('transitionend', () => { if (f.classList.contains('open')) list.style.maxHeight = ''; });
+  // Tabbing into a hidden row opens the list so focus never lands out of sight.
+  list.addEventListener('focusin', (e) => {
+    const row = e.target.closest('ol > li');
+    if (!f.classList.contains('open') && [...list.children].indexOf(row) >= shown(f)) setFold(f, true);
+  });
+  sizeFold(f);
+});
+addEventListener('resize', () => folds.forEach(sizeFold));
+document.fonts?.ready.then(() => folds.forEach(sizeFold));
+// Graph nodes link to #r-<repo>; open the OSS list first if that row is folded away.
+function revealHash() {
+  const target = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+  const f = target && target.closest('.fold');
+  if (!f || f.classList.contains('open') || [...f.querySelector('ol').children].indexOf(target) < shown(f)) return;
+  setFold(f, true);
+  setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 460);
+}
+addEventListener('hashchange', revealHash);
+revealHash();
 const ships = document.getElementById('ships');
-const shipsWrap = ships?.parentElement;
-const shipsMore = document.getElementById('ships-more');
-function sizeShips() {
-  const rows = ships.children;
-  const show = matchMedia('(max-width: 760px)').matches ? 3 : 5;
-  if (rows.length <= show) return;
-  const peek = rows[show];
-  ships.style.maxHeight = `${peek.offsetTop - ships.offsetTop + peek.offsetHeight * 0.4}px`;
-  shipsWrap.classList.add('has-more');
-  updateShips();
-}
-function updateShips() {
-  const atEnd = ships.scrollTop + ships.clientHeight >= ships.scrollHeight - 4;
-  shipsWrap.classList.toggle('at-end', atEnd);
-  const hidden = [...ships.children].filter((r) => r.offsetTop - ships.offsetTop + r.offsetHeight > ships.scrollTop + ships.clientHeight + 4).length;
-  document.getElementById('ships-more-n').textContent = hidden || 1;
-}
 if (ships) {
-  sizeShips();
-  addEventListener('resize', sizeShips);
-  ships.addEventListener('scroll', updateShips, { passive: true });
-  shipsMore.addEventListener('click', () => ships.scrollBy({ top: ships.clientHeight * 0.8, behavior: 'smooth' }));
   // Thumbnail videos play while their row is hovered or focused. The poster image sits on
   // top and only hides once frames are actually playing, so a row always returns to its
   // default picture when the pointer leaves.
