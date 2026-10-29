@@ -132,8 +132,22 @@ if (repos.length) buildGraph(document.getElementById('graph'));
 // Contact form via EmailJS.
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
+// Light spam guard, no service needed: a hidden honeypot field, a minimum time on the
+// page before sending, and at most 3 messages a day from one browser (1 per minute).
+const loadedAt = Date.now();
+const sentLog = () => JSON.parse(localStorage.getItem('contact-sent') || '[]').filter((t) => Date.now() - t < 864e5);
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  if (form.website.value || Date.now() - loadedAt < 3000) {
+    status.textContent = 'Sent. Thanks, I’ll reply by email.';
+    form.reset();
+    return;
+  }
+  const log = sentLog();
+  if (log.length >= 3 || (log.length && Date.now() - log[log.length - 1] < 6e4)) {
+    status.textContent = 'You’ve already sent a message recently. DM me on X at @ronin_lab if it’s urgent.';
+    return;
+  }
   if (!window.emailjs) {
     status.textContent = 'The form didn’t load. DM me on X at @ronin_lab instead.';
     return;
@@ -145,6 +159,7 @@ form.addEventListener('submit', (e) => {
   emailjs.sendForm('service_7et6vtg', 'template_8u2onnm', form)
     .then(() => {
       status.textContent = 'Sent. Thanks, I’ll reply by email.';
+      localStorage.setItem('contact-sent', JSON.stringify([...sentLog(), Date.now()]));
       form.reset();
     })
     .catch((err) => {
@@ -170,8 +185,9 @@ const shipsWrap = ships?.parentElement;
 const shipsMore = document.getElementById('ships-more');
 function sizeShips() {
   const rows = ships.children;
-  if (rows.length <= 5) return;
-  const peek = rows[5];
+  const show = matchMedia('(max-width: 760px)').matches ? 3 : 5;
+  if (rows.length <= show) return;
+  const peek = rows[show];
   ships.style.maxHeight = `${peek.offsetTop - ships.offsetTop + peek.offsetHeight * 0.4}px`;
   shipsWrap.classList.add('has-more');
   updateShips();
