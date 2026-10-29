@@ -126,7 +126,9 @@ def build():
 def replace(text, name, value):
     pattern = re.compile(rf"(<!-- oss:{name} -->).*?(<!-- /oss:{name} -->)", re.S)
     if not pattern.search(text):
-        sys.exit(f"marker oss:{name} missing from index.html")
+        if name in ("rows", "graph"):
+            sys.exit(f"marker oss:{name} missing from index.html")
+        return text  # optional marker removed from the page
     return pattern.sub(lambda m: m.group(1) + value + m.group(2), text)
 
 
