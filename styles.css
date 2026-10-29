@@ -236,10 +236,11 @@ a.sec-meta:hover { color: var(--ink); }
 ::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }
 .sec-head {
   border-bottom: 0;
-  background:
-    linear-gradient(var(--accent), var(--accent)) left bottom / 3.5rem 2px no-repeat,
-    linear-gradient(var(--line), var(--line)) left bottom / 100% 1px no-repeat;
+  background: linear-gradient(var(--line), var(--line)) left bottom / 100% 1px no-repeat;
 }
+/* The accent rule spans exactly the heading text, sitting on the section line */
+.sec-head h2 { position: relative; }
+.sec-head h2::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1.25rem; height: 2px; background: var(--accent); }
 .node.repo circle { stroke: color-mix(in srgb, var(--accent) 75%, var(--muted)); }
 .node.root .core { fill: var(--accent); stroke: var(--accent); }
 .oss .stars, .when { color: color-mix(in srgb, var(--accent) 55%, var(--muted)); }
