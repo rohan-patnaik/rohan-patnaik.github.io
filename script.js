@@ -163,3 +163,24 @@ const spy = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
 navLinks.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
+
+// Demo videos: play while on screen; with reduced motion, play only on hover or focus.
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const demoVideos = [...document.querySelectorAll('.demo video')];
+if (reduceMotion) {
+  demoVideos.forEach((v) => {
+    const link = v.closest('.demo-media');
+    link.addEventListener('mouseenter', () => v.play().catch(() => {}));
+    link.addEventListener('mouseleave', () => v.pause());
+    link.addEventListener('focus', () => v.play().catch(() => {}));
+    link.addEventListener('blur', () => v.pause());
+  });
+} else {
+  const player = new IntersectionObserver((entries) => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting) target.play().catch(() => {});
+      else target.pause();
+    });
+  }, { threshold: 0.4 });
+  demoVideos.forEach((v) => player.observe(v));
+}
