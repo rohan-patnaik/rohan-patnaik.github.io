@@ -20,7 +20,8 @@
     "meta": "Meta",
     "pingdotgg": "T3",
     "aaif-goose": "Agentic AI Foundation",
-    "Unstructured-IO": "Unstructured"
+    "Unstructured-IO": "Unstructured",
+    "meta-pytorch": "Meta"
   },
   "extra_prs": [
     "https://github.com/Azure/azure-cli/pull/33429",
@@ -45,6 +46,11 @@
     "https://github.com/pingdotgg/t3code/pull/12768",
     "https://github.com/pingdotgg/t3code/pull/19923"
   ],
+  "landed_prs": [
+    "https://github.com/meta-pytorch/botorch/pull/3370",
+    "https://github.com/meta-pytorch/botorch/pull/3372",
+    "https://github.com/meta-pytorch/torchft/pull/356"
+  ],
   "exclude_prs": [],
   "notes": {
     "https://github.com/facebook/docusaurus/pull/12054": "Fixed localized sites publishing wrong URLs in metadata and sitemaps.",
@@ -67,7 +73,10 @@
     "https://github.com/pingdotgg/t3code/pull/12768": "Made desktop builds report one consistent version across the client, server and package.",
     "https://github.com/Unstructured-IO/unstructured/pull/4504": "Kept element IDs and source metadata intact when reloading Unstructured's own JSON output.",
     "https://github.com/microsoft/onnxruntime/pull/32846": "Enabled int8 and uint32 support in the CPU <code>Where</code> operator.",
-    "https://github.com/aaif-goose/goose/pull/12516": "Kept session context alive across the agent's reply lifecycle, including ACP delegation and resumes."
+    "https://github.com/aaif-goose/goose/pull/12516": "Kept session context alive across the agent's reply lifecycle, including ACP delegation and resumes.",
+    "https://github.com/meta-pytorch/botorch/pull/3370": "Fixed sampling from batched truncated normal distributions, which used to reject batched constraints.",
+    "https://github.com/meta-pytorch/botorch/pull/3372": "Let nonlinear-constrained optimization start from infeasible points, since SLSQP can repair them.",
+    "https://github.com/meta-pytorch/torchft/pull/356": "Made checkpoint transfers honour the transport's configured timeout by default."
   },
   "company_order": [
     "Google",
