@@ -250,21 +250,47 @@ a.sec-meta:hover { color: var(--ink); }
 .open-to { padding: .85rem 1rem; border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); border-radius: 10px; background: color-mix(in srgb, var(--accent) 7%, transparent); }
 .open-to strong { color: var(--accent); font-weight: 500; }
 
-/* Things Shipped: demo gallery */
-.demos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 2rem; padding-top: 2rem; }
-.demo { margin: 0; }
-.demo-lead { grid-column: 1 / -1; }
-.demo-media {
-  display: block; aspect-ratio: 16 / 9; overflow: hidden;
-  border: 1px solid var(--line); border-radius: 12px; background: var(--panel);
+/* Things Shipped: five rows at first glance, the rest scroll inside the box */
+.ships-wrap { position: relative; margin-top: 1.5rem; }
+.ships {
+  list-style: none; margin: 0; padding: 0;
+  max-height: 46rem; overflow-y: auto; overscroll-behavior: contain;
+  scroll-snap-type: y proximity; scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 45%, transparent) transparent;
 }
-.demo-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.demo-media:hover, .demo-media:focus-visible { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
-.demo figcaption { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: .3rem .75rem; padding-top: .9rem; }
-.demo figcaption .t { color: var(--ink); font-weight: 500; text-decoration: none; }
-.demo figcaption .t:hover { color: var(--accent); }
-.demo figcaption .tag { justify-self: start; font: 400 .72rem var(--mono); color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: .1rem .6rem; }
-.demo figcaption p { grid-column: 1 / -1; margin: 0; color: var(--soft); font-size: .95rem; max-width: 44rem; }
-.demo-lead figcaption .t { font: 400 1.6rem/1.1 var(--serif); }
-#shipped .sub { margin-top: 3.5rem; }
-@media (max-width: 760px) { .demos { grid-template-columns: 1fr; gap: 2rem; } }
+.ships:focus-visible { outline-offset: 6px; }
+.ships-wrap.has-more:not(.at-end) .ships { mask-image: linear-gradient(to bottom, #000 80%, transparent); }
+.ship { scroll-snap-align: start; }
+.ship a {
+  display: grid; grid-template-columns: 13rem minmax(0, 1fr) auto; gap: 1.75rem; align-items: center;
+  padding: 1rem 0; border-bottom: 1px solid var(--line); text-decoration: none;
+}
+.thumb {
+  display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--panel);
+}
+.thumb video, .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb .ph {
+  display: grid; place-items: center; height: 100%; padding: .5rem; text-align: center;
+  font: 400 1.15rem/1.1 var(--serif); color: var(--muted);
+  background: radial-gradient(circle, color-mix(in srgb, var(--muted) 28%, transparent) 1px, transparent 1.2px) 0 0 / 14px 14px;
+}
+.ship .info { display: grid; gap: .3rem; }
+.ship .t { color: var(--ink); font-weight: 500; font-size: 1.05rem; }
+.ship .d { color: var(--soft); font-size: .95rem; max-width: 40rem; }
+.ship .tag { font: 400 .72rem var(--mono); color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: .1rem .6rem; white-space: nowrap; }
+.ship .tag-next { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.ship a:hover .t, .ship a:focus-visible .t { color: var(--accent); }
+.ship a:hover .thumb, .ship a:focus-visible .thumb { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
+.ships-more {
+  display: none; margin: .9rem auto 0; padding: .45rem 1rem; border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); background: transparent;
+  font: 400 .8rem var(--mono); color: var(--accent); cursor: pointer;
+}
+.ships-more span:first-child { letter-spacing: .1em; }
+.ships-wrap.has-more:not(.at-end) .ships-more { display: block; }
+@media (max-width: 760px) {
+  .ship a { grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem; }
+  .ship .tag { grid-column: 2; justify-self: start; }
+  .thumb .ph { font-size: .9rem; }
+}

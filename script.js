@@ -164,23 +164,38 @@ const spy = new IntersectionObserver((entries) => {
 }, { rootMargin: '-45% 0px -50% 0px' });
 navLinks.forEach((a) => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
 
-// Demo videos: play while on screen; with reduced motion, play only on hover or focus.
-const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const demoVideos = [...document.querySelectorAll('.demo video')];
-if (reduceMotion) {
-  demoVideos.forEach((v) => {
-    const link = v.closest('.demo-media');
-    link.addEventListener('mouseenter', () => v.play().catch(() => {}));
-    link.addEventListener('mouseleave', () => v.pause());
-    link.addEventListener('focus', () => v.play().catch(() => {}));
-    link.addEventListener('blur', () => v.pause());
+// Things Shipped: show five rows plus a peek of the sixth; the rest scroll inside the box.
+const ships = document.getElementById('ships');
+const shipsWrap = ships?.parentElement;
+const shipsMore = document.getElementById('ships-more');
+function sizeShips() {
+  const rows = ships.children;
+  if (rows.length <= 5) return;
+  const peek = rows[5];
+  ships.style.maxHeight = `${peek.offsetTop - ships.offsetTop + peek.offsetHeight * 0.4}px`;
+  shipsWrap.classList.add('has-more');
+  updateShips();
+}
+function updateShips() {
+  const atEnd = ships.scrollTop + ships.clientHeight >= ships.scrollHeight - 4;
+  shipsWrap.classList.toggle('at-end', atEnd);
+  const hidden = [...ships.children].filter((r) => r.offsetTop - ships.offsetTop + r.offsetHeight > ships.scrollTop + ships.clientHeight + 4).length;
+  document.getElementById('ships-more-n').textContent = hidden || 1;
+}
+if (ships) {
+  sizeShips();
+  addEventListener('resize', sizeShips);
+  ships.addEventListener('scroll', updateShips, { passive: true });
+  shipsMore.addEventListener('click', () => ships.scrollBy({ top: ships.clientHeight * 0.8, behavior: 'smooth' }));
+  // Thumbnail videos play while their row is hovered or focused.
+  ships.querySelectorAll('.ship a').forEach((link) => {
+    const v = link.querySelector('video');
+    if (!v) return;
+    const play = () => v.play().catch(() => {});
+    const stop = () => { v.pause(); };
+    link.addEventListener('mouseenter', play);
+    link.addEventListener('mouseleave', stop);
+    link.addEventListener('focus', play);
+    link.addEventListener('blur', stop);
   });
-} else {
-  const player = new IntersectionObserver((entries) => {
-    entries.forEach(({ target, isIntersecting }) => {
-      if (isIntersecting) target.play().catch(() => {});
-      else target.pause();
-    });
-  }, { threshold: 0.4 });
-  demoVideos.forEach((v) => player.observe(v));
 }
