@@ -187,12 +187,20 @@ if (ships) {
   addEventListener('resize', sizeShips);
   ships.addEventListener('scroll', updateShips, { passive: true });
   shipsMore.addEventListener('click', () => ships.scrollBy({ top: ships.clientHeight * 0.8, behavior: 'smooth' }));
-  // Thumbnail videos play while their row is hovered or focused.
+  // Thumbnail videos play while their row is hovered or focused. The poster image sits on
+  // top and only hides once frames are actually playing, so a row always returns to its
+  // default picture when the pointer leaves.
   ships.querySelectorAll('.ship a').forEach((link) => {
     const v = link.querySelector('video');
     if (!v) return;
+    const thumb = v.parentElement;
+    v.addEventListener('playing', () => { if (link.matches(':hover, :focus')) thumb.classList.add('playing'); });
     const play = () => v.play().catch(() => {});
-    const stop = () => { v.pause(); };
+    const stop = () => {
+      thumb.classList.remove('playing');
+      v.pause();
+      if (v.readyState > 0) v.currentTime = 0;
+    };
     link.addEventListener('mouseenter', play);
     link.addEventListener('mouseleave', stop);
     link.addEventListener('focus', play);
