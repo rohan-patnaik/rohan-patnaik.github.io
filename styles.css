@@ -294,3 +294,7 @@ a.sec-meta:hover { color: var(--ink); }
   .ship .tag { grid-column: 2; justify-self: start; }
   .thumb .ph { font-size: .9rem; }
 }
+
+/* Contact: résumé row with an inline "Here" link */
+.elsewhere li.plain { display: flex; justify-content: space-between; padding-block: .65rem; border-bottom: 1px solid var(--line); font: 400 .9rem var(--mono); color: var(--ink); }
+.elsewhere li.plain a { display: inline; padding: 0; border: 0; color: var(--accent); text-decoration: underline; text-underline-offset: .2em; }
