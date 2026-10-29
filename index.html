@@ -78,42 +78,66 @@
 
 <section id="shipped" class="sec wrap">
   <div class="sec-head"><h2>Things Shipped</h2></div>
-  <div class="demos">
-    <figure class="demo demo-lead">
-      <a class="demo-media" href="https://github.com/rohan-patnaik/codebloom" aria-label="Open Codebloom"><video src="public/demos/codebloom.mp4" poster="public/demos/codebloom.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></a>
-      <figcaption><a class="t" href="https://github.com/rohan-patnaik/codebloom">Codebloom</a><span class="tag">IDE Extension</span><p>See any codebase bloom into a mind map, with call arrows across files. On VS Code, Open VSX and JetBrains.</p></figcaption>
-    </figure>
-    <figure class="demo">
-      <a class="demo-media" href="https://github.com/rohan-patnaik/subpool" aria-label="Open subpool"><video src="public/demos/subpool.mp4" poster="public/demos/subpool.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></a>
-      <figcaption><a class="t" href="https://github.com/rohan-patnaik/subpool">subpool</a><span class="tag">Rust</span><p>Your Claude, ChatGPT and Gemini subscriptions as one fast API, with a built-in dashboard.</p></figcaption>
-    </figure>
-    <figure class="demo">
-      <a class="demo-media" href="https://opencalendly.com" aria-label="Open OpenCalendly"><video src="public/demos/opencalendly.mp4" poster="public/demos/opencalendly.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></a>
-      <figcaption><a class="t" href="https://opencalendly.com">OpenCalendly</a><span class="tag">Web App</span><p>Open-source Calendly: share a link, take 1:1 or team bookings, synced to your calendar.</p></figcaption>
-    </figure>
-    <figure class="demo">
-      <a class="demo-media" href="https://thezenpdf.vercel.app" aria-label="Open ZenPDF"><video src="public/demos/zenpdf.mp4" poster="public/demos/zenpdf.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></a>
-      <figcaption><a class="t" href="https://thezenpdf.vercel.app">ZenPDF</a><span class="tag">Web App</span><p>A clean, open-source PDF workbench with practical tools and transparent usage limits.</p></figcaption>
-    </figure>
-    <figure class="demo">
-      <a class="demo-media" href="https://mypaperloop.vercel.app" aria-label="Open Paperloop"><video src="public/demos/paperloop.mp4" poster="public/demos/paperloop.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></a>
-      <figcaption><a class="t" href="https://mypaperloop.vercel.app">Paperloop</a><span class="tag">Web App</span><p>Drive through Ilya Sutskever's must-read AI papers in a Minecraft-style world.</p></figcaption>
-    </figure>
+  <div class="ships-wrap">
+    <ol class="ships" id="ships" tabindex="0" aria-label="Shipped projects, scrollable">
+      <li class="ship"><a href="https://github.com/rohan-patnaik/codebloom">
+        <span class="thumb"><video src="public/demos/codebloom.mp4" poster="public/demos/codebloom.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></span>
+        <span class="info"><span class="t">Codebloom</span><span class="d">See any codebase bloom into a mind map, with call arrows across files. On VS Code, Open VSX and JetBrains.</span></span>
+        <span class="tag">IDE Extension</span>
+      </a></li>
+      <li class="ship"><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.window-switcher">
+        <span class="thumb"><img src="public/demos/orbit.jpg" alt="" loading="lazy"></span>
+        <span class="info"><span class="t">Orbit</span><span class="d">A better Alt+Tab for Omarchy: macOS icons, Windows 7 stacks or a Windows 11 grid.</span></span>
+        <span class="tag">Omarchy</span>
+      </a></li>
+      <li class="ship"><a href="https://github.com/rohan-patnaik/subpool">
+        <span class="thumb"><video src="public/demos/subpool.mp4" poster="public/demos/subpool.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></span>
+        <span class="info"><span class="t">subpool</span><span class="d">Your Claude, ChatGPT and Gemini subscriptions as one fast API, with a built-in dashboard.</span></span>
+        <span class="tag">Rust</span>
+      </a></li>
+      <li class="ship"><a href="https://pasture-imposters-web.pages.dev">
+        <span class="thumb"><video src="public/demos/pasture.mp4" poster="public/demos/pasture.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></span>
+        <span class="info"><span class="t">Pasture Imposters</span><span class="d">Among Us on a Pokémon-style farm: make your avatar and catch the imposter.</span></span>
+        <span class="tag">Game</span>
+      </a></li>
+      <li class="ship"><a href="https://opencalendly.com">
+        <span class="thumb"><video src="public/demos/opencalendly.mp4" poster="public/demos/opencalendly.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></span>
+        <span class="info"><span class="t">OpenCalendly</span><span class="d">Open-source Calendly: share a link, take 1:1 or team bookings, synced to your calendar.</span></span>
+        <span class="tag">Web App</span>
+      </a></li>
+      <li class="ship"><a href="https://github.com/rohan-patnaik/Chromarchy">
+        <span class="thumb"><span class="ph" aria-hidden="true">Chromarchy</span></span>
+        <span class="info"><span class="t">Chromarchy</span><span class="d">A local-first Photoshop alternative for Omarchy and Arch Linux.</span></span>
+        <span class="tag tag-next">In Progress</span>
+      </a></li>
+      <li class="ship"><a href="https://github.com/rohan-patnaik/gogcli-plus">
+        <span class="thumb"><span class="ph" aria-hidden="true">gogcli-plus</span></span>
+        <span class="info"><span class="t">gogcli-plus</span><span class="d">Drive reports, local-to-Drive sync and contact deduplication on top of gogcli.</span></span>
+        <span class="tag">CLI</span>
+      </a></li>
+      <li class="ship"><a href="https://mypaperloop.vercel.app">
+        <span class="thumb"><video src="public/demos/paperloop.mp4" poster="public/demos/paperloop.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></span>
+        <span class="info"><span class="t">Paperloop</span><span class="d">Drive through Ilya Sutskever's must-read AI papers in a Minecraft-style world.</span></span>
+        <span class="tag">Web App</span>
+      </a></li>
+      <li class="ship"><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.solitaire">
+        <span class="thumb"><img src="public/demos/solitaire.jpg" alt="" loading="lazy"></span>
+        <span class="info"><span class="t">Solitaire</span><span class="d">Five classic solitaire games for Omarchy, offline and ad-free.</span></span>
+        <span class="tag">Omarchy</span>
+      </a></li>
+      <li class="ship"><a href="https://thezenpdf.vercel.app">
+        <span class="thumb"><video src="public/demos/zenpdf.mp4" poster="public/demos/zenpdf.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></span>
+        <span class="info"><span class="t">ZenPDF</span><span class="d">A clean, open-source PDF workbench with practical tools and transparent usage limits.</span></span>
+        <span class="tag">Web App</span>
+      </a></li>
+      <li class="ship"><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.zenpdf">
+        <span class="thumb"><span class="ph" aria-hidden="true">ZenPDF for Omarchy</span></span>
+        <span class="info"><span class="t">ZenPDF for Omarchy</span><span class="d">An offline-first Acrobat alternative for Omarchy and Arch Linux.</span></span>
+        <span class="tag tag-next">In Progress</span>
+      </a></li>
+    </ol>
+    <button class="ships-more" id="ships-more" type="button"><span aria-hidden="true">⋯</span> <span id="ships-more-n">6</span> more below</button>
   </div>
-  <h3 class="sub">More Projects</h3>
-  <ul class="list">
-    <li><a href="https://pasture-imposters-web.pages.dev"><span class="t">Pasture Imposters</span><span class="d">Among Us on a Pokémon-style farm: make your avatar and catch the imposter.</span><span class="tag">Game</span></a></li>
-    <li><a href="https://github.com/rohan-patnaik/gogcli-plus"><span class="t">gogcli-plus</span><span class="d">Drive reports, local-to-Drive sync and contact deduplication on top of gogcli.</span><span class="tag">CLI</span></a></li>
-    <li><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.window-switcher"><span class="t">Orbit</span><span class="d">A better Alt+Tab for Omarchy: macOS icons, Windows 7 stacks or a Windows 11 grid.</span><span class="tag">Omarchy</span></a></li>
-    <li><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.solitaire"><span class="t">Solitaire</span><span class="d">Five classic solitaire games for Omarchy, offline and ad-free.</span><span class="tag">Omarchy</span></a></li>
-    <li><a href="https://github.com/rohan-patnaik/anthropics-takehome-optimized-solution"><span class="t">Anthropic performance take-home</span><span class="d">An optimized vector kernel for Anthropic's open performance challenge, passing correctness at 1,430 cycles.</span><span class="tag">Performance</span></a></li>
-    <li><a href="https://marketplace.visualstudio.com/items?itemName=rohan-patnaik.decensored-deepseekr1-for-vscode"><span class="t">Decensored DeepSeek R1 for VS Code</span><span class="d">A local AI chat panel in VS Code, running DeepSeek R1-1776 or any GGUF model through Ollama.</span><span class="tag">IDE Extension</span></a></li>
-  </ul>
-  <h3 class="sub">Coming Next</h3>
-  <ul class="list">
-    <li><a href="https://omarchyplugins.com/plugin.html?id=io.github.rohan-patnaik.zenpdf"><span class="t">ZenPDF for Omarchy</span><span class="d">An offline-first Acrobat alternative for Omarchy and Arch Linux.</span><span class="tag tag-next">In Progress</span></a></li>
-    <li><a href="https://github.com/rohan-patnaik/Chromarchy"><span class="t">Chromarchy</span><span class="d">A local-first Photoshop alternative for Omarchy and Arch Linux.</span><span class="tag tag-next">In Progress</span></a></li>
-  </ul>
 </section>
 
 <section id="open-source" class="sec wrap">
