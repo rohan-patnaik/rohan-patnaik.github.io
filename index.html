@@ -113,7 +113,7 @@
     <svg id="graph" viewBox="0 0 440 360" role="img" aria-labelledby="graph-caption"></svg>
     <figcaption id="graph-caption"><span id="graph-readout">My merged PRs, by language</span><span class="hint">Hover or tap a node</span></figcaption>
   </figure>
-  <!-- oss:graph --><script type="application/json" id="oss-data">[{"id":"docusaurus","label":"docusaurus","full":"meta/docusaurus","company":"Meta","short":"Meta","lang":"typescript","prs":1,"stars":"67k"},{"id":"goose","label":"goose","full":"aaif-goose/goose","company":"Agentic AI Foundation","short":"AAIF","lang":"rust, c++","prs":1,"stars":"56k"},{"id":"k6","label":"k6","full":"grafana/k6","company":"Grafana Labs","short":"Grafana","lang":"go","prs":3,"stars":"32k"},{"id":"t3code","label":"t3code","full":"pingdotgg/t3code","company":"T3","short":"T3","lang":"typescript","prs":2,"stars":"31k"},{"id":"lexical","label":"lexical","full":"meta/lexical","company":"Meta","short":"Meta","lang":"typescript","prs":2,"stars":"24k"},{"id":"onnxruntime","label":"onnxruntime","full":"microsoft/onnxruntime","company":"Microsoft","short":"Microsoft","lang":"rust, c++","prs":1,"stars":"22k"},{"id":"unstructured","label":"unstructured","full":"Unstructured-IO/unstructured","company":"Unstructured","short":"Unstructured","lang":"python","prs":1,"stars":"16k"},{"id":"playwright-python","label":"playwright-python","full":"microsoft/playwright-python","company":"Microsoft","short":"Microsoft","lang":"python","prs":1,"stars":"15k"},{"id":"osv-scanner","label":"osv-scanner","full":"google/osv-scanner","company":"Google","short":"Google","lang":"go","prs":1,"stars":"11k"},{"id":"gogcli","label":"gogcli","full":"openclaw/gogcli","company":"OpenClaw","short":"OpenClaw","lang":"go","prs":2,"stars":"8.5k"}]</script><!-- /oss:graph -->
+  <!-- oss:graph --><script type="application/json" id="oss-data">[{"id":"lexical","label":"lexical","full":"meta/lexical","company":"Meta","short":"Meta","lang":"typescript","prs":2,"stars":"24k"},{"id":"onnxruntime","label":"onnxruntime","full":"microsoft/onnxruntime","company":"Microsoft","short":"Microsoft","lang":"rust, c++","prs":1,"stars":"22k"},{"id":"k6","label":"k6","full":"grafana/k6","company":"Grafana Labs","short":"Grafana","lang":"go","prs":3,"stars":"32k"},{"id":"t3code","label":"t3code","full":"pingdotgg/t3code","company":"T3","short":"T3","lang":"typescript","prs":2,"stars":"31k"},{"id":"osv-scanner","label":"osv-scanner","full":"google/osv-scanner","company":"Google","short":"Google","lang":"go","prs":1,"stars":"11k"},{"id":"docusaurus","label":"docusaurus","full":"meta/docusaurus","company":"Meta","short":"Meta","lang":"typescript","prs":1,"stars":"67k"},{"id":"playwright-python","label":"playwright-python","full":"microsoft/playwright-python","company":"Microsoft","short":"Microsoft","lang":"python","prs":1,"stars":"15k"},{"id":"gogcli","label":"gogcli","full":"openclaw/gogcli","company":"OpenClaw","short":"OpenClaw","lang":"go","prs":2,"stars":"8.5k"},{"id":"goose","label":"goose","full":"aaif-goose/goose","company":"Agentic AI Foundation","short":"AAIF","lang":"rust, c++","prs":1,"stars":"56k"},{"id":"unstructured","label":"unstructured","full":"Unstructured-IO/unstructured","company":"Unstructured","short":"Unstructured","lang":"python","prs":1,"stars":"16k"}]</script><!-- /oss:graph -->
 </section>
 
 <section id="shipped" class="sec wrap">
@@ -182,19 +182,28 @@
 
 <section id="open-source" class="sec wrap">
   <div class="sec-head"><h2>OSS Contributions</h2></div>
-  <p class="sec-intro">A selection from popular projects at <!-- oss:companies -->Google, Meta, Microsoft, OpenClaw, Grafana Labs<!-- /oss:companies --> and others. These aren't all of them: see more on <a href="https://github.com/rohan-patnaik">GitHub</a>.</p>
+  <p class="sec-intro">A selection from popular projects at <!-- oss:companies -->Google, Meta, Microsoft, Grafana Labs, T3<!-- /oss:companies --> and others. These aren't all of them: see more on <a href="https://github.com/rohan-patnaik">GitHub</a>.</p>
   <div class="fold" data-show="5" data-show-phone="4">
   <ol class="rows oss"><!-- oss:rows -->
-    <li class="row" id="r-docusaurus">
-      <div class="row-meta"><a class="repo" href="https://github.com/meta/docusaurus">meta/docusaurus</a><span class="company">Meta</span><span class="stars">67k ★</span></div>
+    <li class="row" id="r-go-containerregistry">
+      <div class="row-meta"><a class="repo" href="https://github.com/google/go-containerregistry">google/go-containerregistry</a><span class="company">Google</span><span class="stars">4.1k ★</span></div>
       <ul class="prs">
-        <li><a href="https://github.com/meta/docusaurus/pull/12054">#12054</a><span>Fixed localized sites publishing wrong URLs in metadata and sitemaps.</span></li>
+        <li><a href="https://github.com/google/go-containerregistry/pull/2316">#2316</a><span>Kept <code>localhost/...</code> image references pointing at the local registry.</span></li>
+        <li><a href="https://github.com/google/go-containerregistry/pull/2315">#2315</a><span>Let push-only workflows skip Kubernetes pull secrets.</span></li>
+        <li><a href="https://github.com/google/go-containerregistry/pull/2314">#2314</a><span>Ensured only true loopback hosts get plain-HTTP registry access.</span></li>
       </ul>
     </li>
-    <li class="row" id="r-goose">
-      <div class="row-meta"><a class="repo" href="https://github.com/aaif-goose/goose">aaif-goose/goose</a><span class="company">Agentic AI Foundation</span><span class="stars">56k ★</span></div>
+    <li class="row" id="r-lexical">
+      <div class="row-meta"><a class="repo" href="https://github.com/meta/lexical">meta/lexical</a><span class="company">Meta</span><span class="stars">24k ★</span></div>
       <ul class="prs">
-        <li><a href="https://github.com/aaif-goose/goose/pull/12516">#12516</a><span>Kept session context alive across the agent's reply lifecycle, including ACP delegation and resumes.</span></li>
+        <li><a href="https://github.com/meta/lexical/pull/8539">#8539</a><span>Fixed collapsible blocks breaking on empty or inline-only content.</span></li>
+        <li><a href="https://github.com/meta/lexical/pull/8541">#8541</a><span>Added markdown round-trip tests for bold-italic text.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-onnxruntime">
+      <div class="row-meta"><a class="repo" href="https://github.com/microsoft/onnxruntime">microsoft/onnxruntime</a><span class="company">Microsoft</span><span class="stars">22k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/microsoft/onnxruntime/pull/32846">#32846</a><span>Enabled int8 and uint32 support in the CPU <code>Where</code> operator.</span></li>
       </ul>
     </li>
     <li class="row" id="r-k6">
@@ -212,56 +221,17 @@
         <li><a href="https://github.com/pingdotgg/t3code/pull/19923">#19923</a><span>Stopped large image attachments stalling the chat timeline by decoding them asynchronously.</span></li>
       </ul>
     </li>
-    <li class="row" id="r-lexical">
-      <div class="row-meta"><a class="repo" href="https://github.com/meta/lexical">meta/lexical</a><span class="company">Meta</span><span class="stars">24k ★</span></div>
+    <li class="row" id="r-cel-go">
+      <div class="row-meta"><a class="repo" href="https://github.com/cel-expr/cel-go">cel-expr/cel-go</a><span class="company">Google</span><span class="stars">3.1k ★</span></div>
       <ul class="prs">
-        <li><a href="https://github.com/meta/lexical/pull/8539">#8539</a><span>Fixed collapsible blocks breaking on empty or inline-only content.</span></li>
-        <li><a href="https://github.com/meta/lexical/pull/8541">#8541</a><span>Added markdown round-trip tests for bold-italic text.</span></li>
-      </ul>
-    </li>
-    <li class="row" id="r-onnxruntime">
-      <div class="row-meta"><a class="repo" href="https://github.com/microsoft/onnxruntime">microsoft/onnxruntime</a><span class="company">Microsoft</span><span class="stars">22k ★</span></div>
-      <ul class="prs">
-        <li><a href="https://github.com/microsoft/onnxruntime/pull/32846">#32846</a><span>Enabled int8 and uint32 support in the CPU <code>Where</code> operator.</span></li>
-      </ul>
-    </li>
-    <li class="row" id="r-unstructured">
-      <div class="row-meta"><a class="repo" href="https://github.com/Unstructured-IO/unstructured">Unstructured-IO/unstructured</a><span class="company">Unstructured</span><span class="stars">16k ★</span></div>
-      <ul class="prs">
-        <li><a href="https://github.com/Unstructured-IO/unstructured/pull/4504">#4504</a><span>Kept element IDs and source metadata intact when reloading Unstructured's own JSON output.</span></li>
-      </ul>
-    </li>
-    <li class="row" id="r-playwright-python">
-      <div class="row-meta"><a class="repo" href="https://github.com/microsoft/playwright-python">microsoft/playwright-python</a><span class="company">Microsoft</span><span class="stars">15k ★</span></div>
-      <ul class="prs">
-        <li><a href="https://github.com/microsoft/playwright-python/pull/3084">#3084</a><span>Fixed handlers with keyword-only parameters getting the wrong arguments.</span></li>
+        <li><a href="https://github.com/cel-expr/cel-go/pull/1340">#1340</a><span>Added a JSON encoder to CEL's standard extensions.</span></li>
+        <li><a href="https://github.com/cel-expr/cel-go/pull/1327">#1327</a><span>Allowed container aliases for simple names, with validation still strict.</span></li>
       </ul>
     </li>
     <li class="row" id="r-osv-scanner">
       <div class="row-meta"><a class="repo" href="https://github.com/google/osv-scanner">google/osv-scanner</a><span class="company">Google</span><span class="stars">11k ★</span></div>
       <ul class="prs">
         <li><a href="https://github.com/google/osv-scanner/pull/2808">#2808</a><span>Removed duplicate vulnerability queries in bulk scans, keeping result order.</span></li>
-      </ul>
-    </li>
-    <li class="row" id="r-gogcli">
-      <div class="row-meta"><a class="repo" href="https://github.com/openclaw/gogcli">openclaw/gogcli</a><span class="company">OpenClaw</span><span class="stars">8.5k ★</span></div>
-      <ul class="prs">
-        <li><a href="https://github.com/openclaw/gogcli/pull/555">#555</a><span>Added a safe preview for finding duplicate Google Contacts.</span></li>
-        <li><a href="https://github.com/openclaw/gogcli/pull/554">#554</a><span>Added read-only Drive reports: tree views, folder summaries and inspection.</span></li>
-      </ul>
-    </li>
-    <li class="row" id="r-azure-cli">
-      <div class="row-meta"><a class="repo" href="https://github.com/Azure/azure-cli">Azure/azure-cli</a><span class="company">Microsoft</span><span class="stars">4.7k ★</span></div>
-      <ul class="prs">
-        <li><a href="https://github.com/Azure/azure-cli/pull/33429">#33429</a><span>Kept <code>az vm image list</code> working when the remote alias file is malformed.</span></li>
-      </ul>
-    </li>
-    <li class="row" id="r-go-containerregistry">
-      <div class="row-meta"><a class="repo" href="https://github.com/google/go-containerregistry">google/go-containerregistry</a><span class="company">Google</span><span class="stars">4.1k ★</span></div>
-      <ul class="prs">
-        <li><a href="https://github.com/google/go-containerregistry/pull/2316">#2316</a><span>Kept <code>localhost/...</code> image references pointing at the local registry.</span></li>
-        <li><a href="https://github.com/google/go-containerregistry/pull/2315">#2315</a><span>Let push-only workflows skip Kubernetes pull secrets.</span></li>
-        <li><a href="https://github.com/google/go-containerregistry/pull/2314">#2314</a><span>Ensured only true loopback hosts get plain-HTTP registry access.</span></li>
       </ul>
     </li>
     <li class="row" id="r-botorch">
@@ -271,17 +241,47 @@
         <li><a href="https://github.com/meta-pytorch/botorch/pull/3372">#3372</a><span>Let nonlinear-constrained optimization start from infeasible points, since SLSQP can repair them.</span></li>
       </ul>
     </li>
-    <li class="row" id="r-cel-go">
-      <div class="row-meta"><a class="repo" href="https://github.com/cel-expr/cel-go">cel-expr/cel-go</a><span class="company">Google</span><span class="stars">3.1k ★</span></div>
+    <li class="row" id="r-docusaurus">
+      <div class="row-meta"><a class="repo" href="https://github.com/meta/docusaurus">meta/docusaurus</a><span class="company">Meta</span><span class="stars">67k ★</span></div>
       <ul class="prs">
-        <li><a href="https://github.com/cel-expr/cel-go/pull/1340">#1340</a><span>Added a JSON encoder to CEL's standard extensions.</span></li>
-        <li><a href="https://github.com/cel-expr/cel-go/pull/1327">#1327</a><span>Allowed container aliases for simple names, with validation still strict.</span></li>
+        <li><a href="https://github.com/meta/docusaurus/pull/12054">#12054</a><span>Fixed localized sites publishing wrong URLs in metadata and sitemaps.</span></li>
       </ul>
     </li>
     <li class="row" id="r-torchft">
       <div class="row-meta"><a class="repo" href="https://github.com/meta-pytorch/torchft">meta-pytorch/torchft</a><span class="company">Meta</span><span class="stars">552 ★</span></div>
       <ul class="prs">
         <li><a href="https://github.com/meta-pytorch/torchft/pull/356">#356</a><span>Made checkpoint transfers honour the transport's configured timeout by default.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-playwright-python">
+      <div class="row-meta"><a class="repo" href="https://github.com/microsoft/playwright-python">microsoft/playwright-python</a><span class="company">Microsoft</span><span class="stars">15k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/microsoft/playwright-python/pull/3084">#3084</a><span>Fixed handlers with keyword-only parameters getting the wrong arguments.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-azure-cli">
+      <div class="row-meta"><a class="repo" href="https://github.com/Azure/azure-cli">Azure/azure-cli</a><span class="company">Microsoft</span><span class="stars">4.7k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/Azure/azure-cli/pull/33429">#33429</a><span>Kept <code>az vm image list</code> working when the remote alias file is malformed.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-gogcli">
+      <div class="row-meta"><a class="repo" href="https://github.com/openclaw/gogcli">openclaw/gogcli</a><span class="company">OpenClaw</span><span class="stars">8.5k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/openclaw/gogcli/pull/555">#555</a><span>Added a safe preview for finding duplicate Google Contacts.</span></li>
+        <li><a href="https://github.com/openclaw/gogcli/pull/554">#554</a><span>Added read-only Drive reports: tree views, folder summaries and inspection.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-goose">
+      <div class="row-meta"><a class="repo" href="https://github.com/aaif-goose/goose">aaif-goose/goose</a><span class="company">Agentic AI Foundation</span><span class="stars">56k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/aaif-goose/goose/pull/12516">#12516</a><span>Kept session context alive across the agent's reply lifecycle, including ACP delegation and resumes.</span></li>
+      </ul>
+    </li>
+    <li class="row" id="r-unstructured">
+      <div class="row-meta"><a class="repo" href="https://github.com/Unstructured-IO/unstructured">Unstructured-IO/unstructured</a><span class="company">Unstructured</span><span class="stars">16k ★</span></div>
+      <ul class="prs">
+        <li><a href="https://github.com/Unstructured-IO/unstructured/pull/4504">#4504</a><span>Kept element IDs and source metadata intact when reloading Unstructured's own JSON output.</span></li>
       </ul>
     </li>
     <!-- /oss:rows --></ol>
