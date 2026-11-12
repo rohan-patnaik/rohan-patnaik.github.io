@@ -1,19 +1,17 @@
-// A humanoid built from primitives. It turns from one side to the other, coming
-// apart into an exploded view on the way and reassembling as it settles.
-// Loaded on demand by script.js when the band scrolls near the viewport.
+// A humanoid built from primitives. Each turn starts assembled looking to one
+// side, comes apart into an exploded view on the way across, and reassembles as
+// it settles looking to the other side. script.js drives it inside the hero tile.
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 
-const fig = document.getElementById('robot');
-if (fig) main(fig);
+export const TURN = 5;  // seconds for one turn, matching the tile's switch interval
 
-function main(fig) {
-  const canvas = fig.querySelector('canvas');
+// Returns { count, turn(dir), stop() }, or null when WebGL isn't available.
+export function mountRobot(canvas) {
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });
   } catch {
-    fig.remove();
-    return;
+    return null;
   }
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -66,9 +64,6 @@ function main(fig) {
   robot.add(head);
   const parts = build(robot, head);
 
-  const cap = fig.querySelector('[data-count]');
-  if (cap) cap.textContent = parts.length;
-
   // Exploded positions: everything pushes away from the hips, wide more than tall,
   // with the white shells lifting off the dark frame beneath them.
   const centre = new THREE.Vector3(0, 1.0, 0);
@@ -90,40 +85,39 @@ function main(fig) {
   }
 
   const resize = () => {
-    const w = fig.clientWidth, h = fig.clientHeight;
+    const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     const t = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
-    const dist = Math.max(1.16 / t, 0.85 / (t * camera.aspect)) + 0.4;
-    camera.position.set(0, 1.05, dist);
-    camera.lookAt(0, 0.95, 0);
+    const dist = Math.max(1.16 / t, 0.82 / (t * camera.aspect)) + 0.35;
+    camera.position.set(0, 1.1, dist);
+    camera.lookAt(0, 0.99, 0);
     camera.updateProjectionMatrix();
   };
-  new ResizeObserver(() => { resize(); if (!running) draw(still); }).observe(fig);
+  new ResizeObserver(() => { resize(); if (!raf) draw(last); }).observe(canvas);
 
   const SPAN = 0.55;  // how far it looks to each side, in radians
-  const LEG = 6.5;    // seconds for one turn
   const tmpQ = new THREE.Quaternion();
   const ease = (x) => x * x * (3 - 2 * x);
   const clamp = (x) => Math.min(1, Math.max(0, x));
   const smooth = (a, b, x) => ease(clamp((x - a) / (b - a)));
 
-  function pose(sec) {
-    const t = sec % (LEG * 2);
-    const dir = t < LEG ? 1 : -1;  // 1: left to right, -1: back again
-    const u = (t % LEG) / LEG;
-    const k = clamp((u - 0.14) / 0.72);
+  // dir 1 turns left to right, -1 right to left; u runs 0..1 across the turn.
+  function pose(u, dir, sec) {
+    const k = clamp((u - 0.1) / 0.72);
     const turn = 0.5 - 0.5 * Math.cos(Math.PI * k);
     return {
       yaw: -dir * SPAN + dir * 2 * SPAN * turn,
-      head: dir * 0.32 * (smooth(0, 0.24, u) - smooth(0.62, 1, u)),
+      head: dir * 0.32 * (smooth(0, 0.2, u) - smooth(0.55, 0.95, u)),
       apart: Math.sin(Math.PI * k),
       bob: Math.sin(sec * 1.7) * 0.003,
     };
   }
 
+  let last = pose(0, 1, 0);
   function draw(s) {
+    last = s;
     robot.rotation.y = s.yaw;
     robot.position.y = s.bob;
     head.rotation.y = s.head;
@@ -135,23 +129,25 @@ function main(fig) {
     renderer.render(scene, camera);
   }
 
-  const still = { yaw: -0.4, head: -0.1, apart: 0, bob: 0 };
-  const calm = matchMedia('(prefers-reduced-motion: reduce)');
-  let running = false, raf = 0, visible = false;
-  const start0 = performance.now();
-  const tick = (now) => { draw(pose((now - start0) / 1000)); raf = requestAnimationFrame(tick); };
-  const update = () => {
-    const go = visible && !calm.matches;
-    if (go && !running) { running = true; raf = requestAnimationFrame(tick); }
-    if (!go && running) { running = false; cancelAnimationFrame(raf); }
-    if (!go) draw(still);
+  // Render only while a turn is playing and the tile is on screen.
+  let raf = 0, visible = true, playing = null;
+  const tick = (now) => {
+    raf = 0;
+    if (!playing || !visible) return;
+    const sec = (now - playing.t0) / 1000;
+    draw(pose(Math.min(1, sec / TURN), playing.dir, sec));
+    raf = requestAnimationFrame(tick);
   };
-  calm.addEventListener('change', update);
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; update(); }).observe(fig);
+  const kick = () => { if (!raf && playing && visible) raf = requestAnimationFrame(tick); };
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; kick(); }).observe(canvas);
 
   resize();
-  draw(still);
-  fig.classList.add('ready');
+  draw(last);
+  return {
+    count: parts.length,
+    turn(dir) { playing = { dir, t0: performance.now() }; draw(pose(0, dir, 0)); kick(); },
+    stop() { playing = null; if (raf) cancelAnimationFrame(raf); raf = 0; },
+  };
 }
 
 // --- Robot -----------------------------------------------------------------
