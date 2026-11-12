@@ -253,37 +253,52 @@ if (ships) {
   });
 }
 
-// Hero tile: every 5 seconds it swaps between the PR graph and a robot that turns
-// and comes apart. It stays on the graph while someone hovers or focuses it, and a
-// tap on the robot brings the graph back. Reduced motion keeps the graph only.
+// Hero tile: every 5 seconds it moves on from the PR graph to the first robot, the
+// second robot, then back to the graph. Each robot turns and comes apart while it
+// shows. The tile stays on the graph while someone hovers or focuses it, a tap on a
+// robot brings the graph back, and reduced motion keeps the graph only.
 const tile = document.querySelector('.graph');
-const robotView = tile?.querySelector('.robot-view');
-if (tile && robotView && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+const robotViews = [...(tile?.querySelectorAll('.robot-view') || [])];
+if (tile && robotViews.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const SWITCH = 5000;
   const readout = document.getElementById('graph-readout');
   const graphLabel = readout.textContent;
-  const start = () => import('./robot.js').then(({ mountRobot, TURN }) => {
-    const bot = mountRobot(robotView);
-    if (!bot) { robotView.remove(); return; }
-    let onRobot = false, dir = 1, held = false, timer = 0;
-    const show = (robot) => {
-      onRobot = robot;
-      tile.classList.toggle('show-robot', robot);
-      readout.textContent = robot ? '' : graphLabel;
-      if (robot) { bot.turn(dir); dir = -dir; } else setTimeout(() => { if (!onRobot) bot.stop(); }, 700);
+  const mount = async (view) => {
+    try {
+      const { mountRobot } = await import(view.dataset.src);
+      const bot = mountRobot(view);
+      if (bot) return { view, bot, dir: 1 };
+    } catch { /* fall through: this robot is skipped */ }
+    view.remove();
+    return null;
+  };
+  const start = async () => {
+    const stages = [null, ...(await Promise.all(robotViews.map(mount))).filter(Boolean)];
+    if (stages.length < 2) return;
+    let at = 0, held = false, timer = 0;
+    const show = (i) => {
+      const prev = stages[at];
+      const cur = stages[i];
+      at = i;
+      tile.classList.toggle('show-robot', !!cur);
+      robotViews.forEach((v) => v.classList.toggle('on', cur?.view === v));
+      readout.textContent = cur ? '' : graphLabel;
+      if (cur) { cur.bot.turn(cur.dir); cur.dir = -cur.dir; }
+      if (prev && prev !== cur) setTimeout(() => { if (stages[at] !== prev) prev.bot.stop(); }, 700);
       clearTimeout(timer);
-      timer = setTimeout(next, TURN * 1000);
+      timer = setTimeout(next, SWITCH);
     };
     const next = () => {
-      if (document.hidden || (!onRobot && held)) { timer = setTimeout(next, TURN * 1000); return; }
-      show(!onRobot);
+      if (document.hidden || (at === 0 && held)) { timer = setTimeout(next, SWITCH); return; }
+      show((at + 1) % stages.length);
     };
     tile.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') held = true; });
     tile.addEventListener('pointerleave', () => { held = false; });
     tile.addEventListener('focusin', () => { held = true; });
     tile.addEventListener('focusout', (e) => { if (!tile.contains(e.relatedTarget)) held = false; });
-    robotView.addEventListener('click', () => show(false));
-    timer = setTimeout(next, TURN * 1000);
-  }).catch(() => robotView.remove());
+    robotViews.forEach((v) => v.addEventListener('click', () => show(0)));
+    timer = setTimeout(next, SWITCH);
+  };
   if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 2500 });
   else setTimeout(start, 1200);
 }
