@@ -29,7 +29,8 @@ export function mountRobot(canvas) {
   key.shadow.mapSize.set(1024, 1024);
   Object.assign(key.shadow.camera, { left: -1.6, right: 1.6, top: 2.4, bottom: -0.4, near: 1, far: 10 });
   key.shadow.radius = 4;
-  key.shadow.bias = -0.0004;
+  key.shadow.bias = -0.0005;
+  key.shadow.normalBias = 0.02;
   scene.add(key);
   const rim = new THREE.DirectionalLight(0xdfe4ff, 2.8);
   rim.position.set(-3, 2.2, -2.5);
@@ -152,17 +153,19 @@ export function mountRobot(canvas) {
 
 // --- Robot -----------------------------------------------------------------
 
+// Grey armour plates over a dark structural frame, modelled on a modern
+// humanoid: helmet with a black face visor, tapered torso, curved limb shells
+// and exposed actuators at every joint.
 function build(robot, head) {
-  const shell = new THREE.MeshPhysicalMaterial({ color: 0xf1f1ee, roughness: 0.32, clearcoat: 0.7, clearcoatRoughness: 0.18 });
-  const dark = new THREE.MeshStandardMaterial({ color: 0x2a2c30, roughness: 0.38, metalness: 0.55 });
+  const shell = new THREE.MeshPhysicalMaterial({ color: 0xa3a7ac, roughness: 0.36, metalness: 0.18, clearcoat: 0.55, clearcoatRoughness: 0.22, side: THREE.DoubleSide });
+  const dark = new THREE.MeshStandardMaterial({ color: 0x232528, roughness: 0.42, metalness: 0.55 });
   const metal = new THREE.MeshStandardMaterial({ color: 0x8a8d91, roughness: 0.28, metalness: 0.9 });
-  const visor = new THREE.MeshPhysicalMaterial({ color: 0x050607, roughness: 0.06, clearcoat: 1, metalness: 0.2 });
+  const visor = new THREE.MeshPhysicalMaterial({ color: 0x040506, roughness: 0.05, clearcoat: 1, metalness: 0.2, side: THREE.DoubleSide });
   const glow = new THREE.MeshBasicMaterial({ color: 0xb7a6ff });
   const kinds = new Map([[shell, 'shell'], [dark, 'dark'], [metal, 'metal'], [visor, 'shell'], [glow, 'dark']]);
 
   const parts = [];
   const X = [0, 0, Math.PI / 2];   // cylinder axis along x
-  const Z = [Math.PI / 2, 0, 0];   // cylinder axis along z
   const add = (geo, mat, pos, rot, scale, parent = robot) => {
     const m = new THREE.Mesh(geo, mat);
     m.position.set(...pos);
@@ -172,87 +175,91 @@ function build(robot, head) {
     parent.add(m);
     parts.push({ m, home: m.position.clone(), homeQ: m.quaternion.clone(), kind: kinds.get(mat) });
   };
-  const cyl = (r, h, seg = 28) => new THREE.CylinderGeometry(r, r, h, seg);
+  const cyl = (r, h, seg = 28, r2 = r) => new THREE.CylinderGeometry(r, r2, h, seg);
   const cap = (r, len) => new THREE.CapsuleGeometry(r, len, 6, 20);
   const box = (w, h, d, r) => roundedBox(w, h, d, r ?? Math.min(w, h, d) * 0.3);
-  const bolt = (pos, axis = Z, parent) => add(cyl(0.008, 0.008, 12), metal, pos, axis, null, parent);
+  // A smooth turned shape from a [radius, height] profile. `arc` keeps only part
+  // of the turn (a plate), centred on angle `at` (0 faces forward, PI/2 faces +x).
+  // The mesh is placed at its own centre so the exploded view pushes it the right way.
+  const lathe = (prof, mat, x, z, { sz = 1, arc, at = 0 } = {}, parent) => {
+    const pts = new THREE.SplineCurve(prof.map(([r, y]) => new THREE.Vector2(r, y)))
+      .getPoints(36).map((p) => new THREE.Vector2(Math.max(0, p.x), p.y));
+    const g = arc ? new THREE.LatheGeometry(pts, 40, at - arc / 2, arc) : new THREE.LatheGeometry(pts, 40);
+    g.scale(1, 1, sz);
+    g.computeBoundingBox();
+    const c = g.boundingBox.getCenter(new THREE.Vector3());
+    g.translate(-c.x, -c.y, -c.z);
+    add(g, mat, [x + c.x, c.y, z + c.z], null, null, parent);
+  };
 
-  // Head
-  add(new THREE.SphereGeometry(0.112, 40, 28), shell, [0, 0.13, -0.005], null, [1, 1.16, 1.06], head);
-  add(new THREE.SphereGeometry(0.104, 40, 28), visor, [0, 0.125, 0.03], null, [0.93, 0.78, 1], head);
-  add(box(0.1, 0.006, 0.01, 0.003), glow, [0, 0.135, 0.132], null, null, head);
+  // Head (group origin sits at the neck, y = 1.5)
+  const helmet = [0.92, 1.12, 1];
+  add(new THREE.SphereGeometry(0.104, 44, 32), shell, [0, 0.135, 0], null, helmet, head);
+  add(new THREE.SphereGeometry(0.107, 44, 24, Math.PI / 2 - 1.05, 2.1, 0.95, 1.0), visor, [0, 0.135, 0.004], null, helmet, head);
+  add(box(0.06, 0.005, 0.008, 0.0025), glow, [0, 0.148, 0.108], null, null, head);
   for (const s of [-1, 1]) {
-    add(cyl(0.036, 0.03), dark, [s * 0.112, 0.12, -0.005], X, null, head);
-    add(cyl(0.02, 0.012), metal, [s * 0.131, 0.12, -0.005], X, null, head);
+    add(cyl(0.03, 0.026), dark, [s * 0.094, 0.13, -0.005], X, null, head);
+    add(cyl(0.017, 0.01), metal, [s * 0.11, 0.13, -0.005], X, null, head);
   }
-  add(box(0.11, 0.08, 0.05), dark, [0, 0.1, -0.095], null, null, head);
-  add(cyl(0.034, 0.035), dark, [0, 0.0, 0], null, null, head);
-  add(cyl(0.04, 0.02), metal, [0, -0.025, 0], null, null, head);
+  add(box(0.08, 0.06, 0.04, 0.015), dark, [0, 0.11, -0.092], null, null, head);
+  add(cyl(0.03, 0.06), dark, [0, 0.025, 0], null, null, head);
+  add(cyl(0.038, 0.012), metal, [0, -0.005, 0], null, null, head);
 
-  // Torso
-  add(box(0.22, 0.42, 0.16, 0.03), dark, [0, 1.25, 0]);
-  add(box(0.34, 0.24, 0.08, 0.04), shell, [0, 1.36, 0.06]);
-  add(box(0.32, 0.26, 0.06, 0.03), shell, [0, 1.35, -0.08]);
-  add(box(0.2, 0.17, 0.05, 0.02), dark, [0, 1.28, -0.125]);
-  add(box(0.27, 0.045, 0.13, 0.02), dark, [0, 1.49, 0]);
-  add(box(0.05, 0.012, 0.01, 0.005), glow, [0, 1.43, 0.101]);
-  for (const s of [-1, 1]) {
-    add(box(0.03, 0.18, 0.1, 0.012), dark, [s * 0.18, 1.31, 0]);
-    bolt([s * 0.145, 1.45, 0.1]);
-    bolt([s * 0.145, 1.27, 0.1]);
-  }
-  for (const y of [1.17, 1.13, 1.09]) add(box(0.2, 0.034, 0.13, 0.012), dark, [0, y, 0.005]);
-  add(box(0.17, 0.085, 0.04, 0.018), shell, [0, 1.13, 0.07]);
-  add(box(0.27, 0.1, 0.16, 0.03), dark, [0, 1.02, 0]);
-  add(box(0.29, 0.065, 0.06, 0.025), shell, [0, 1.02, 0.065]);
+  // Torso: dark core, curved chest and back plates, abdomen plate, pelvis
+  lathe([[0, 1.05], [0.085, 1.07], [0.075, 1.15], [0.11, 1.25], [0.135, 1.36], [0.128, 1.46], [0.07, 1.5], [0, 1.51]], dark, 0, 0, { sz: 0.62 });
+  lathe([[0.112, 1.22], [0.135, 1.3], [0.152, 1.38], [0.146, 1.45], [0.1, 1.495]], shell, 0, 0, { sz: 0.68, arc: 2.6 });
+  lathe([[0.118, 1.26], [0.144, 1.34], [0.148, 1.42], [0.11, 1.48]], shell, 0, 0, { sz: 0.68, arc: 2.1, at: Math.PI });
+  lathe([[0.088, 1.11], [0.084, 1.15], [0.1, 1.215]], shell, 0, 0, { sz: 0.74, arc: 2.0 });
+  for (const y of [1.11, 1.145, 1.18]) add(cyl(0.083, 0.022, 32), dark, [0, y, 0], null, [1, 1, 0.66]);
+  add(box(0.15, 0.13, 0.04, 0.015), dark, [0, 1.33, -0.105]);
+  add(box(0.045, 0.01, 0.008, 0.004), glow, [0, 1.42, 0.104]);
+  lathe([[0, 0.905], [0.07, 0.915], [0.108, 0.955], [0.112, 1.0], [0.092, 1.04], [0, 1.048]], shell, 0, 0, { sz: 0.66 });
+  add(box(0.2, 0.03, 0.11, 0.01), dark, [0, 1.06, 0]);
 
   for (const s of [-1, 1]) {
-    // Arm
-    const ax = s * 0.262;
-    add(cyl(0.058, 0.08), dark, [s * 0.212, 1.43, 0], X);
-    add(new THREE.SphereGeometry(0.068, 32, 20), shell, [s * 0.258, 1.435, 0], null, [1, 0.92, 1]);
-    add(cyl(0.03, 0.012), metal, [s * 0.326, 1.435, 0], X);
-    add(cyl(0.028, 0.22), dark, [ax, 1.27, 0]);
-    add(cap(0.046, 0.12), shell, [ax, 1.265, 0.004], null, [1, 1, 1.05]);
-    add(cyl(0.04, 0.072), dark, [ax, 1.125, 0], X);
-    for (const k of [-1, 1]) add(cyl(0.022, 0.01), metal, [ax + k * 0.04, 1.125, 0], X);
-    add(cap(0.04, 0.12), shell, [ax, 0.995, 0.006]);
-    add(box(0.05, 0.16, 0.04, 0.015), dark, [ax, 0.995, -0.024]);
-    add(cyl(0.027, 0.04), dark, [ax, 0.89, 0]);
+    // Shoulder and arm
+    const ax = s * 0.255;
+    add(cyl(0.052, 0.07), dark, [s * 0.195, 1.425, 0], X);
+    add(new THREE.SphereGeometry(0.064, 32, 22), shell, [s * 0.245, 1.43, 0], null, [0.95, 0.88, 1]);
+    add(cyl(0.028, 0.012), metal, [s * 0.307, 1.43, 0], X);
+    add(cyl(0.028, 0.22), dark, [ax, 1.265, 0]);
+    lathe([[0.04, 1.165], [0.047, 1.24], [0.05, 1.31], [0.044, 1.37]], shell, ax, 0, { arc: 3.4, at: s * Math.PI / 2 });
+    add(cyl(0.037, 0.068), dark, [ax, 1.135, 0], X);
+    for (const k of [-1, 1]) add(cyl(0.02, 0.008), metal, [ax + k * 0.037, 1.135, 0], X);
+    add(cyl(0.024, 0.2), dark, [ax, 1.0, 0]);
+    lathe([[0, 1.1], [0.036, 1.095], [0.044, 1.04], [0.038, 0.96], [0.03, 0.905], [0, 0.9]], shell, ax, 0.004);
+    add(cyl(0.024, 0.035), dark, [ax, 0.88, 0]);
     // Hand: palm faces the body, fingers hang below
-    add(box(0.03, 0.085, 0.072, 0.012), dark, [ax, 0.83, 0]);
-    add(box(0.008, 0.05, 0.05, 0.004), shell, [ax + s * 0.017, 0.835, 0]);
-    for (const fz of [-0.027, -0.009, 0.009, 0.027]) {
-      add(cap(0.0095, 0.014), dark, [ax, 0.774, fz]);
-      add(cap(0.009, 0.012), dark, [ax, 0.745, fz]);
-      add(cap(0.0088, 0.008), shell, [ax, 0.72, fz]);
+    add(box(0.028, 0.08, 0.066, 0.011), dark, [ax, 0.825, 0]);
+    add(box(0.008, 0.052, 0.05, 0.004), shell, [ax + s * 0.016, 0.83, 0]);
+    for (const fz of [-0.025, -0.0085, 0.0085, 0.025]) {
+      add(cap(0.0088, 0.014), dark, [ax, 0.77, fz]);
+      add(cap(0.0084, 0.011), dark, [ax, 0.742, fz]);
+      add(cap(0.0082, 0.007), shell, [ax, 0.718, fz]);
     }
-    add(cap(0.01, 0.016), dark, [ax - s * 0.016, 0.8, 0.042], [0.5, 0, 0]);
-    add(cap(0.0095, 0.012), shell, [ax - s * 0.018, 0.776, 0.054], [0.5, 0, 0]);
+    add(cap(0.0095, 0.016), dark, [ax - s * 0.015, 0.797, 0.04], [0.5, 0, 0]);
+    add(cap(0.009, 0.011), shell, [ax - s * 0.017, 0.774, 0.051], [0.5, 0, 0]);
 
     // Leg
-    const lx = s * 0.11;
-    add(cyl(0.046, 0.05), dark, [s * 0.1, 0.94, 0]);
-    add(cyl(0.06, 0.09), dark, [lx, 0.87, 0], X);
-    add(cyl(0.036, 0.012), metal, [lx + s * 0.05, 0.87, 0], X);
-    add(box(0.07, 0.3, 0.08, 0.02), dark, [lx, 0.68, -0.012]);
-    add(box(0.1, 0.25, 0.1, 0.045), shell, [lx, 0.7, 0.024]);
-    for (const k of [-1, 1]) add(cyl(0.008, 0.3, 12), metal, [lx + k * 0.028, 0.68, -0.056]);
-    bolt([lx, 0.79, 0.075]);
-    bolt([lx, 0.61, 0.075]);
-    add(cyl(0.055, 0.1), dark, [lx, 0.5, 0], X);
-    for (const k of [-1, 1]) add(cyl(0.03, 0.01), metal, [lx + k * 0.053, 0.5, 0], X);
-    add(box(0.08, 0.08, 0.04, 0.018), shell, [lx, 0.5, 0.056]);
-    add(box(0.06, 0.32, 0.07, 0.02), dark, [lx, 0.3, -0.015]);
-    add(box(0.086, 0.24, 0.08, 0.035), shell, [lx, 0.32, 0.03]);
-    add(box(0.06, 0.1, 0.06, 0.02), dark, [lx, 0.38, -0.062]);
-    add(cyl(0.007, 0.28, 12), metal, [lx, 0.25, -0.062]);
-    bolt([lx, 0.4, 0.071]);
-    add(cyl(0.032, 0.08), dark, [lx, 0.1, 0], X);
-    add(box(0.1, 0.04, 0.24, 0.015), dark, [lx, 0.03, 0.04]);
-    add(box(0.09, 0.03, 0.13, 0.012), shell, [lx, 0.064, 0.07]);
-    add(box(0.09, 0.026, 0.05, 0.01), dark, [lx, 0.02, 0.185]);
-    add(box(0.08, 0.04, 0.05, 0.015), shell, [lx, 0.04, -0.07]);
+    const lx = s * 0.1;
+    add(cyl(0.044, 0.05), dark, [lx, 0.9, 0]);
+    add(cyl(0.056, 0.085), dark, [lx, 0.84, 0], X);
+    add(cyl(0.034, 0.012), metal, [lx + s * 0.047, 0.84, 0], X);
+    lathe([[0, 0.53], [0.045, 0.55], [0.053, 0.65], [0.06, 0.76], [0.052, 0.81], [0, 0.825]], dark, lx, 0, { sz: 0.9 });
+    lathe([[0.05, 0.58], [0.064, 0.66], [0.073, 0.75], [0.066, 0.805]], shell, lx, 0, { sz: 0.95, arc: 3.0 });
+    add(cyl(0.016, 0.2), dark, [lx, 0.67, -0.058]);
+    add(cyl(0.007, 0.26, 12), metal, [lx + s * 0.022, 0.66, -0.05]);
+    add(cyl(0.05, 0.092), dark, [lx, 0.5, 0], X);
+    for (const k of [-1, 1]) add(cyl(0.028, 0.008), metal, [lx + k * 0.048, 0.5, 0], X);
+    add(new THREE.SphereGeometry(0.042, 28, 18), shell, [lx, 0.505, 0.04], null, [1, 1.05, 0.6]);
+    lathe([[0, 0.1], [0.03, 0.12], [0.038, 0.25], [0.046, 0.37], [0.042, 0.45], [0, 0.465]], dark, lx, 0, { sz: 0.9 });
+    lathe([[0.036, 0.14], [0.044, 0.24], [0.056, 0.36], [0.052, 0.44]], shell, lx, 0, { sz: 0.95, arc: 2.9 });
+    add(cyl(0.022, 0.16), dark, [lx, 0.34, -0.054]);
+    add(cyl(0.007, 0.22, 12), metal, [lx, 0.2, -0.048]);
+    add(cyl(0.03, 0.07), dark, [lx, 0.09, 0], X);
+    add(box(0.084, 0.045, 0.19, 0.02), shell, [lx, 0.047, 0.035]);
+    add(box(0.094, 0.018, 0.225, 0.008), dark, [lx, 0.009, 0.035]);
+    add(box(0.07, 0.045, 0.045, 0.015), dark, [lx, 0.045, -0.07]);
   }
   return parts;
 }
