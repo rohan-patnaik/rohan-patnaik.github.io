@@ -252,3 +252,39 @@ if (ships) {
     link.addEventListener('blur', stop);
   });
 }
+
+// Hero tile: every 5 seconds it swaps between the PR graph and a robot that turns
+// and comes apart. It stays on the graph while someone hovers or focuses it, and a
+// tap on the robot brings the graph back. Reduced motion keeps the graph only.
+const tile = document.querySelector('.graph');
+const robotView = tile?.querySelector('.robot-view');
+if (tile && robotView && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const readout = document.getElementById('graph-readout');
+  const graphLabel = readout.textContent;
+  const start = () => import('./robot.js').then(({ mountRobot, TURN }) => {
+    const bot = mountRobot(robotView);
+    if (!bot) { robotView.remove(); return; }
+    const robotLabel = `A humanoid in ${bot.count} parts, written as code`;
+    let onRobot = false, dir = 1, held = false, timer = 0;
+    const show = (robot) => {
+      onRobot = robot;
+      tile.classList.toggle('show-robot', robot);
+      readout.textContent = robot ? robotLabel : graphLabel;
+      if (robot) { bot.turn(dir); dir = -dir; } else setTimeout(() => { if (!onRobot) bot.stop(); }, 700);
+      clearTimeout(timer);
+      timer = setTimeout(next, TURN * 1000);
+    };
+    const next = () => {
+      if (document.hidden || (!onRobot && held)) { timer = setTimeout(next, TURN * 1000); return; }
+      show(!onRobot);
+    };
+    tile.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') held = true; });
+    tile.addEventListener('pointerleave', () => { held = false; });
+    tile.addEventListener('focusin', () => { held = true; });
+    tile.addEventListener('focusout', (e) => { if (!tile.contains(e.relatedTarget)) held = false; });
+    robotView.addEventListener('click', () => show(false));
+    timer = setTimeout(next, TURN * 1000);
+  }).catch(() => robotView.remove());
+  if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 2500 });
+  else setTimeout(start, 1200);
+}
