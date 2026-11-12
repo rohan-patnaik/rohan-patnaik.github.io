@@ -339,10 +339,10 @@ a.sec-meta:hover { color: var(--ink); }
 }
 .elsewhere a:hover span, .elsewhere li.plain a:hover, a.sec-meta:hover, .foot a:hover, .oss .repo:hover, .prs a:hover { text-decoration-color: currentColor; }
 
-/* Hero tile: alternates between the PR graph and the exploded-view robot (robot.js) */
+/* Hero tile: cycles the PR graph and two exploded-view robots (robot.js, robot-fable.js) */
 .graph .stage { position: relative; }
 .graph svg, .robot-view { transition: opacity .6s ease; }
 .robot-view { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; pointer-events: none; }
 .graph.show-robot svg { opacity: 0; pointer-events: none; }
-.graph.show-robot .robot-view { opacity: 1; pointer-events: auto; cursor: pointer; }
+.graph.show-robot .robot-view.on { opacity: 1; pointer-events: auto; cursor: pointer; }
 .graph.show-robot .hint { visibility: hidden; }
