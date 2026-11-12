@@ -252,3 +252,15 @@ if (ships) {
     link.addEventListener('blur', stop);
   });
 }
+
+// Robot above the footer: fetch three.js and build it only once it's close to view.
+const robotFig = document.getElementById('robot');
+if (robotFig) {
+  const load = () => import('./robot.js').catch(() => robotFig.remove());
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { io.disconnect(); load(); }
+    }, { rootMargin: '600px 0px' });
+    io.observe(robotFig);
+  } else load();
+}
