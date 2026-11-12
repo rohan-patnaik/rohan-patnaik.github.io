@@ -264,12 +264,11 @@ if (tile && robotView && !matchMedia('(prefers-reduced-motion: reduce)').matches
   const start = () => import('./robot.js').then(({ mountRobot, TURN }) => {
     const bot = mountRobot(robotView);
     if (!bot) { robotView.remove(); return; }
-    const robotLabel = `A humanoid in ${bot.count} parts, written as code`;
     let onRobot = false, dir = 1, held = false, timer = 0;
     const show = (robot) => {
       onRobot = robot;
       tile.classList.toggle('show-robot', robot);
-      readout.textContent = robot ? robotLabel : graphLabel;
+      readout.textContent = robot ? '' : graphLabel;
       if (robot) { bot.turn(dir); dir = -dir; } else setTimeout(() => { if (!onRobot) bot.stop(); }, 700);
       clearTimeout(timer);
       timer = setTimeout(next, TURN * 1000);
