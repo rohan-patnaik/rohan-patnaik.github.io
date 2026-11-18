@@ -26,6 +26,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Regenerate open-source section from GitHub
+        if: github.event_name != 'push'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/update_oss.py
